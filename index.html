@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yogesh Murala - AI Engineer portfolio. Building intelligent systems that learn, reason, and automate real-world workflows.">
+    <!-- SEO & Social Cards -->
+    <meta property="og:title" content="Yogesh Murala | AI Engineer">
+    <meta property="og:description" content="Portfolio of Yogesh Murala, AI Engineer specializing in Generative AI, LLM Systems, and Autonomous Agents.">
+    <meta property="og:type" content="website">
+    
+    <title>Yogesh Murala | AI Engineer</title>
+    
+    <!-- Google Fonts: Outfit for dynamic headers, Inter for readable body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Neural Network Background Animation Canvas (Optional) -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="#hero" class="logo">Yogesh<span>.AI</span></a>
+            
+            <nav id="navbar">
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" aria-label="Toggle Dark/Light Mode">
+                    <i class="fa-solid fa-sun" id="theme-icon"></i>
+                </button>
+                <!-- Hamburger for mobile -->
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section glass-section">
+            <div class="hero-content fade-in">
+                <p class="greeting">Hello, I'm</p>
+                <h1 class="glitch-text" data-text="Yogesh Murala">Yogesh Murala</h1>
+                <h2 class="role">AI Engineer | <span class="highlight">Generative AI</span> | LLM Systems | Autonomous Agents</h2>
+                <p class="blurb">Building intelligent systems that learn, reason, and automate real-world workflows using cutting-edge AI.</p>
+                
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View Projects <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="assets/Yogesh_Murala_Resume.pdf" class="btn btn-outline" download>Download Resume <i class="fa-solid fa-download"></i></a>
+                </div>
+            </div>
+            <div class="hero-graphics fade-in">
+                <!-- Futuristic AI graphic placeholder / System architecture abstract -->
+                <div class="abstract-orb">
+                    <div class="core"></div>
+                    <div class="orbits"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section glass-container hidden">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-user-astronaut section-icon"></i> About Me</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I am an AI Engineer with nearly 2 years of industry experience at Bosch, specializing in building intelligent systems powered by machine learning and large language models. My work focuses on Generative AI, autonomous agents, and real-world AI applications that improve developer productivity and system efficiency.</p>
+                    <p>I have hands-on experience designing and deploying AI solutions such as debugging agents, CI/CD automation systems, and domain-specific chatbots. I enjoy working at the intersection of research and engineering—turning advanced AI concepts into practical, scalable systems.</p>
+                    <p>Currently, I am focused on advancing my expertise in LLM fine-tuning, Retrieval-Augmented Generation (RAG), and privacy-preserving AI systems.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section glass-container hidden">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-microchip section-icon"></i> Technical Arsenal</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="skills-grid">
+                <!-- Category 1 -->
+                <div class="skill-category glass-card">
+                    <h3><i class="fa-brands fa-python"></i> Programming & Core</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">C/C++</span>
+                        <span class="tag">Problem Solving</span>
+                    </div>
+                </div>
+                
+                <!-- Category 2 -->
+                <div class="skill-category glass-card">
+                    <h3><i class="fa-solid fa-brain"></i> AI & Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="tag">Deep Learning</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">Generative AI</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">TensorFlow</span>
+                    </div>
+                </div>
+                
+                <!-- Category 3 -->
+                <div class="skill-category glass-card">
+                    <h3><i class="fa-solid fa-cube"></i> LLM Systems</h3>
+                    <div class="skill-tags">
+                        <span class="tag">RAG</span>
+                        <span class="tag">Fine-tuning</span>
+                        <span class="tag">Prompt Engineering</span>
+                        <span class="tag">LangChain</span>
+                        <span class="tag">LangGraph</span>
+                        <span class="tag">Evaluation</span>
+                    </div>
+                </div>
+                
+                <!-- Category 4 -->
+                <div class="skill-category glass-card">
+                    <h3><i class="fa-solid fa-server"></i> Systems & DevOps</h3>
+                    <div class="skill-tags">
+                        <span class="tag">CUDA / TensorRT</span>
+                        <span class="tag">Nvidia Jetson</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">Azure DevOps</span>
+                        <span class="tag">CI/CD Pipelines</span>
+                        <span class="tag">System Design</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section hidden">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-cubes section-icon"></i> Selected Projects</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card glass-card">
+                    <div class="project-content">
+                        <h3>AI-Powered Software Debugging Agent</h3>
+                        <p>A self-hosted debugging assistant built by fine-tuning a LLaMA model on GitHub issues and bug-fix datasets. Analyzes code, identifies bugs, and suggests fixes with explanations.</p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>LLaMA 3</span>
+                            <span>PyTorch</span>
+                            <span>Hugging Face</span>
+                            <span>LangChain</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn-icon" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-card">
+                    <div class="project-content">
+                        <h3>Privacy-Preserving Personal LLM</h3>
+                        <p>A local, self-hosted LLM trained on personal data (notes, emails, documents) to act as a private AI assistant without relying on cloud services.</p>
+                        <div class="tech-stack">
+                            <span>LLaMA</span>
+                            <span>RAG</span>
+                            <span>Vector DBs</span>
+                            <span>LangChain</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn-icon" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-card">
+                    <div class="project-content">
+                        <h3>Medical Diagnosis Assistant (RAG)</h3>
+                        <p>A Retrieval-Augmented Generation system that retrieves medical literature and clinical guidelines based on symptoms to assist in preliminary diagnosis.</p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>LangChain</span>
+                            <span>FAISS</span>
+                            <span>LLMs</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn-icon" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card glass-card">
+                    <div class="project-content">
+                        <h3>Autonomous CI/CD Bug Fixing Agent</h3>
+                        <p>An AI agent integrated with Jenkins/Azure DevOps that automatically detects, analyzes, and fixes bugs in nightly builds, reducing developer workload.</p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>LangChain</span>
+                            <span>Azure DevOps</span>
+                            <span>Jenkins</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="btn-icon" aria-label="GitHub Repository"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience-section hidden">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-briefcase section-icon"></i> Experience</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item glass-card">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>AI Engineer</h3>
+                        <h4>Bosch</h4>
+                        <span class="timeline-date">Aug 2023 – Present</span>
+                        <ul>
+                            <li>Built AI-driven assistants to automate workflows and improve developer productivity.</li>
+                            <li>Developed autonomous agents for CI/CD pipelines to detect and fix bugs.</li>
+                            <li>Designed and fine-tuned LLM-based chatbots for internal knowledge systems.</li>
+                            <li>Worked on Nvidia Jetson systems using CUDA and TensorRT for optimized performance.</li>
+                            <li>Implemented inter-process communication systems using NVSCI APIs.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item glass-card">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>AI Intern</h3>
+                        <h4>Bosch</h4>
+                        <span class="timeline-date">Sep 2022 – Aug 2023</span>
+                        <ul>
+                            <li>Built a custom deep learning model for single-object tracking.</li>
+                            <li>Optimized models using TensorRT for edge deployment.</li>
+                            <li>Conducted research on anchor boxes and multi-head architectures.</li>
+                            <li>Validated results using YOLO-based systems.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Certifications -->
+        <section id="education" class="edu-cert-section hidden">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-graduation-cap section-icon"></i> Education & Certifications</h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="grid-2-col">
+                <div class="glass-card flex-col">
+                    <h3><i class="fa-solid fa-university"></i> Academic Background</h3>
+                    <div class="edu-item">
+                        <h4>B.Tech in Artificial Intelligence</h4>
+                        <p>KL University</p>
+                        <span>Graduated: 2023</span>
+                    </div>
+                </div>
+                
+                <div class="glass-card flex-col">
+                    <h3><i class="fa-solid fa-certificate"></i> Certifications</h3>
+                    <ul class="cert-list">
+                        <li><i class="fa-solid fa-check text-highlight"></i> Google Tensorflow Certification</li>
+                        <li><i class="fa-solid fa-check text-highlight"></i> Deep Learning Specialization — Coursera</li>
+                        <li><i class="fa-solid fa-check text-highlight"></i> Generative AI Certifications</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section glass-container hidden">
+            <div class="section-header center">
+                <h2><i class="fa-solid fa-envelope section-icon"></i> Get In Touch</h2>
+                <div class="divider mx-auto"></div>
+                <p>Currently open to new opportunities and collaborations in AI Engineering.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <a href="mailto:muralayogesh@gmail.com" class="contact-card glass-card hover-glow">
+                    <i class="fa-solid fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>muralayogesh@gmail.com</p>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/yogesh-murala-a356571aa/" target="_blank" rel="noopener noreferrer" class="contact-card glass-card hover-glow">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <p>Yogesh Murala</p>
+                </a>
+                
+                <a href="https://github.com/Yogesh-001" target="_blank" rel="noopener noreferrer" class="contact-card glass-card hover-glow">
+                    <i class="fa-brands fa-github"></i>
+                    <h3>GitHub</h3>
+                    <p>Yogesh-001</p>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Yogesh Murala. All rights reserved.</p>
+            <p class="built-with">Built with <i class="fa-solid fa-heart" style="color: #00F2FE;"></i> using HTML, CSS, and JS</p>
+        </div>
+    </footer>
+
+    <!-- Main Script -->
+    <script src="js/script.js"></script>
+</body>
+</html>
