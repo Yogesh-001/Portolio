@@ -5,20 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Yogesh Murala - AI Engineer portfolio. Building intelligent systems that learn, reason, and automate real-world workflows.">
+        content="Yogesh Murala — AI Engineer building intelligent systems with LLMs, Autonomous Agents, and Generative AI. View missions, arsenal, and experience.">
     <!-- SEO & Social Cards -->
     <meta property="og:title" content="Yogesh Murala | AI Engineer">
     <meta property="og:description"
-        content="Portfolio of Yogesh Murala, AI Engineer specializing in Generative AI, LLM Systems, and Autonomous Agents.">
+        content="Portfolio of Yogesh Murala — AI Engineer specializing in Generative AI, LLM Systems, and Autonomous Agents.">
     <meta property="og:type" content="website">
 
     <title>Yogesh Murala | AI Engineer</title>
 
-    <!-- Google Fonts: Outfit for dynamic headers, Inter for readable body -->
+    <!-- Google Fonts: Rajdhani for tactical headings, Inter for body -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- FontAwesome for Icons -->
@@ -30,21 +30,26 @@
 
 <body>
 
-    <!-- Neural Network Background Animation Canvas (Optional) -->
+    <!-- Particle Canvas Background -->
     <canvas id="bg-canvas"></canvas>
+    <!-- Subtle Hex Grid Overlay -->
+    <div class="hex-grid-overlay"></div>
 
     <!-- Navigation -->
     <header id="header">
         <div class="nav-container">
-            <a href="#hero" class="logo">Yogesh<span>.AI</span></a>
+            <a href="#hero" class="logo">
+                Y<span class="accent">.</span>M<span class="logo-dot"></span>
+            </a>
 
             <nav id="navbar">
                 <ul class="nav-links">
                     <li><a href="#hero">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#arsenal">Arsenal</a></li>
+                    <li><a href="#missions">Missions</a></li>
+                    <li><a href="#mission-log">Log</a></li>
+                    <li><a href="#education">Academy</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -67,245 +72,366 @@
     <!-- Main Content -->
     <main>
 
-        <!-- Hero Section -->
-        <section id="hero" class="hero-section glass-section">
-            <div class="hero-content fade-in">
-                <p class="greeting">Hello, I'm</p>
-                <h1 class="glitch-text" data-text="Yogesh Murala">Yogesh Murala</h1>
-                <h2 class="role">AI Engineer | <span class="highlight">Generative AI</span> | LLM Systems | Autonomous
-                    Agents</h2>
-                <p class="blurb">Building intelligent systems that learn, reason, and automate real-world workflows
-                    using cutting-edge AI.</p>
+        <!-- ==================== HERO SECTION ==================== -->
+        <section id="hero">
+            <div class="hero-ambient"></div>
+            <div class="hero-content">
+                <div class="tactical-label">
+                    <span class="dot"></span>
+                    <span>// SYSTEM ONLINE</span>
+                </div>
+                <h1 class="hero-name shimmer-text" id="hero-name">Yogesh Murala</h1>
+                <h2 class="hero-role">
+                    <span id="typed-text"></span><span class="typed-cursor"></span>
+                </h2>
+                <p class="hero-blurb">Building intelligent systems that learn, reason, and automate real-world
+                    workflows using cutting-edge AI.</p>
 
                 <div class="hero-cta">
-                    <a href="#projects" class="btn btn-primary">View Projects <i
+                    <a href="#missions" class="btn btn-gold">View Missions <i
                             class="fa-solid fa-arrow-right"></i></a>
-                    <a href="Yogesh%20Murala%20-%20AI_ML.pdf" class="btn btn-outline"
-                        download="Yogesh_Murala_Resume.pdf">Download Resume <i class="fa-solid fa-download"></i></a>
+                    <a href="Yogesh%20Murala%20-%20AI_ML.pdf" class="btn btn-outline-blue"
+                        download="Yogesh_Murala_Resume.pdf">Download Resume <i
+                            class="fa-solid fa-download"></i></a>
                 </div>
             </div>
-            <div class="hero-graphics fade-in">
-                <!-- Futuristic AI graphic placeholder / System architecture abstract -->
-                <div class="abstract-orb">
-                    <div class="core"></div>
-                    <div class="orbits"></div>
+
+            <div class="hero-graphics">
+                <div class="tech-orb">
+                    <div class="ring ring-1">
+                        <div class="node node-gold node-1"></div>
+                        <div class="node node-blue node-2"></div>
+                    </div>
+                    <div class="ring ring-2">
+                        <div class="node node-blue node-3"></div>
+                        <div class="node node-gold node-4"></div>
+                    </div>
+                    <div class="ring ring-3">
+                        <div class="node node-gold node-5"></div>
+                        <div class="node node-blue node-6"></div>
+                    </div>
+                    <div class="core-glow"></div>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="about-section glass-container hidden">
+        <!-- ==================== ABOUT SECTION ==================== -->
+        <section id="about" class="hidden">
             <div class="section-header">
                 <h2><i class="fa-solid fa-user-astronaut section-icon"></i> About Me</h2>
-                <div class="divider"></div>
+                <div class="section-divider"></div>
             </div>
             <div class="about-content">
-                <div class="about-text">
-                    <p>I am an AI Engineer with nearly 2 years of industry experience at Bosch, specializing in building
-                        intelligent systems powered by machine learning and large language models. My work focuses on
-                        Generative AI, autonomous agents, and real-world AI applications that improve developer
-                        productivity and system efficiency.</p>
-                    <p>I have hands-on experience designing and deploying AI solutions such as debugging agents, CI/CD
-                        automation systems, and domain-specific chatbots. I enjoy working at the intersection of
-                        research and engineering—turning advanced AI concepts into practical, scalable systems.</p>
-                    <p>Currently, I am focused on advancing my expertise in LLM fine-tuning, Retrieval-Augmented
-                        Generation (RAG), and privacy-preserving AI systems.</p>
+                <div class="about-text-card glass-panel">
+                    <div class="about-text">
+                        <p>I am an AI Engineer with nearly 3 years of industry experience at Bosch, specializing in
+                            building intelligent systems powered by machine learning and large language models. My work
+                            focuses on Generative AI, autonomous agents, and real-world AI applications that improve
+                            developer productivity and system efficiency.</p>
+                        <p>I have hands-on experience designing and deploying AI solutions such as debugging agents,
+                            CI/CD automation systems, multi-agent research pipelines, and domain-specific chatbots. I
+                            enjoy working at the intersection of research and engineering—turning advanced AI concepts
+                            into practical, scalable systems.</p>
+                        <p>Currently, I am focused on advancing my expertise in LLM pretraining & fine-tuning,
+                            Retrieval-Augmented Generation (RAG), multi-agent orchestration, and privacy-preserving AI
+                            systems.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="skills-section glass-container hidden">
+        <!-- ==================== SKILLS / POWER GRID ==================== -->
+        <section id="arsenal" class="hidden">
             <div class="section-header">
-                <h2><i class="fa-solid fa-microchip section-icon"></i> Technical Arsenal</h2>
-                <div class="divider"></div>
+                <h2><i class="fa-solid fa-bolt section-icon"></i> Power Grid</h2>
+                <div class="section-divider"></div>
             </div>
 
-            <div class="skills-grid">
-                <!-- Category 1 -->
-                <div class="skill-category glass-card">
+            <div class="power-grid stagger-children">
+                <!-- Programming & Core -->
+                <div class="power-card glass-panel card-blue hidden" style="--i: 0">
                     <h3><i class="fa-brands fa-python"></i> Programming & Core</h3>
                     <div class="skill-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">C/C++</span>
-                        <span class="tag">Problem Solving</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C/C++</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">System Design</span>
                     </div>
                 </div>
 
-                <!-- Category 2 -->
-                <div class="skill-category glass-card">
+                <!-- AI & Machine Learning -->
+                <div class="power-card glass-panel card-gold hidden" style="--i: 1">
                     <h3><i class="fa-solid fa-brain"></i> AI & Machine Learning</h3>
                     <div class="skill-tags">
-                        <span class="tag">Deep Learning</span>
-                        <span class="tag">NLP</span>
-                        <span class="tag">Generative AI</span>
-                        <span class="tag">Computer Vision</span>
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">TensorFlow</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">Generative AI</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">TensorFlow</span>
                     </div>
                 </div>
 
-                <!-- Category 3 -->
-                <div class="skill-category glass-card">
+                <!-- LLM Systems -->
+                <div class="power-card glass-panel card-green hidden" style="--i: 2">
                     <h3><i class="fa-solid fa-cube"></i> LLM Systems</h3>
                     <div class="skill-tags">
-                        <span class="tag">RAG</span>
-                        <span class="tag">Fine-tuning</span>
-                        <span class="tag">Prompt Engineering</span>
-                        <span class="tag">LangChain</span>
-                        <span class="tag">LangGraph</span>
-                        <span class="tag">Evaluation</span>
+                        <span class="skill-tag">RAG</span>
+                        <span class="skill-tag">Fine-tuning</span>
+                        <span class="skill-tag">RLHF / DPO</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">LangGraph</span>
+                        <span class="skill-tag">Multi-Agent Systems</span>
                     </div>
                 </div>
 
-                <!-- Category 4 -->
-                <div class="skill-category glass-card">
+                <!-- Systems & DevOps -->
+                <div class="power-card glass-panel card-red hidden" style="--i: 3">
                     <h3><i class="fa-solid fa-server"></i> Systems & DevOps</h3>
                     <div class="skill-tags">
-                        <span class="tag">CUDA / TensorRT</span>
-                        <span class="tag">Nvidia Jetson</span>
-                        <span class="tag">Git</span>
-                        <span class="tag">Azure DevOps</span>
-                        <span class="tag">CI/CD Pipelines</span>
-                        <span class="tag">System Design</span>
+                        <span class="skill-tag">CUDA / TensorRT</span>
+                        <span class="skill-tag">MCP Architecture</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Azure DevOps</span>
+                        <span class="skill-tag">CI/CD Pipelines</span>
+                        <span class="skill-tag">Nvidia Jetson</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects-section hidden">
+        <!-- ==================== PROJECTS / MISSION FILES ==================== -->
+        <section id="missions" class="hidden">
             <div class="section-header">
-                <h2><i class="fa-solid fa-cubes section-icon"></i> Selected Projects</h2>
-                <div class="divider"></div>
+                <h2><i class="fa-solid fa-crosshairs section-icon"></i> Mission Files</h2>
+                <div class="section-divider"></div>
             </div>
 
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card glass-card">
-                    <div class="project-content">
-                        <h3>AstraShastra AI Reliability & Control</h3>
-                        <p>A modular, domain-agnostic framework designed to improve the reliability, observability, evaluation, and controllability of modern AI systems. Features automated faithfulness scoring, token-level reasoning tracing, evidence-based grounding, and policy-driven safety safeguards.</p>
-                        <div class="tech-stack">
+            <div class="missions-grid stagger-children">
+
+                <!-- Mission 1: LLMForge -->
+                <div class="mission-card tilt-card hidden" style="--i: 0">
+                    <div class="mission-content">
+                        <div class="mission-header">
+                            <h3 class="mission-title">LLMForge</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="mission-desc">End-to-end LLM pretraining and post-training pipeline — from building a
+                            tokenizer and transformer architecture from scratch, to pretraining, instruction tuning
+                            (SFT), and preference alignment (RLHF/DPO).</p>
+                        <div class="tech-equipment">
+                            <span>Python</span>
+                            <span>PyTorch</span>
+                            <span>Transformers</span>
+                            <span>RLHF</span>
+                            <span>DPO</span>
+                        </div>
+                        <div class="mission-links">
+                            <a href="https://github.com/Yogesh-001/LLMForge" target="_blank"
+                                rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission 2: Industrial Knowledge Intelligence -->
+                <div class="mission-card tilt-card hidden" style="--i: 1">
+                    <div class="mission-content">
+                        <div class="mission-header">
+                            <h3 class="mission-title">Industrial Knowledge Intelligence</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="mission-desc">AI-powered platform that ingests heterogeneous industrial documents
+                            (manuals, SOPs, reports) and makes their collective intelligence queryable through an
+                            advanced RAG pipeline.</p>
+                        <div class="tech-equipment">
+                            <span>Python</span>
+                            <span>RAG</span>
+                            <span>Vector DB</span>
+                            <span>LangChain</span>
+                        </div>
+                        <div class="mission-links">
+                            <a href="https://github.com/Yogesh-001/Industrial_Knowledge_Intelligence" target="_blank"
+                                rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission 3: Research-to-Implementation -->
+                <div class="mission-card tilt-card hidden" style="--i: 2">
+                    <div class="mission-content">
+                        <div class="mission-header">
+                            <h3 class="mission-title">Research-to-Implementation</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="mission-desc">A multi-agent pipeline that ingests a research paper PDF and produces
+                            validated PyTorch code — automating the journey from academic research to working
+                            implementation.</p>
+                        <div class="tech-equipment">
+                            <span>Python</span>
+                            <span>LangGraph</span>
+                            <span>Multi-Agent</span>
+                            <span>PyTorch</span>
+                        </div>
+                        <div class="mission-links">
+                            <a href="https://github.com/Yogesh-001/Research-to-Implementation" target="_blank"
+                                rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission 4: AdaptiveThink MoE -->
+                <div class="mission-card tilt-card hidden" style="--i: 3">
+                    <div class="mission-content">
+                        <div class="mission-header">
+                            <h3 class="mission-title">AdaptiveThink MoE</h3>
+                            <span class="status-badge status-complete">Research</span>
+                        </div>
+                        <p class="mission-desc">Research project exploring adaptive expert routing for small language
+                            models using Mixture of Experts (MoE) architecture — enabling efficient reasoning with
+                            minimal compute.</p>
+                        <div class="tech-equipment">
+                            <span>Python</span>
+                            <span>PyTorch</span>
+                            <span>MoE</span>
+                            <span>Transformers</span>
+                        </div>
+                        <div class="mission-links">
+                            <a href="https://github.com/Yogesh-001/AdaptiveThink_MoE" target="_blank"
+                                rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission 5: AstraShastra AI -->
+                <div class="mission-card tilt-card hidden" style="--i: 4">
+                    <div class="mission-content">
+                        <div class="mission-header">
+                            <h3 class="mission-title">AstraShastra AI</h3>
+                            <span class="status-badge status-active">Active</span>
+                        </div>
+                        <p class="mission-desc">A modular, domain-agnostic framework for AI reliability, observability,
+                            evaluation, and controllability. Features automated faithfulness scoring, token-level
+                            reasoning tracing, and policy-driven safety safeguards.</p>
+                        <div class="tech-equipment">
                             <span>Python</span>
                             <span>LLM Evaluation</span>
                             <span>AI Observability</span>
-                            <span>LangChain/LangGraph</span>
-                            <span>PyTorch</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Yogesh-001/AstraShastra-AI" target="_blank"
-                                rel="noopener noreferrer" class="btn-icon" aria-label="GitHub Repository"><i
-                                    class="fa-brands fa-github"></i> Source</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card glass-card">
-                    <div class="project-content">
-                        <h3>AI-Powered Software Debugging Agent</h3>
-                        <p>A self-hosted debugging assistant built by fine-tuning a LLaMA model on GitHub issues and
-                            bug-fix datasets. Analyzes code, identifies bugs, and suggests fixes with explanations.</p>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>LLaMA 3</span>
-                            <span>PyTorch</span>
-                            <span>Hugging Face</span>
                             <span>LangChain</span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Yogesh-001/ai-deugging-agent" target="_blank"
-                                rel="noopener noreferrer" class="btn-icon" aria-label="GitHub Repository"><i
-                                    class="fa-brands fa-github"></i> Source</a>
+                        <div class="mission-links">
+                            <a href="https://github.com/Yogesh-001/AstraShastra-AI" target="_blank"
+                                rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Source</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="project-card glass-card">
-                    <div class="project-content">
-                        <h3>AI Research Assistant (MCP Architecture)</h3>
-                        <p>A Modular AI system that assists in analyzing and synthesizing information from multiple
-                            sources such as research papers, technical blogs, and documents. The system dynamically
-                            orchestrates multiple tools (document retrieval, summarization, and comparison modules)
-                            using an MCP-style architecture, enabling multi-step reasoning and structured knowledge
-                            generation.</p>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>LangChain/LangGraph</span>
-                            <span>FAISS/Chroma</span>
-                            <span>LLMs</span>
+                <!-- Mission 6: AI Agent Evaluation Platform -->
+                <div class="mission-card tilt-card hidden" style="--i: 5">
+                    <div class="mission-content">
+                        <div class="mission-header">
+                            <h3 class="mission-title">AI Agent Evaluation Platform</h3>
+                            <span class="status-badge status-active">Active</span>
                         </div>
-                        <div class="project-links">
+                        <p class="mission-desc">AI agent evaluation and observability framework for monitoring
+                            multi-agent LLM workflows, hallucination detection, prompt regression testing, and
+                            reliability analysis.</p>
+                        <div class="tech-equipment">
+                            <span>Python</span>
+                            <span>Multi-Agent</span>
+                            <span>Evaluation</span>
+                            <span>Observability</span>
+                        </div>
+                        <div class="mission-links">
+                            <a href="https://github.com/Yogesh-001/AI_Agent_Evaluation_platform" target="_blank"
+                                rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission 7: AI Research Assistant (MCP) -->
+                <div class="mission-card tilt-card hidden" style="--i: 6">
+                    <div class="mission-content">
+                        <div class="mission-header">
+                            <h3 class="mission-title">AI Research Assistant</h3>
+                            <span class="status-badge status-complete">Complete</span>
+                        </div>
+                        <p class="mission-desc">A Modular AI system using MCP-style architecture that assists in
+                            analyzing and synthesizing information from research papers, technical blogs, and documents
+                            with multi-step reasoning.</p>
+                        <div class="tech-equipment">
+                            <span>Python</span>
+                            <span>LangChain</span>
+                            <span>FAISS</span>
+                            <span>MCP</span>
+                        </div>
+                        <div class="mission-links">
                             <a href="https://github.com/Yogesh-001/MCP_Research_Assistant" target="_blank"
-                                rel="noopener noreferrer" class="btn-icon" aria-label="GitHub Repository"><i
-                                    class="fa-brands fa-github"></i> Source</a>
+                                rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Source</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Project 4 -->
-                <div class="project-card glass-card">
-                    <div class="project-content">
-                        <h3>SLM-Based Intelligent Assistant</h3>
-                        <p>AI assistant powered by a small language model (SLM) designed to perform
-                            instruction-following, reasoning, and task execution with minimal computational resources.
-                            he system leverages fine-tuning, knowledge distillation, and technical query resolution,
-                            enabling scalable and low-latency AI deployment.</p>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>PyTorch</span>
-                            <span>Hugging Face</span>
-                            <span>Transformers</span>
-                            <span>PEFT (LoRA)</span>
-                            <span>TRL</span>
+                <!-- Mission 8: Medical Diagnosis Agent -->
+                <div class="mission-card tilt-card hidden" style="--i: 7">
+                    <div class="mission-content">
+                        <div class="mission-header">
+                            <h3 class="mission-title">Medical Diagnosis Agent</h3>
+                            <span class="status-badge status-complete">Complete</span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Yogesh-001/SLM_Assistant" target="_blank"
-                                rel="noopener noreferrer" class="btn-icon" aria-label="GitHub Repository"><i
-                                    class="fa-brands fa-github"></i> Source</a>
+                        <p class="mission-desc">A medical diagnostic assistant designed to accurately identify relevant
+                            medical guidelines for given patient symptoms with built-in hallucination avoidance and
+                            evidence-based grounding.</p>
+                        <div class="tech-equipment">
+                            <span>Python</span>
+                            <span>LLMs</span>
+                            <span>RAG</span>
+                            <span>Medical AI</span>
+                        </div>
+                        <div class="mission-links">
+                            <a href="https://github.com/Yogesh-001/Medical_Diagnosis_Agent" target="_blank"
+                                rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Source</a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="experience-section hidden">
+        <!-- ==================== EXPERIENCE / MISSION LOG ==================== -->
+        <section id="mission-log" class="hidden">
             <div class="section-header">
-                <h2><i class="fa-solid fa-briefcase section-icon"></i> Experience</h2>
-                <div class="divider"></div>
+                <h2><i class="fa-solid fa-briefcase section-icon"></i> Mission Log</h2>
+                <div class="section-divider"></div>
             </div>
 
-            <div class="timeline">
-                <div class="timeline-item glass-card">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
+            <div class="mission-log">
+                <div class="log-entry glass-panel hidden">
+                    <div class="log-dot"></div>
+                    <div class="log-content">
                         <h3>AI Engineer</h3>
                         <h4>Bosch</h4>
-                        <span class="timeline-date">Aug 2023 – Present</span>
+                        <span class="log-date">Aug 2023 – Present</span>
                         <ul>
                             <li>Built production-grade LLM systems to extract insights from engineering data, reducing
-                                manual triage by ~60%
-                            </li>
+                                manual triage by ~60%</li>
                             <li>Developed multi-step AI agents for CI/CD debugging (log analysis → retrieval → fix
                                 generation)</li>
                             <li>Designed scalable RAG pipelines with embeddings, vector search, and re-ranking</li>
                             <li>Implemented modular AI systems (MCP-style) orchestrating tools like log analyzers and
                                 vector DBs</li>
-                            <li>Deployed LLM services via Python APIs with monitoring, evaluation, and CI/CD integration
-                            </li>
+                            <li>Deployed LLM services via Python APIs with monitoring, evaluation, and CI/CD
+                                integration</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="timeline-item glass-card">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
+                <div class="log-entry glass-panel hidden">
+                    <div class="log-dot"></div>
+                    <div class="log-content">
                         <h3>AI Intern</h3>
                         <h4>Bosch</h4>
-                        <span class="timeline-date">Sep 2022 – Aug 2023</span>
+                        <span class="log-date">Sep 2022 – Aug 2023</span>
                         <ul>
                             <li>Built real-time object tracking models using PyTorch and OpenCV.</li>
                             <li>Optimized inference using TensorRT, CUDA, and Apache TVM for edge deployment.</li>
@@ -319,15 +445,15 @@
             </div>
         </section>
 
-        <!-- Education & Certifications -->
-        <section id="education" class="edu-cert-section hidden">
-            <div class="section-header">
+        <!-- ==================== EDUCATION & CERTIFICATIONS ==================== -->
+        <section id="education">
+            <div class="section-header hidden">
                 <h2><i class="fa-solid fa-graduation-cap section-icon"></i> Education & Certifications</h2>
-                <div class="divider"></div>
+                <div class="section-divider"></div>
             </div>
 
-            <div class="grid-2-col">
-                <div class="glass-card flex-col">
+            <div class="edu-grid">
+                <div class="edu-card glass-panel hidden" style="--i: 0">
                     <h3><i class="fa-solid fa-university"></i> Academic Background</h3>
                     <div class="edu-item">
                         <h4>B.Tech in Artificial Intelligence</h4>
@@ -336,42 +462,42 @@
                     </div>
                 </div>
 
-                <div class="glass-card flex-col">
+                <div class="edu-card glass-panel hidden" style="--i: 1">
                     <h3><i class="fa-solid fa-certificate"></i> Certifications</h3>
                     <ul class="cert-list">
-                        <li><i class="fa-solid fa-check text-highlight"></i> Google Tensorflow Certification</li>
-                        <li><i class="fa-solid fa-check text-highlight"></i> Deep Learning Specialization — Coursera
-                        </li>
-                        <li><i class="fa-solid fa-check text-highlight"></i> Generative AI Certifications</li>
+                        <li><i class="fa-solid fa-check"></i> Google TensorFlow Certification</li>
+                        <li><i class="fa-solid fa-check"></i> Deep Learning Specialization — Coursera</li>
+                        <li><i class="fa-solid fa-check"></i> Generative AI Certifications</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section glass-container hidden">
-            <div class="section-header center">
-                <h2><i class="fa-solid fa-envelope section-icon"></i> Get In Touch</h2>
-                <div class="divider mx-auto"></div>
-                <p>Currently open to new opportunities and collaborations in AI Engineering.</p>
+        <!-- ==================== CONTACT ==================== -->
+        <section id="contact" class="contact-section hidden">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-satellite-dish section-icon"></i> Get In Touch</h2>
+                <div class="section-divider section-divider-center"></div>
+                <p class="contact-subtitle">Currently open to new opportunities and collaborations in AI Engineering.
+                </p>
             </div>
 
             <div class="contact-grid">
-                <a href="mailto:muralayogesh@gmail.com" class="contact-card glass-card hover-glow">
+                <a href="mailto:muralayogesh@gmail.com" class="contact-card glass-panel">
                     <i class="fa-solid fa-envelope"></i>
                     <h3>Email</h3>
                     <p>muralayogesh@gmail.com</p>
                 </a>
 
-                <a href="https://www.linkedin.com/in/yogesh-murala-a356571aa/" target="_blank" rel="noopener noreferrer"
-                    class="contact-card glass-card hover-glow">
+                <a href="https://www.linkedin.com/in/yogesh-murala-a356571aa/" target="_blank"
+                    rel="noopener noreferrer" class="contact-card glass-panel">
                     <i class="fa-brands fa-linkedin"></i>
                     <h3>LinkedIn</h3>
                     <p>Yogesh Murala</p>
                 </a>
 
                 <a href="https://github.com/Yogesh-001" target="_blank" rel="noopener noreferrer"
-                    class="contact-card glass-card hover-glow">
+                    class="contact-card glass-panel">
                     <i class="fa-brands fa-github"></i>
                     <h3>GitHub</h3>
                     <p>Yogesh-001</p>
@@ -383,9 +509,8 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Yogesh Murala. All rights reserved.</p>
-            <p class="built-with">Built with <i class="fa-solid fa-heart" style="color: #00F2FE;"></i> using HTML, CSS,
-                and JS</p>
+            <p>&copy; 2026 Yogesh Murala. All rights reserved.</p>
+            <p class="built-with">Built with <i class="fa-solid fa-heart"></i> using HTML, CSS, and JS</p>
         </div>
     </footer>
 
