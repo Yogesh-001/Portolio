@@ -136,13 +136,14 @@ img {
 }
 
 .shimmer-text {
+    color: var(--gold-bright);
     background: linear-gradient(
         90deg,
-        var(--gold) 0%,
-        var(--gold-bright) 25%,
-        #F0D878 50%,
-        var(--gold-bright) 75%,
-        var(--gold) 100%
+        #C6A84C 0%,
+        #E8B94A 25%,
+        #FFF5C0 50%,
+        #E8B94A 75%,
+        #C6A84C 100%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -511,6 +512,7 @@ header.scrolled {
     align-items: center;
     gap: 12px;
     text-decoration: none;
+    margin-right: 2rem;
 }
 
 .logo-badge {
@@ -677,26 +679,11 @@ header.scrolled {
     line-height: 1.1;
     margin-bottom: 0.8rem;
     letter-spacing: 2px;
-    filter: drop-shadow(0 0 25px rgba(198, 168, 76, 0.45));
-}
-
-.hero-name .char {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(30px);
-    background: linear-gradient(
-        90deg,
-        var(--gold) 0%,
-        var(--gold-bright) 25%,
-        #FFF0A5 50%,
-        var(--gold-bright) 75%,
-        var(--gold) 100%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: charReveal 0.6s forwards, shimmer 4s linear infinite;
+    color: var(--gold-bright);
+    filter: drop-shadow(0 0 30px rgba(232, 185, 74, 0.5));
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 @keyframes charReveal {

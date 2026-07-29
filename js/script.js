@@ -122,21 +122,11 @@ document.addEventListener('DOMContentLoaded', () => {
     typeEffect();
 
     /* ==========================================
-       Cinematic Name Reveal (Staggered Chars)
+       Hero Name Smooth Fade-in Reveal
        ========================================== */
     const heroName = document.getElementById('hero-name');
     if (heroName) {
-        const text = heroName.textContent;
-        heroName.textContent = '';
-        heroName.style.opacity = '1';
-
-        [...text].forEach((char, i) => {
-            const span = document.createElement('span');
-            span.className = 'char';
-            span.textContent = char === ' ' ? '\u00A0' : char;
-            span.style.animationDelay = `${0.3 + i * 0.05}s`;
-            heroName.appendChild(span);
-        });
+        heroName.classList.add('hero-name-ready');
     }
 
     /* ==========================================
