@@ -178,7 +178,9 @@ img {
     pointer-events: none;
 }
 
-/* Hex Grid Overlay & Stark HUD Atmosphere */
+/* =========================================
+   Stark HUD Blueprint & Tactical Mesh
+   ========================================= */
 .hex-grid-overlay {
     position: fixed;
     top: 0;
@@ -187,16 +189,15 @@ img {
     height: 100%;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.07;
+    opacity: 0.85;
     background-image:
-        radial-gradient(circle at 50% 30%, rgba(0, 240, 255, 0.15) 0%, transparent 60%),
-        linear-gradient(30deg, var(--gold) 12%, transparent 12.5%, transparent 87%, var(--gold) 87.5%, var(--gold)),
-        linear-gradient(150deg, var(--gold) 12%, transparent 12.5%, transparent 87%, var(--gold) 87.5%, var(--gold)),
-        linear-gradient(30deg, var(--stark-cyan) 12%, transparent 12.5%, transparent 87%, var(--stark-cyan) 87.5%, var(--stark-cyan)),
-        linear-gradient(150deg, var(--stark-cyan) 12%, transparent 12.5%, transparent 87%, var(--stark-cyan) 87.5%, var(--stark-cyan)),
-        linear-gradient(60deg, rgba(0,210,255,0.3) 25%, transparent 25.5%, transparent 75%, rgba(0,210,255,0.3) 75%, rgba(0,210,255,0.3));
-    background-size: 100% 100%, 70px 120px, 70px 120px, 70px 120px, 70px 120px, 70px 120px;
-    background-position: center, 0 0, 0 0, 35px 60px, 35px 60px, 0 0;
+        radial-gradient(circle at 50% 40%, rgba(0, 240, 255, 0.1) 0%, transparent 65%),
+        linear-gradient(to right, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to right, rgba(255, 215, 0, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 215, 0, 0.06) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px, 200px 200px, 200px 200px;
+    background-position: center, 0 0, 0 0, 0 0, 0 0;
 }
 
 .hex-grid-overlay::before {
@@ -204,9 +205,9 @@ img {
     position: absolute;
     inset: 0;
     background: 
-        radial-gradient(ellipse at top left, rgba(0, 240, 255, 0.08), transparent 50%),
-        radial-gradient(ellipse at bottom right, rgba(255, 215, 0, 0.08), transparent 50%),
-        radial-gradient(circle at center, transparent 30%, rgba(5, 8, 20, 0.8) 90%);
+        radial-gradient(ellipse at top left, rgba(0, 240, 255, 0.06), transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(255, 215, 0, 0.06), transparent 50%),
+        radial-gradient(circle at center, transparent 40%, rgba(5, 8, 20, 0.85) 95%);
     pointer-events: none;
 }
 
@@ -216,17 +217,17 @@ img {
     top: 0;
     left: 0;
     width: 100%;
-    height: 3px;
+    height: 2px;
     background: linear-gradient(90deg, transparent, var(--stark-cyan), var(--gold-bright), var(--stark-cyan), transparent);
     opacity: 0.35;
-    animation: hud-scanline 10s linear infinite;
-    box-shadow: 0 0 15px var(--stark-cyan);
+    animation: hud-scanline 9s linear infinite;
+    box-shadow: 0 0 12px var(--stark-cyan);
 }
 
 @keyframes hud-scanline {
     0% { top: -5%; opacity: 0; }
-    10% { opacity: 0.45; }
-    90% { opacity: 0.45; }
+    15% { opacity: 0.5; }
+    85% { opacity: 0.5; }
     100% { top: 105%; opacity: 0; }
 }
 
@@ -784,7 +785,7 @@ header.scrolled {
 
 .tech-orb .ring {
     position: absolute;
-    border: 1px solid;
+    border: 1.5px solid;
     border-radius: 50%;
     top: 50%;
     left: 50%;
@@ -794,14 +795,16 @@ header.scrolled {
 .tech-orb .ring-1 {
     width: 100%;
     height: 100%;
-    border-color: rgba(198, 168, 76, 0.15);
+    border-color: rgba(0, 240, 255, 0.22);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.15), inset 0 0 20px rgba(0, 240, 255, 0.1);
     animation: rotate-slow 25s linear infinite;
 }
 
 .tech-orb .ring-2 {
     width: 75%;
     height: 75%;
-    border-color: rgba(74, 159, 217, 0.15);
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.18);
     animation: rotate-slow 18s linear infinite reverse;
     border-style: dashed;
 }
@@ -809,7 +812,8 @@ header.scrolled {
 .tech-orb .ring-3 {
     width: 50%;
     height: 50%;
-    border-color: rgba(198, 168, 76, 0.2);
+    border-color: rgba(0, 240, 255, 0.35);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
     animation: rotate-slow 12s linear infinite;
 }
 
@@ -818,15 +822,16 @@ header.scrolled {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    background: radial-gradient(circle, var(--gold-bright), var(--gold), transparent);
+    width: 86px;
+    height: 86px;
+    background: radial-gradient(circle, #FFFFFF 0%, #00F0FF 40%, var(--gold) 80%, transparent 100%);
     border-radius: 50%;
     box-shadow:
-        0 0 40px var(--gold-glow),
-        0 0 80px rgba(198, 168, 76, 0.15),
-        inset 0 0 20px rgba(255, 255, 255, 0.1);
-    animation: pulse-glow 4s ease-in-out infinite alternate;
+        0 0 45px var(--stark-cyan),
+        0 0 90px var(--gold-glow),
+        0 0 120px rgba(0, 240, 255, 0.3),
+        inset 0 0 25px rgba(255, 255, 255, 0.8);
+    animation: pulse-glow 3s ease-in-out infinite alternate;
 }
 
 .tech-orb .core-glow::after {
@@ -835,11 +840,11 @@ header.scrolled {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
-    background: rgba(255, 255, 255, 0.8);
+    width: 24px;
+    height: 24px;
+    background: #FFFFFF;
     border-radius: 50%;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 25px #FFFFFF, 0 0 45px var(--stark-cyan);
 }
 
 /* Orbital nodes */

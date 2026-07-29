@@ -296,6 +296,104 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        let ringAngle1 = 0;
+        let ringAngle2 = 0;
+
+        function drawStarkHudRings() {
+            ringAngle1 += 0.0004;
+            ringAngle2 -= 0.0006;
+
+            const theme = document.documentElement.getAttribute('data-theme');
+            const isDark = theme !== 'light';
+            const centerX = width / 2;
+            const centerY = height * 0.45;
+
+            ctx.save();
+            ctx.translate(centerX, centerY);
+
+            // Outer Dashed HUD Ring
+            ctx.save();
+            ctx.rotate(ringAngle1);
+            ctx.beginPath();
+            ctx.arc(0, 0, Math.min(width, height) * 0.38, 0, Math.PI * 2);
+            ctx.setLineDash([25, 45, 10, 45]);
+            ctx.strokeStyle = isDark ? 'rgba(0, 240, 255, 0.09)' : 'rgba(0, 180, 216, 0.07)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.restore();
+
+            // Inner Tech Ring with Degree Ticks
+            ctx.save();
+            ctx.rotate(ringAngle2);
+            const innerR = Math.min(width, height) * 0.25;
+            ctx.beginPath();
+            ctx.arc(0, 0, innerR, 0, Math.PI * 2);
+            ctx.setLineDash([80, 30, 15, 30]);
+            ctx.strokeStyle = isDark ? 'rgba(255, 215, 0, 0.12)' : 'rgba(212, 160, 23, 0.09)';
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+            
+            // Draw cardinal degree markers (0°, 90°, 180°, 270°)
+            for (let deg = 0; deg < 360; deg += 90) {
+                const rad = (deg * Math.PI) / 180;
+                const x1 = Math.cos(rad) * (innerR - 6);
+                const y1 = Math.sin(rad) * (innerR - 6);
+                const x2 = Math.cos(rad) * (innerR + 6);
+                const y2 = Math.sin(rad) * (innerR + 6);
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.strokeStyle = isDark ? 'rgba(0, 240, 255, 0.25)' : 'rgba(0, 180, 216, 0.2)';
+                ctx.lineWidth = 1.5;
+                ctx.setLineDash([]);
+                ctx.stroke();
+            }
+            ctx.restore();
+
+            ctx.restore();
+        }
+
+        function drawMouseHudReticle() {
+            if (mouse.x === null || mouse.y === null) return;
+            const theme = document.documentElement.getAttribute('data-theme');
+            const isDark = theme !== 'light';
+            const color = isDark ? 'rgba(0, 240, 255, 0.6)' : 'rgba(0, 180, 216, 0.6)';
+
+            ctx.save();
+            ctx.translate(mouse.x, mouse.y);
+
+            // Target Ring
+            ctx.beginPath();
+            ctx.arc(0, 0, 22, 0, Math.PI * 2);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 0.8;
+            ctx.setLineDash([6, 6]);
+            ctx.stroke();
+
+            // Center Crosshair
+            ctx.beginPath();
+            ctx.moveTo(-8, 0); ctx.lineTo(8, 0);
+            ctx.moveTo(0, -8); ctx.lineTo(0, 8);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1;
+            ctx.setLineDash([]);
+            ctx.stroke();
+
+            // Corner Brackets
+            const s = 14;
+            const l = 5;
+            ctx.beginPath();
+            ctx.moveTo(-s, -s + l); ctx.lineTo(-s, -s); ctx.lineTo(-s + l, -s);
+            ctx.moveTo(s - l, -s); ctx.lineTo(s, -s); ctx.lineTo(s, -s + l);
+            ctx.moveTo(-s, s - l); ctx.lineTo(-s, s); ctx.lineTo(-s + l, s);
+            ctx.moveTo(s - l, s); ctx.lineTo(s, s); ctx.lineTo(s, s - l);
+            ctx.strokeStyle = isDark ? 'rgba(255, 215, 0, 0.7)' : 'rgba(212, 160, 23, 0.7)';
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
         for (let i = 0; i < PARTICLE_COUNT; i++) {
             particles.push(new StarkParticle());
         }
@@ -305,6 +403,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const theme = document.documentElement.getAttribute('data-theme');
             const isDark = theme !== 'light';
+
+            // Draw Background HUD Telemetry Rings
+            drawStarkHudRings();
 
             // Connect particles with Stark Energy Beams
             for (let i = 0; i < particles.length; i++) {
@@ -352,6 +453,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
             }
+
+            // Draw Interactive Target Reticle on Cursor
+            drawMouseHudReticle();
 
             requestAnimationFrame(animate);
         }
