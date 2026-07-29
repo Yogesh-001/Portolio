@@ -179,15 +179,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================
-       Energy Wisp Particle System (Canvas)
+       Stark Arc Reactor & Quantum Grid (Canvas)
        ========================================== */
     const canvas = document.getElementById('bg-canvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
-        const PARTICLE_COUNT = 60;
-        const CONNECTION_DISTANCE = 160;
+        const PARTICLE_COUNT = 75;
+        const CONNECTION_DISTANCE = 170;
+        
+        let mouse = { x: null, y: null, radius: 200 };
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        window.addEventListener('mouseleave', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
 
         function resize() {
             width = window.innerWidth;
@@ -199,17 +211,19 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', resize);
         resize();
 
-        class EnergyWisp {
+        class StarkParticle {
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.4;
-                this.vy = (Math.random() - 0.5) * 0.4;
-                this.radius = Math.random() * 2 + 0.5;
-                // Gold or blue
-                this.isGold = Math.random() > 0.4;
-                this.opacity = Math.random() * 0.5 + 0.2;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = Math.random() * 2.2 + 0.6;
+                // Type: 0 = Arc Cyan, 1 = Stark Gold, 2 = HUD Spark / Diamond
+                const roll = Math.random();
+                this.type = roll > 0.45 ? 0 : (roll > 0.1 ? 1 : 2);
+                this.opacity = Math.random() * 0.6 + 0.3;
                 this.pulseOffset = Math.random() * Math.PI * 2;
+                this.shape = Math.random() > 0.8 ? 'diamond' : 'circle';
             }
 
             update(time) {
@@ -219,8 +233,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
 
+                // Mouse interaction - HUD magnetic drift
+                if (mouse.x !== null && mouse.y !== null) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < mouse.radius) {
+                        const force = (mouse.radius - dist) / mouse.radius;
+                        this.x += (dx / dist) * force * 0.6;
+                        this.y += (dy / dist) * force * 0.6;
+                    }
+                }
+
                 // Subtle pulse
-                this.currentOpacity = this.opacity + Math.sin(time * 0.001 + this.pulseOffset) * 0.15;
+                this.currentOpacity = this.opacity + Math.sin(time * 0.0015 + this.pulseOffset) * 0.2;
+                if (this.currentOpacity < 0.1) this.currentOpacity = 0.1;
             }
 
             draw() {
@@ -228,69 +255,100 @@ document.addEventListener('DOMContentLoaded', () => {
                 let r, g, b;
 
                 if (theme === 'light') {
-                    if (this.isGold) {
-                        r = 154; g = 123; b = 44;
-                    } else {
-                        r = 42; g = 122; b = 184;
-                    }
+                    if (this.type === 0) { r = 0; g = 180; b = 216; }
+                    else if (this.type === 1) { r = 212; g = 160; b = 23; }
+                    else { r = 239; g = 35; b = 60; }
                 } else {
-                    if (this.isGold) {
-                        r = 198; g = 168; b = 76;
-                    } else {
-                        r = 74; g = 159; b = 217;
-                    }
+                    if (this.type === 0) { r = 0; g = 240; b = 255; }
+                    else if (this.type === 1) { r = 255; g = 215; b = 0; }
+                    else { r = 239; g = 35; b = 60; }
                 }
 
-                // Glow effect
-                ctx.beginPath();
-                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 4);
-                gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${this.currentOpacity})`);
-                gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
-                ctx.fillStyle = gradient;
-                ctx.arc(this.x, this.y, this.radius * 4, 0, Math.PI * 2);
-                ctx.fill();
+                ctx.save();
+                if (this.shape === 'diamond') {
+                    ctx.beginPath();
+                    ctx.moveTo(this.x, this.y - this.radius * 2);
+                    ctx.lineTo(this.x + this.radius * 2, this.y);
+                    ctx.lineTo(this.x, this.y + this.radius * 2);
+                    ctx.lineTo(this.x - this.radius * 2, this.y);
+                    ctx.closePath();
+                    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.currentOpacity})`;
+                    ctx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.8)`;
+                    ctx.shadowBlur = 8;
+                    ctx.fill();
+                } else {
+                    // Glow radial
+                    ctx.beginPath();
+                    const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 4.5);
+                    gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${this.currentOpacity})`);
+                    gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+                    ctx.fillStyle = gradient;
+                    ctx.arc(this.x, this.y, this.radius * 4.5, 0, Math.PI * 2);
+                    ctx.fill();
 
-                // Core dot
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.currentOpacity + 0.2})`;
-                ctx.fill();
+                    // Core dot
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${Math.min(1, this.currentOpacity + 0.3)})`;
+                    ctx.fill();
+                }
+                ctx.restore();
             }
         }
 
         for (let i = 0; i < PARTICLE_COUNT; i++) {
-            particles.push(new EnergyWisp());
+            particles.push(new StarkParticle());
         }
 
         function animate(time) {
             ctx.clearRect(0, 0, width, height);
 
+            const theme = document.documentElement.getAttribute('data-theme');
+            const isDark = theme !== 'light';
+
+            // Connect particles with Stark Energy Beams
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update(time);
                 particles[i].draw();
 
-                // Connection lines
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
 
                     if (distance < CONNECTION_DISTANCE) {
-                        const opacity = (1 - distance / CONNECTION_DISTANCE) * 0.12;
-                        const theme = document.documentElement.getAttribute('data-theme');
-
+                        const opacity = (1 - distance / CONNECTION_DISTANCE) * (isDark ? 0.18 : 0.1);
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
 
-                        if (theme === 'light') {
-                            ctx.strokeStyle = `rgba(154, 123, 44, ${opacity})`;
+                        if (particles[i].type === 0 || particles[j].type === 0) {
+                            ctx.strokeStyle = `rgba(0, 240, 255, ${opacity})`;
                         } else {
-                            ctx.strokeStyle = `rgba(198, 168, 76, ${opacity})`;
+                            ctx.strokeStyle = `rgba(255, 215, 0, ${opacity})`;
                         }
 
-                        ctx.lineWidth = 0.5;
+                        ctx.lineWidth = 0.6;
                         ctx.stroke();
+                    }
+                }
+
+                // Connect to mouse cursor with interactive Stark Arc energy line
+                if (mouse.x !== null && mouse.y !== null) {
+                    const dx = particles[i].x - mouse.x;
+                    const dy = particles[i].y - mouse.y;
+                    const distToMouse = Math.sqrt(dx * dx + dy * dy);
+                    if (distToMouse < mouse.radius) {
+                        const lineOpacity = (1 - distToMouse / mouse.radius) * 0.35;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${lineOpacity})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.shadowColor = 'rgba(0, 240, 255, 0.5)';
+                        ctx.shadowBlur = 4;
+                        ctx.stroke();
+                        ctx.shadowBlur = 0;
                     }
                 }
             }

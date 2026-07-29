@@ -7,35 +7,38 @@
    CSS Variables & Theming
    ========================================= */
 :root {
-    /* Core Palette */
-    --bg-primary: #0D0D1A;
-    --bg-secondary: #13132B;
-    --bg-tertiary: #1A1A3E;
-    --bg-card: rgba(255, 255, 255, 0.03);
+    /* Core Palette — Avengers Stark Tech Theme */
+    --bg-primary: #050814;
+    --bg-secondary: #0A0F24;
+    --bg-tertiary: #101736;
+    --bg-card: rgba(255, 255, 255, 0.035);
 
     /* Text */
-    --text-primary: #E8E8F0;
-    --text-secondary: #8892A6;
-    --text-muted: #5A6378;
+    --text-primary: #EEF4FF;
+    --text-secondary: #8E9BB4;
+    --text-muted: #57657E;
 
-    /* Accent Colors */
-    --gold: #C6A84C;
-    --gold-bright: #E8B94A;
-    --gold-glow: rgba(198, 168, 76, 0.3);
-    --blue: #4A9FD9;
-    --blue-glow: rgba(74, 159, 217, 0.3);
-    --green: #2ECC71;
-    --green-glow: rgba(46, 204, 113, 0.25);
-    --red: #E74C3C;
-    --red-glow: rgba(231, 76, 60, 0.25);
+    /* Accent Colors — Arc Reactor Cyan, Iron Gold & Vibranium Red */
+    --gold: #D4AF37;
+    --gold-bright: #FFD700;
+    --gold-glow: rgba(255, 215, 0, 0.35);
+    --blue: #00D2FF;
+    --blue-glow: rgba(0, 210, 255, 0.4);
+    --stark-cyan: #00F0FF;
+    --stark-red: #EF233C;
+    --stark-red-glow: rgba(239, 35, 60, 0.3);
+    --green: #00E676;
+    --green-glow: rgba(0, 230, 118, 0.25);
+    --red: #EF233C;
+    --red-glow: rgba(239, 35, 60, 0.25);
 
     /* Glassmorphism */
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-bg-hover: rgba(255, 255, 255, 0.06);
-    --glass-border: rgba(255, 255, 255, 0.06);
-    --glass-border-hover: rgba(198, 168, 76, 0.3);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    --glass-blur: blur(16px);
+    --glass-bg: rgba(10, 15, 36, 0.55);
+    --glass-bg-hover: rgba(16, 23, 54, 0.75);
+    --glass-border: rgba(0, 210, 255, 0.12);
+    --glass-border-hover: rgba(255, 215, 0, 0.4);
+    --glass-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    --glass-blur: blur(20px);
 
     /* Utilities */
     --radius-sm: 4px;
@@ -175,7 +178,7 @@ img {
     pointer-events: none;
 }
 
-/* Hex Grid Overlay */
+/* Hex Grid Overlay & Stark HUD Atmosphere */
 .hex-grid-overlay {
     position: fixed;
     top: 0;
@@ -184,16 +187,47 @@ img {
     height: 100%;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.03;
+    opacity: 0.07;
     background-image:
+        radial-gradient(circle at 50% 30%, rgba(0, 240, 255, 0.15) 0%, transparent 60%),
         linear-gradient(30deg, var(--gold) 12%, transparent 12.5%, transparent 87%, var(--gold) 87.5%, var(--gold)),
         linear-gradient(150deg, var(--gold) 12%, transparent 12.5%, transparent 87%, var(--gold) 87.5%, var(--gold)),
-        linear-gradient(30deg, var(--gold) 12%, transparent 12.5%, transparent 87%, var(--gold) 87.5%, var(--gold)),
-        linear-gradient(150deg, var(--gold) 12%, transparent 12.5%, transparent 87%, var(--gold) 87.5%, var(--gold)),
-        linear-gradient(60deg, rgba(198,168,76,0.3) 25%, transparent 25.5%, transparent 75%, rgba(198,168,76,0.3) 75%, rgba(198,168,76,0.3)),
-        linear-gradient(60deg, rgba(198,168,76,0.3) 25%, transparent 25.5%, transparent 75%, rgba(198,168,76,0.3) 75%, rgba(198,168,76,0.3));
-    background-size: 80px 140px;
-    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+        linear-gradient(30deg, var(--stark-cyan) 12%, transparent 12.5%, transparent 87%, var(--stark-cyan) 87.5%, var(--stark-cyan)),
+        linear-gradient(150deg, var(--stark-cyan) 12%, transparent 12.5%, transparent 87%, var(--stark-cyan) 87.5%, var(--stark-cyan)),
+        linear-gradient(60deg, rgba(0,210,255,0.3) 25%, transparent 25.5%, transparent 75%, rgba(0,210,255,0.3) 75%, rgba(0,210,255,0.3));
+    background-size: 100% 100%, 70px 120px, 70px 120px, 70px 120px, 70px 120px, 70px 120px;
+    background-position: center, 0 0, 0 0, 35px 60px, 35px 60px, 0 0;
+}
+
+.hex-grid-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse at top left, rgba(0, 240, 255, 0.08), transparent 50%),
+        radial-gradient(ellipse at bottom right, rgba(255, 215, 0, 0.08), transparent 50%),
+        radial-gradient(circle at center, transparent 30%, rgba(5, 8, 20, 0.8) 90%);
+    pointer-events: none;
+}
+
+.hex-grid-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--stark-cyan), var(--gold-bright), var(--stark-cyan), transparent);
+    opacity: 0.35;
+    animation: hud-scanline 10s linear infinite;
+    box-shadow: 0 0 15px var(--stark-cyan);
+}
+
+@keyframes hud-scanline {
+    0% { top: -5%; opacity: 0; }
+    10% { opacity: 0.45; }
+    90% { opacity: 0.45; }
+    100% { top: 105%; opacity: 0; }
 }
 
 /* =========================================
@@ -517,15 +551,15 @@ header.scrolled {
 
 .logo-badge {
     position: relative;
-    width: 42px;
-    height: 42px;
-    background: linear-gradient(135deg, rgba(198, 168, 76, 0.2), rgba(74, 159, 217, 0.2));
-    border: 1.5px solid var(--gold);
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.18), rgba(0, 240, 255, 0.22));
+    border: 1.8px solid var(--gold);
     clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 0 15px var(--gold-glow), inset 0 0 10px rgba(198, 168, 76, 0.2);
+    box-shadow: 0 0 20px var(--gold-glow), 0 0 15px rgba(0, 210, 255, 0.3), inset 0 0 12px rgba(255, 215, 0, 0.25);
     transition: all var(--transition-med);
 }
 
@@ -534,21 +568,22 @@ header.scrolled {
     position: absolute;
     inset: 2px;
     clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-    border: 1px dashed rgba(74, 159, 217, 0.5);
+    border: 1px dashed var(--stark-cyan);
     pointer-events: none;
+    opacity: 0.8;
 }
 
 .logo:hover .logo-badge {
-    transform: rotate(45deg) scale(1.08);
-    border-color: var(--gold-bright);
-    box-shadow: 0 0 25px var(--gold-glow), 0 0 15px var(--blue-glow);
+    transform: rotate(45deg) scale(1.1);
+    border-color: var(--stark-cyan);
+    box-shadow: 0 0 30px var(--blue-glow), 0 0 20px var(--gold-glow);
 }
 
 .logo-symbol {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     font-weight: 800;
-    letter-spacing: -1px;
-    background: linear-gradient(135deg, var(--gold-bright) 0%, var(--blue) 100%);
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--gold-bright) 0%, var(--stark-cyan) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
