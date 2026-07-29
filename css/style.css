@@ -507,27 +507,66 @@ header.scrolled {
 
 .logo {
     font-family: var(--font-heading);
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--text-primary);
     display: flex;
     align-items: center;
-    gap: 2px;
+    gap: 12px;
+    text-decoration: none;
 }
 
-.logo .accent {
+.logo-badge {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, rgba(198, 168, 76, 0.2), rgba(74, 159, 217, 0.2));
+    border: 1.5px solid var(--gold);
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px var(--gold-glow), inset 0 0 10px rgba(198, 168, 76, 0.2);
+    transition: all var(--transition-med);
+}
+
+.logo-badge::before {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+    border: 1px dashed rgba(74, 159, 217, 0.5);
+    pointer-events: none;
+}
+
+.logo:hover .logo-badge {
+    transform: rotate(45deg) scale(1.08);
+    border-color: var(--gold-bright);
+    box-shadow: 0 0 25px var(--gold-glow), 0 0 15px var(--blue-glow);
+}
+
+.logo-symbol {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, var(--gold-bright) 0%, var(--blue) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: transform var(--transition-med);
+}
+
+.logo:hover .logo-symbol {
+    transform: rotate(-45deg);
+}
+
+.logo-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-primary);
+}
+
+.logo-text .accent {
     color: var(--gold-bright);
-}
-
-.logo .logo-dot {
-    width: 6px;
-    height: 6px;
-    background: var(--gold);
-    border-radius: 50%;
-    display: inline-block;
-    margin-left: 4px;
-    box-shadow: 0 0 8px var(--gold-glow);
-    animation: pulse-dot 3s ease-in-out infinite;
+    margin: 0 1px;
 }
 
 .nav-links {
@@ -635,16 +674,29 @@ header.scrolled {
 .hero-name {
     font-size: 4.5rem;
     font-weight: 700;
-    line-height: 1;
+    line-height: 1.1;
     margin-bottom: 0.8rem;
     letter-spacing: 2px;
+    filter: drop-shadow(0 0 25px rgba(198, 168, 76, 0.45));
 }
 
 .hero-name .char {
     display: inline-block;
     opacity: 0;
     transform: translateY(30px);
-    animation: charReveal 0.6s forwards;
+    background: linear-gradient(
+        90deg,
+        var(--gold) 0%,
+        var(--gold-bright) 25%,
+        #FFF0A5 50%,
+        var(--gold-bright) 75%,
+        var(--gold) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: charReveal 0.6s forwards, shimmer 4s linear infinite;
 }
 
 @keyframes charReveal {
