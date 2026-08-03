@@ -1,484 +1,425 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+    let globeAngle = 0;
+    let hoveredNodeId = null;
+    let activePulses = [];
+    let impactRings = [];
 
-    /* ==========================================
-       Theme Toggle (Dark/Light Mode)
-       ========================================== */
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const htmlElement = document.documentElement;
+    /* === THEME TOGGLE === */
+    const themeBtn  = document.getElementById("theme-toggle");
+    const themeIcon = document.getElementById("theme-icon");
+    const html      = document.documentElement;
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+        html.setAttribute("data-theme", savedTheme);
+        if (savedTheme === "light") themeIcon.classList.replace("fa-sun","fa-moon");
+    }
+    themeBtn.addEventListener("click", () => {
+        const isDark = html.getAttribute("data-theme") !== "light";
+        html.setAttribute("data-theme", isDark ? "light" : "dark");
+        themeIcon.classList.replace(isDark ? "fa-sun" : "fa-moon", isDark ? "fa-moon" : "fa-sun");
+        localStorage.setItem("theme", isDark ? "light" : "dark");
+    });
 
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) {
-        htmlElement.setAttribute('data-theme', currentTheme);
-        if (currentTheme === 'light') {
-            themeIcon.classList.replace('fa-sun', 'fa-moon');
-        }
+    /* === HAMBURGER NAV === */
+    const burger   = document.getElementById("hamburger");
+    const navLinks = document.querySelector(".nav-links");
+    if (burger && navLinks) {
+        burger.addEventListener("click", () => {
+            burger.classList.toggle("active");
+            navLinks.classList.toggle("active");
+        });
+        document.querySelectorAll(".nav-links a").forEach(a => {
+            a.addEventListener("click", () => {
+                burger.classList.remove("active");
+                navLinks.classList.remove("active");
+            });
+        });
     }
 
-    themeToggleBtn.addEventListener('click', () => {
-        let theme = htmlElement.getAttribute('data-theme');
-        if (theme === 'dark') {
-            htmlElement.setAttribute('data-theme', 'light');
-            themeIcon.classList.replace('fa-sun', 'fa-moon');
-            localStorage.setItem('theme', 'light');
-        } else {
-            htmlElement.setAttribute('data-theme', 'dark');
-            themeIcon.classList.replace('fa-moon', 'fa-sun');
-            localStorage.setItem('theme', 'dark');
-        }
+    /* === STICKY HEADER === */
+    const header   = document.getElementById("header");
+    const sections = document.querySelectorAll("section[id]");
+    const navAs    = document.querySelectorAll(".nav-links a");
+    window.addEventListener("scroll", () => {
+        if (header) header.classList.toggle("scrolled", window.scrollY > 50);
+        let cur = "";
+        sections.forEach(s => { if (window.scrollY >= s.offsetTop - 220) cur = s.id; });
+        navAs.forEach(a => { a.classList.toggle("active", a.getAttribute("href") === "#"+cur); });
     });
 
-    /* ==========================================
-       Mobile Navigation Hamburger Menu
-       ========================================== */
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const navItems = document.querySelectorAll('.nav-links li a');
-
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-        });
-    });
-
-    /* ==========================================
-       Sticky Header + Active Nav Highlighting
-       ========================================== */
-    const header = document.getElementById('header');
-    const sections = document.querySelectorAll('section[id]');
-
-    window.addEventListener('scroll', () => {
-        // Sticky header
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
+    /* === TYPING EFFECT === */
+    const typedEl = document.getElementById("typed-text");
+    if (typedEl) {
+        const phrases = ["AI Engineer","Generative AI","LLM Systems","Autonomous Agents","Multi-Agent Architect"];
+        let pi=0, ci=0, deleting=false, speed=80;
+        function type() {
+            const phrase = phrases[pi];
+            typedEl.textContent = deleting ? phrase.substring(0,ci-1) : phrase.substring(0,ci+1);
+            deleting ? ci-- : ci++;
+            if (!deleting && ci===phrase.length)  { speed=2200; deleting=true; }
+            else if (deleting && ci===0)           { deleting=false; pi=(pi+1)%phrases.length; speed=400; }
+            else                                   { speed=deleting?45:80; }
+            setTimeout(type, speed);
         }
-
-        // Active nav highlighting
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 200;
-            if (window.scrollY >= sectionTop) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href') === `#${current}`) {
-                item.classList.add('active');
-            }
-        });
-    });
-
-    /* ==========================================
-       Typing Effect for Hero Role
-       ========================================== */
-    const typedElement = document.getElementById('typed-text');
-    const phrases = [
-        'AI Engineer',
-        'Generative AI',
-        'LLM Systems',
-        'Autonomous Agents',
-        'Multi-Agent Architect'
-    ];
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 80;
-
-    function typeEffect() {
-        const currentPhrase = phrases[phraseIndex];
-
-        if (isDeleting) {
-            typedElement.textContent = currentPhrase.substring(0, charIndex - 1);
-            charIndex--;
-            typingSpeed = 40;
-        } else {
-            typedElement.textContent = currentPhrase.substring(0, charIndex + 1);
-            charIndex++;
-            typingSpeed = 80;
-        }
-
-        if (!isDeleting && charIndex === currentPhrase.length) {
-            typingSpeed = 2000; // Pause at end
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            phraseIndex = (phraseIndex + 1) % phrases.length;
-            typingSpeed = 400; // Pause before next phrase
-        }
-
-        setTimeout(typeEffect, typingSpeed);
+        type();
     }
 
-    typeEffect();
-
-    /* ==========================================
-       Hero Name Smooth Fade-in Reveal
-       ========================================== */
-    const heroName = document.getElementById('hero-name');
-    if (heroName) {
-        heroName.classList.add('hero-name-ready');
-    }
-
-    /* ==========================================
-       Scroll Animations (Intersection Observer)
-       ========================================== */
-    const observerOptions = {
-        threshold: 0.08,
-        rootMargin: '0px 0px -60px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-                observer.unobserve(entry.target);
-            }
+    /* === SCROLL REVEAL === */
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { 
+            if (e.isIntersecting) { 
+                e.target.classList.add("show", "visible"); 
+                io.unobserve(e.target); 
+            } 
         });
-    }, observerOptions);
+    }, { threshold: 0.08, rootMargin: "0px 0px -50px 0px" });
+    document.querySelectorAll(".fade-up").forEach(el => io.observe(el));
 
-    const hiddenElements = document.querySelectorAll('.hidden, .fade-left, .scale-in');
-    hiddenElements.forEach(el => observer.observe(el));
+    /* === STATS COUNTER ANIMATION === */
+    function animateCounters() {
+        const counters = document.querySelectorAll(".count");
+        counters.forEach(counter => {
+            const target = +counter.getAttribute("data-target");
+            if (!target) return;
+            let count = 0;
+            const step = Math.max(1, Math.ceil(target / 25));
+            const updateCount = () => {
+                count += step;
+                if (count < target) {
+                    counter.innerText = count;
+                    setTimeout(updateCount, 50);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+    }
+    setTimeout(animateCounters, 300);
 
-    /* ==========================================
-       3D Card Tilt Effect
-       ========================================== */
-    const tiltCards = document.querySelectorAll('.tilt-card');
+    /* === SMOOTH SCROLL === */
+    document.querySelectorAll("a[href^=\"#\"]").forEach(a => {
+        a.addEventListener("click", e => {
+            e.preventDefault();
+            const tgt = document.querySelector(a.getAttribute("href"));
+            if (tgt && header) window.scrollTo({ top: tgt.offsetTop - header.offsetHeight - 16, behavior: "smooth" });
+        });
+    });
 
-    tiltCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
+    /* === 3D CARD TILT === */
+    document.querySelectorAll(".tilt-card").forEach(card => {
+        card.addEventListener("mousemove", e => {
             const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-
-            const rotateX = ((y - centerY) / centerY) * -6;
-            const rotateY = ((x - centerX) / centerX) * 6;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            const rx = ((e.clientY - rect.top - rect.height/2) / (rect.height/2)) * -6;
+            const ry = ((e.clientX - rect.left - rect.width/2) / (rect.width/2)) * 6;
+            card.style.transform = "perspective(1000px) rotateX("+rx+"deg) rotateY("+ry+"deg) translateY(-8px)";
         });
-
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-            card.style.transition = 'transform 0.5s ease';
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
+            card.style.transition = "transform 0.5s ease";
         });
-
-        card.addEventListener('mouseenter', () => {
-            card.style.transition = 'transform 0.1s ease';
-        });
+        card.addEventListener("mouseenter", () => { card.style.transition = "transform 0.1s ease"; });
     });
 
-    /* ==========================================
-       Stark Arc Reactor & Quantum Grid (Canvas)
-       ========================================== */
-    const canvas = document.getElementById('bg-canvas');
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
-        const PARTICLE_COUNT = 75;
-        const CONNECTION_DISTANCE = 170;
-        
-        let mouse = { x: null, y: null, radius: 200 };
+    /* === FOUNDATION MODEL CORE (Hero Right AI Reactor Visualization) === */
+    function initFoundationCore() {
+        const heroRight = document.querySelector(".hero-right");
+        const canvas = document.getElementById("core-canvas");
+        const svgNeural = document.getElementById("svg-neural-links");
+        if (!heroRight || !canvas || !svgNeural) return;
 
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
+        const ctx = canvas.getContext("2d");
+        const nodes = Array.from(document.querySelectorAll(".node-capsule"));
+        let hoveredNodeId = null;
+
+        function resizeCanvas() {
+            canvas.width = heroRight.offsetWidth;
+            canvas.height = heroRight.offsetHeight;
+        }
+        window.addEventListener("resize", () => {
+            resizeCanvas();
+            updateNeuralLinks();
         });
+        resizeCanvas();
 
-        window.addEventListener('mouseleave', () => {
-            mouse.x = null;
-            mouse.y = null;
-        });
-
-        function resize() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
+        function getCoreCenter() {
+            return {
+                x: canvas.width / 2,
+                y: canvas.height / 2
+            };
         }
 
-        window.addEventListener('resize', resize);
-        resize();
+        function getNodeCenter(id) {
+            const el = document.getElementById(id);
+            if (!el) return null;
+            const er = el.getBoundingClientRect();
+            const hr = heroRight.getBoundingClientRect();
+            return {
+                x: er.left - hr.left + er.width / 2,
+                y: er.top - hr.top + er.height / 2
+            };
+        }
 
-        class StarkParticle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = Math.random() * 2.2 + 0.6;
-                // Type: 0 = Arc Cyan, 1 = Stark Gold, 2 = HUD Spark / Diamond
-                const roll = Math.random();
-                this.type = roll > 0.45 ? 0 : (roll > 0.1 ? 1 : 2);
-                this.opacity = Math.random() * 0.6 + 0.3;
-                this.pulseOffset = Math.random() * Math.PI * 2;
-                this.shape = Math.random() > 0.8 ? 'diamond' : 'circle';
+        // Neural network connections topology (Node to Node pairs)
+        const NODE_CONNECTIONS = [
+            ["n-tokenizer", "n-pytorch"],
+            ["n-pytorch", "n-transformers"],
+            ["n-transformers", "n-pretraining"],
+            ["n-pretraining", "n-posttraining"],
+            ["n-posttraining", "n-evaluation"],
+            ["n-evaluation", "n-inference"],
+            ["n-inference", "n-deployment"],
+            ["n-deployment", "n-vllm"],
+            ["n-vllm", "n-agents"],
+            ["n-agents", "n-mlops"],
+            ["n-mlops", "n-tokenizer"],
+            ["n-tokenizer", "n-pretraining"],
+            ["n-pytorch", "n-evaluation"],
+            ["n-agents", "n-posttraining"],
+            ["n-transformers", "n-inference"]
+        ];
+
+        // Store active energy pulses & particles
+        let activePulses = [];
+        let particles = [];
+        let coreRipples = [];
+
+        // Initialize 50 floating ambient energy particles
+        for (let i = 0; i < 50; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: 0.8 + Math.random() * 1.8,
+                vx: (Math.random() - 0.5) * 0.45,
+                vy: (Math.random() - 0.5) * 0.45,
+                alpha: 0.2 + Math.random() * 0.6,
+                hue: Math.random() > 0.5 ? 270 : 195, // purple or blue/cyan
+                pulseSpeed: 0.01 + Math.random() * 0.02
+            });
+        }
+
+        // Render SVG neural link paths between nodes and to core center
+        function updateNeuralLinks() {
+            svgNeural.innerHTML = "";
+            const core = getCoreCenter();
+
+            // 1. Inter-node links
+            NODE_CONNECTIONS.forEach(([a, b], idx) => {
+                const pa = getNodeCenter(a);
+                const pb = getNodeCenter(b);
+                if (!pa || !pb) return;
+
+                const isHovered = (hoveredNodeId === a || hoveredNodeId === b);
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+                // Control point for smooth curved neural path
+                const mx = (pa.x + pb.x) / 2 + (Math.sin(idx) * 25);
+                const my = (pa.y + pb.y) / 2 + (Math.cos(idx) * 25);
+
+                path.setAttribute("d", `M ${pa.x} ${pa.y} Q ${mx} ${my} ${pb.x} ${pb.y}`);
+                path.setAttribute("class", isHovered ? "neural-link-path active-link" : "neural-link-path");
+                path.setAttribute("id", `link-${a}-${b}`);
+                svgNeural.appendChild(path);
+            });
+
+            // 2. Direct Radial Links from each Node to the Central AI Core
+            nodes.forEach((n, idx) => {
+                const pos = getNodeCenter(n.id);
+                if (!pos) return;
+
+                const isHovered = (hoveredNodeId === n.id);
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+                const mx = (pos.x + core.x) / 2 + Math.sin(idx * 1.5) * 20;
+                const my = (pos.y + core.y) / 2 + Math.cos(idx * 1.5) * 20;
+
+                path.setAttribute("d", `M ${pos.x} ${pos.y} Q ${mx} ${my} ${core.x} ${core.y}`);
+                path.setAttribute("class", isHovered ? "neural-link-path active-link" : "neural-link-path");
+                path.setAttribute("id", `core-link-${n.id}`);
+                path.style.strokeOpacity = isHovered ? "0.95" : "0.22";
+                svgNeural.appendChild(path);
+            });
+        }
+
+        // Attach Node Hover Event Listeners
+        nodes.forEach(n => {
+            n.addEventListener("mouseenter", () => {
+                hoveredNodeId = n.id;
+                n.classList.add("active-hover");
+                updateNeuralLinks();
+
+                // Burst of energy packets toward center on hover
+                for (let i = 0; i < 4; i++) {
+                    activePulses.push({
+                        fromNode: n.id,
+                        toCore: true,
+                        progress: i * -0.15,
+                        speed: 0.012 + Math.random() * 0.008,
+                        color: n.style.getPropertyValue("--accent") || "#c084fc"
+                    });
+                }
+            });
+
+            n.addEventListener("mouseleave", () => {
+                hoveredNodeId = null;
+                n.classList.remove("active-hover");
+                updateNeuralLinks();
+            });
+        });
+
+        // Spawn periodic background energy pulses along radial neural links toward center core
+        function spawnPeriodicPulses() {
+            if (activePulses.length < 8 && Math.random() < 0.04) {
+                const randomNode = nodes[Math.floor(Math.random() * nodes.length)];
+                activePulses.push({
+                    fromNode: randomNode.id,
+                    toCore: true,
+                    progress: 0,
+                    speed: 0.006 + Math.random() * 0.006,
+                    color: randomNode.style.getPropertyValue("--accent") || "#38bdf8"
+                });
             }
+        }
 
-            update(time) {
-                this.x += this.vx;
-                this.y += this.vy;
+        let time = 0;
+        function animate() {
+            time += 0.015;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const core = getCoreCenter();
 
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
+            // 1. Draw Floating Ambient Energy Particles
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
 
-                // Mouse interaction - HUD magnetic drift
-                if (mouse.x !== null && mouse.y !== null) {
-                    const dx = mouse.x - this.x;
-                    const dy = mouse.y - this.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < mouse.radius) {
-                        const force = (mouse.radius - dist) / mouse.radius;
-                        this.x += (dx / dist) * force * 0.6;
-                        this.y += (dy / dist) * force * 0.6;
-                    }
+                // Subtle orbital drift inward towards core
+                const dx = core.x - p.x;
+                const dy = core.y - p.y;
+                p.vx += (dx * 0.00003);
+                p.vy += (dy * 0.00003);
+
+                // Wrap around edges
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+
+                const currentAlpha = Math.max(0.1, p.alpha + Math.sin(time * 2 + p.pulseSpeed * 100) * 0.25);
+
+                ctx.save();
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${p.hue}, 85%, 70%, ${currentAlpha})`;
+                ctx.shadowColor = `hsla(${p.hue}, 90%, 65%, 0.8)`;
+                ctx.shadowBlur = 8;
+                ctx.fill();
+                ctx.restore();
+            });
+
+            // 2. Animate Energy Pulses traveling along neural paths
+            spawnPeriodicPulses();
+
+            for (let i = activePulses.length - 1; i >= 0; i--) {
+                const pulse = activePulses[i];
+                pulse.progress += pulse.speed;
+
+                if (pulse.progress >= 1) {
+                    // Pulse arrived at central reactor core -> trigger core ripple
+                    coreRipples.push({
+                        r: 65,
+                        maxR: 110 + Math.random() * 30,
+                        alpha: 0.8,
+                        color: pulse.color
+                    });
+                    activePulses.splice(i, 1);
+                    continue;
                 }
 
-                // Subtle pulse
-                this.currentOpacity = this.opacity + Math.sin(time * 0.0015 + this.pulseOffset) * 0.2;
-                if (this.currentOpacity < 0.1) this.currentOpacity = 0.1;
+                if (pulse.progress > 0) {
+                    const nodePos = getNodeCenter(pulse.fromNode);
+                    if (nodePos) {
+                        // Interpolate along path to core center
+                        const curX = nodePos.x + (core.x - nodePos.x) * pulse.progress;
+                        const curY = nodePos.y + (core.y - nodePos.y) * pulse.progress;
+
+                        ctx.save();
+                        ctx.beginPath();
+                        ctx.arc(curX, curY, 3, 0, Math.PI * 2);
+                        ctx.fillStyle = pulse.color;
+                        ctx.shadowColor = pulse.color;
+                        ctx.shadowBlur = 14;
+                        ctx.fill();
+
+                        // Glowing tail
+                        const tailX = nodePos.x + (core.x - nodePos.x) * Math.max(0, pulse.progress - 0.08);
+                        const tailY = nodePos.y + (core.y - nodePos.y) * Math.max(0, pulse.progress - 0.08);
+                        const grad = ctx.createLinearGradient(tailX, tailY, curX, curY);
+                        grad.addColorStop(0, "rgba(255, 255, 255, 0)");
+                        grad.addColorStop(1, pulse.color);
+
+                        ctx.beginPath();
+                        ctx.moveTo(tailX, tailY);
+                        ctx.lineTo(curX, curY);
+                        ctx.strokeStyle = grad;
+                        ctx.lineWidth = 2;
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+                }
             }
 
-            draw() {
-                const theme = document.documentElement.getAttribute('data-theme');
-                let r, g, b;
+            // 3. Animate Core Energy Ripples
+            for (let i = coreRipples.length - 1; i >= 0; i--) {
+                const r = coreRipples[i];
+                r.r += 0.8;
+                r.alpha -= 0.015;
 
-                if (theme === 'light') {
-                    if (this.type === 0) { r = 0; g = 180; b = 216; }
-                    else if (this.type === 1) { r = 212; g = 160; b = 23; }
-                    else { r = 239; g = 35; b = 60; }
-                } else {
-                    if (this.type === 0) { r = 0; g = 240; b = 255; }
-                    else if (this.type === 1) { r = 255; g = 215; b = 0; }
-                    else { r = 239; g = 35; b = 60; }
+                if (r.alpha <= 0 || r.r >= r.maxR) {
+                    coreRipples.splice(i, 1);
+                    continue;
                 }
 
                 ctx.save();
-                if (this.shape === 'diamond') {
-                    ctx.beginPath();
-                    ctx.moveTo(this.x, this.y - this.radius * 2);
-                    ctx.lineTo(this.x + this.radius * 2, this.y);
-                    ctx.lineTo(this.x, this.y + this.radius * 2);
-                    ctx.lineTo(this.x - this.radius * 2, this.y);
-                    ctx.closePath();
-                    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${this.currentOpacity})`;
-                    ctx.shadowColor = `rgba(${r}, ${g}, ${b}, 0.8)`;
-                    ctx.shadowBlur = 8;
-                    ctx.fill();
-                } else {
-                    // Glow radial
-                    ctx.beginPath();
-                    const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius * 4.5);
-                    gradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, ${this.currentOpacity})`);
-                    gradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
-                    ctx.fillStyle = gradient;
-                    ctx.arc(this.x, this.y, this.radius * 4.5, 0, Math.PI * 2);
-                    ctx.fill();
-
-                    // Core dot
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${Math.min(1, this.currentOpacity + 0.3)})`;
-                    ctx.fill();
-                }
+                ctx.beginPath();
+                ctx.arc(core.x, core.y, r.r, 0, Math.PI * 2);
+                ctx.strokeStyle = r.color;
+                ctx.globalAlpha = r.alpha;
+                ctx.lineWidth = 1.5;
+                ctx.shadowColor = r.color;
+                ctx.shadowBlur = 10;
+                ctx.stroke();
                 ctx.restore();
             }
-        }
 
-        let ringAngle1 = 0;
-        let ringAngle2 = 0;
+            // 4. Subtle Electrical Arcs around reactor inner boundary
+            if (Math.random() < 0.08) {
+                const arcAngle = Math.random() * Math.PI * 2;
+                const arcR = 64 + Math.random() * 8;
+                const ax1 = core.x + Math.cos(arcAngle) * arcR;
+                const ay1 = core.y + Math.sin(arcAngle) * arcR;
+                const ax2 = core.x + Math.cos(arcAngle + 0.3) * (arcR + (Math.random() - 0.5) * 12);
+                const ay2 = core.y + Math.sin(arcAngle + 0.3) * (arcR + (Math.random() - 0.5) * 12);
 
-        function drawStarkHudRings() {
-            ringAngle1 += 0.0004;
-            ringAngle2 -= 0.0006;
-
-            const theme = document.documentElement.getAttribute('data-theme');
-            const isDark = theme !== 'light';
-            const centerX = width / 2;
-            const centerY = height * 0.45;
-
-            ctx.save();
-            ctx.translate(centerX, centerY);
-
-            // Outer Dashed HUD Ring
-            ctx.save();
-            ctx.rotate(ringAngle1);
-            ctx.beginPath();
-            ctx.arc(0, 0, Math.min(width, height) * 0.38, 0, Math.PI * 2);
-            ctx.setLineDash([25, 45, 10, 45]);
-            ctx.strokeStyle = isDark ? 'rgba(0, 240, 255, 0.09)' : 'rgba(0, 180, 216, 0.07)';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-            ctx.restore();
-
-            // Inner Tech Ring with Degree Ticks
-            ctx.save();
-            ctx.rotate(ringAngle2);
-            const innerR = Math.min(width, height) * 0.25;
-            ctx.beginPath();
-            ctx.arc(0, 0, innerR, 0, Math.PI * 2);
-            ctx.setLineDash([80, 30, 15, 30]);
-            ctx.strokeStyle = isDark ? 'rgba(255, 215, 0, 0.12)' : 'rgba(212, 160, 23, 0.09)';
-            ctx.lineWidth = 1.2;
-            ctx.stroke();
-            
-            // Draw cardinal degree markers (0°, 90°, 180°, 270°)
-            for (let deg = 0; deg < 360; deg += 90) {
-                const rad = (deg * Math.PI) / 180;
-                const x1 = Math.cos(rad) * (innerR - 6);
-                const y1 = Math.sin(rad) * (innerR - 6);
-                const x2 = Math.cos(rad) * (innerR + 6);
-                const y2 = Math.sin(rad) * (innerR + 6);
+                ctx.save();
                 ctx.beginPath();
-                ctx.moveTo(x1, y1);
-                ctx.lineTo(x2, y2);
-                ctx.strokeStyle = isDark ? 'rgba(0, 240, 255, 0.25)' : 'rgba(0, 180, 216, 0.2)';
-                ctx.lineWidth = 1.5;
-                ctx.setLineDash([]);
+                ctx.moveTo(ax1, ay1);
+                ctx.lineTo(ax2, ay2);
+                ctx.strokeStyle = Math.random() > 0.5 ? "rgba(192, 132, 252, 0.8)" : "rgba(56, 189, 248, 0.8)";
+                ctx.lineWidth = 1.2;
+                ctx.shadowColor = "#ffffff";
+                ctx.shadowBlur = 8;
                 ctx.stroke();
+                ctx.restore();
             }
-            ctx.restore();
-
-            ctx.restore();
-        }
-
-        function drawMouseHudReticle() {
-            if (mouse.x === null || mouse.y === null) return;
-            const theme = document.documentElement.getAttribute('data-theme');
-            const isDark = theme !== 'light';
-            const color = isDark ? 'rgba(0, 240, 255, 0.6)' : 'rgba(0, 180, 216, 0.6)';
-
-            ctx.save();
-            ctx.translate(mouse.x, mouse.y);
-
-            // Target Ring
-            ctx.beginPath();
-            ctx.arc(0, 0, 22, 0, Math.PI * 2);
-            ctx.strokeStyle = color;
-            ctx.lineWidth = 0.8;
-            ctx.setLineDash([6, 6]);
-            ctx.stroke();
-
-            // Center Crosshair
-            ctx.beginPath();
-            ctx.moveTo(-8, 0); ctx.lineTo(8, 0);
-            ctx.moveTo(0, -8); ctx.lineTo(0, 8);
-            ctx.strokeStyle = color;
-            ctx.lineWidth = 1;
-            ctx.setLineDash([]);
-            ctx.stroke();
-
-            // Corner Brackets
-            const s = 14;
-            const l = 5;
-            ctx.beginPath();
-            ctx.moveTo(-s, -s + l); ctx.lineTo(-s, -s); ctx.lineTo(-s + l, -s);
-            ctx.moveTo(s - l, -s); ctx.lineTo(s, -s); ctx.lineTo(s, -s + l);
-            ctx.moveTo(-s, s - l); ctx.lineTo(-s, s); ctx.lineTo(-s + l, s);
-            ctx.moveTo(s - l, s); ctx.lineTo(s, s); ctx.lineTo(s, s - l);
-            ctx.strokeStyle = isDark ? 'rgba(255, 215, 0, 0.7)' : 'rgba(212, 160, 23, 0.7)';
-            ctx.lineWidth = 1.2;
-            ctx.stroke();
-
-            ctx.restore();
-        }
-
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-            particles.push(new StarkParticle());
-        }
-
-        function animate(time) {
-            ctx.clearRect(0, 0, width, height);
-
-            const theme = document.documentElement.getAttribute('data-theme');
-            const isDark = theme !== 'light';
-
-            // Draw Background HUD Telemetry Rings
-            drawStarkHudRings();
-
-            // Connect particles with Stark Energy Beams
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update(time);
-                particles[i].draw();
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < CONNECTION_DISTANCE) {
-                        const opacity = (1 - distance / CONNECTION_DISTANCE) * (isDark ? 0.18 : 0.1);
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-
-                        if (particles[i].type === 0 || particles[j].type === 0) {
-                            ctx.strokeStyle = `rgba(0, 240, 255, ${opacity})`;
-                        } else {
-                            ctx.strokeStyle = `rgba(255, 215, 0, ${opacity})`;
-                        }
-
-                        ctx.lineWidth = 0.6;
-                        ctx.stroke();
-                    }
-                }
-
-                // Connect to mouse cursor with interactive Stark Arc energy line
-                if (mouse.x !== null && mouse.y !== null) {
-                    const dx = particles[i].x - mouse.x;
-                    const dy = particles[i].y - mouse.y;
-                    const distToMouse = Math.sqrt(dx * dx + dy * dy);
-                    if (distToMouse < mouse.radius) {
-                        const lineOpacity = (1 - distToMouse / mouse.radius) * 0.35;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(mouse.x, mouse.y);
-                        ctx.strokeStyle = `rgba(0, 240, 255, ${lineOpacity})`;
-                        ctx.lineWidth = 0.8;
-                        ctx.shadowColor = 'rgba(0, 240, 255, 0.5)';
-                        ctx.shadowBlur = 4;
-                        ctx.stroke();
-                        ctx.shadowBlur = 0;
-                    }
-                }
-            }
-
-            // Draw Interactive Target Reticle on Cursor
-            drawMouseHudReticle();
 
             requestAnimationFrame(animate);
         }
 
-        animate(0);
+        setTimeout(() => {
+            updateNeuralLinks();
+            animate();
+        }, 150);
     }
 
-    /* ==========================================
-       Smooth Scroll for Navigation Links
-       ========================================== */
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                const headerHeight = header.offsetHeight;
-                const targetPosition = target.offsetTop - headerHeight - 20;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
+    initFoundationCore();
 });
