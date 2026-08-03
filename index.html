@@ -127,27 +127,27 @@
                     </div>
                     <div class="stat-sep"></div>
                     <div class="stat-cell">
-                        <i class="fa-solid fa-file-lines stat-icon"></i>
+                        <i class="fa-solid fa-briefcase stat-icon"></i>
                         <div>
                             <div class="stat-val"><span class="count" data-target="3">0</span>+</div>
-                            <div class="stat-lbl">Research Papers</div>
+                            <div class="stat-lbl">Years Experience</div>
                         </div>
                     </div>
                     <div class="stat-sep"></div>
                     <div class="stat-cell">
-                        <i class="fa-solid fa-user-astronaut stat-icon"></i>
+                        <i class="fa-solid fa-layer-group stat-icon"></i>
                         <div>
-                            <div class="stat-val"><span class="count" data-target="2">0</span>+</div>
-                            <div class="stat-lbl">Years Experience</div>
+                            <div class="stat-val"><span class="count" data-target="5">0</span>+</div>
+                            <div class="stat-lbl">AI Systems Built</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- RIGHT: Foundation Model Core (Interactive AI Reactor Visualization) -->
+            <!-- RIGHT: Interactive Foundation Model Core & Knowledge Graph -->
             <div class="hero-right">
 
-                <!-- SVG Container for Concentric Rings, Neural Links & Core Reactor -->
+                <!-- SVG Container for Concentric Segmented Rings, Neural Links & Foundation Core -->
                 <svg id="core-svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
                     <defs>
                         <!-- Glow Filters -->
@@ -168,146 +168,189 @@
                             </feMerge>
                         </filter>
 
-                        <!-- Core Reactor Gradients -->
+                        <!-- Core Gradients -->
                         <radialGradient id="reactor-core-grad" cx="50%" cy="50%" r="50%">
                             <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
-                            <stop offset="20%" stop-color="#e9d5ff" stop-opacity="0.95" />
-                            <stop offset="45%" stop-color="#c084fc" stop-opacity="0.8" />
-                            <stop offset="70%" stop-color="#8b5cf6" stop-opacity="0.5" />
-                            <stop offset="90%" stop-color="#38bdf8" stop-opacity="0.2" />
+                            <stop offset="25%" stop-color="#e9d5ff" stop-opacity="0.95" />
+                            <stop offset="50%" stop-color="#c084fc" stop-opacity="0.85" />
+                            <stop offset="75%" stop-color="#8b5cf6" stop-opacity="0.5" />
+                            <stop offset="92%" stop-color="#38bdf8" stop-opacity="0.25" />
                             <stop offset="100%" stop-color="#0369a1" stop-opacity="0" />
                         </radialGradient>
 
                         <radialGradient id="reactor-volumetric-glow" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stop-color="rgba(168, 85, 247, 0.35)" />
-                            <stop offset="40%" stop-color="rgba(56, 189, 248, 0.15)" />
-                            <stop offset="75%" stop-color="rgba(139, 92, 246, 0.05)" />
+                            <stop offset="0%" stop-color="rgba(168, 85, 247, 0.45)" />
+                            <stop offset="35%" stop-color="rgba(56, 189, 248, 0.22)" />
+                            <stop offset="70%" stop-color="rgba(139, 92, 246, 0.08)" />
                             <stop offset="100%" stop-color="rgba(5, 8, 22, 0)" />
                         </radialGradient>
 
                         <linearGradient id="ring-grad-outer" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#c084fc" stop-opacity="0.85" />
-                            <stop offset="40%" stop-color="#38bdf8" stop-opacity="0.3" />
-                            <stop offset="70%" stop-color="#8b5cf6" stop-opacity="0.75" />
-                            <stop offset="100%" stop-color="#c084fc" stop-opacity="0.2" />
+                            <stop offset="0%" stop-color="#c084fc" stop-opacity="0.9" />
+                            <stop offset="40%" stop-color="#38bdf8" stop-opacity="0.4" />
+                            <stop offset="70%" stop-color="#8b5cf6" stop-opacity="0.8" />
+                            <stop offset="100%" stop-color="#c084fc" stop-opacity="0.3" />
                         </linearGradient>
 
                         <linearGradient id="ring-grad-mid" x1="100%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
-                            <stop offset="50%" stop-color="#a855f7" stop-opacity="0.4" />
-                            <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.85" />
+                            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95" />
+                            <stop offset="50%" stop-color="#a855f7" stop-opacity="0.5" />
+                            <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.9" />
                         </linearGradient>
 
                         <linearGradient id="ring-grad-inner" x1="0%" y1="100%" x2="100%" y2="0%">
-                            <stop offset="0%" stop-color="#e9d5ff" stop-opacity="0.9" />
-                            <stop offset="50%" stop-color="#c084fc" stop-opacity="0.6" />
-                            <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.9" />
+                            <stop offset="0%" stop-color="#e9d5ff" stop-opacity="0.95" />
+                            <stop offset="50%" stop-color="#c084fc" stop-opacity="0.7" />
+                            <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.95" />
                         </linearGradient>
                     </defs>
 
-                    <!-- Background Neural Network Links Group (Drawn by JS) -->
+                    <!-- Neural Network Paths Group -->
                     <g id="svg-neural-links"></g>
 
-                    <!-- Reactor Concentric Assembly -->
+                    <!-- Sequential Lifecycle Pulse Group -->
+                    <g id="svg-story-pulses"></g>
+
+                    <!-- Foundation Core Assembly -->
                     <g class="reactor-assembly" transform="translate(400, 400)">
                         <!-- Volumetric Halo Glow -->
-                        <circle cx="0" cy="0" r="280" fill="url(#reactor-volumetric-glow)" />
+                        <circle id="core-volumetric-halo" cx="0" cy="0" r="270" fill="url(#reactor-volumetric-glow)" />
 
-                        <!-- Outer Ring (Slow Clockwise) -->
+                        <!-- Segmented Outer Ring (Slow Clockwise) -->
                         <g class="ring-group ring-outer">
-                            <circle cx="0" cy="0" r="220" stroke="url(#ring-grad-outer)" stroke-width="1.5" fill="none" stroke-dasharray="160 30 50 30 90 40" opacity="0.7" />
-                            <circle cx="0" cy="0" r="212" stroke="rgba(56, 189, 248, 0.2)" stroke-width="1" fill="none" stroke-dasharray="6 10" />
-                            <!-- Orbital Cardinal Markers -->
-                            <line x1="0" y1="-226" x2="0" y2="-214" stroke="#38bdf8" stroke-width="2.5" opacity="0.8"/>
-                            <line x1="226" y1="0" x2="214" y2="0" stroke="#38bdf8" stroke-width="2.5" opacity="0.8"/>
-                            <line x1="0" y1="226" x2="0" y2="214" stroke="#38bdf8" stroke-width="2.5" opacity="0.8"/>
-                            <line x1="-226" y1="0" x2="-214" y2="0" stroke="#38bdf8" stroke-width="2.5" opacity="0.8"/>
+                            <circle cx="0" cy="0" r="225" stroke="url(#ring-grad-outer)" stroke-width="1.8" fill="none" stroke-dasharray="140 40 80 30 110 50" opacity="0.75" />
+                            <circle cx="0" cy="0" r="215" stroke="rgba(56, 189, 248, 0.25)" stroke-width="1" fill="none" stroke-dasharray="4 12" />
+                            <!-- Cardinal Markers -->
+                            <line x1="0" y1="-232" x2="0" y2="-218" stroke="#38bdf8" stroke-width="2.5" opacity="0.85"/>
+                            <line x1="232" y1="0" x2="218" y2="0" stroke="#38bdf8" stroke-width="2.5" opacity="0.85"/>
+                            <line x1="0" y1="232" x2="0" y2="218" stroke="#38bdf8" stroke-width="2.5" opacity="0.85"/>
+                            <line x1="-232" y1="0" x2="-218" y2="0" stroke="#38bdf8" stroke-width="2.5" opacity="0.85"/>
                         </g>
 
-                        <!-- Middle Ring (Counter-Clockwise) -->
+                        <!-- Segmented Middle Ring (Counter-Clockwise) -->
                         <g class="ring-group ring-middle">
-                            <circle cx="0" cy="0" r="160" stroke="url(#ring-grad-mid)" stroke-width="2" fill="none" stroke-dasharray="180 40 70 30" filter="url(#ring-glow)"/>
-                            <circle cx="0" cy="0" r="150" stroke="rgba(192, 132, 252, 0.25)" stroke-width="1" fill="none" stroke-dasharray="4 8" />
-                            <polygon points="0,-164 5,-155 -5,-155" fill="#c084fc" opacity="0.9"/>
-                            <polygon points="0,164 5,155 -5,155" fill="#c084fc" opacity="0.9"/>
+                            <circle cx="0" cy="0" r="165" stroke="url(#ring-grad-mid)" stroke-width="2" fill="none" stroke-dasharray="160 45 60 35" filter="url(#ring-glow)"/>
+                            <circle cx="0" cy="0" r="154" stroke="rgba(192, 132, 252, 0.3)" stroke-width="1" fill="none" stroke-dasharray="5 10" />
+                            <polygon points="0,-170 6,-160 -6,-160" fill="#c084fc" opacity="0.9"/>
+                            <polygon points="0,170 6,160 -6,-160" fill="#c084fc" opacity="0.9"/>
                         </g>
 
-                        <!-- Inner Ring (Slightly Faster Clockwise) -->
+                        <!-- Segmented Inner Ring (Faster Clockwise) -->
                         <g class="ring-group ring-inner">
-                            <circle cx="0" cy="0" r="105" stroke="url(#ring-grad-inner)" stroke-width="2.5" fill="none" stroke-dasharray="100 25 35 25" filter="url(#core-glow)" />
-                            <circle cx="0" cy="0" r="97" stroke="rgba(0, 240, 255, 0.45)" stroke-width="1" fill="none" stroke-dasharray="2 5" />
+                            <circle cx="0" cy="0" r="110" stroke="url(#ring-grad-inner)" stroke-width="2.5" fill="none" stroke-dasharray="90 30 40 25" filter="url(#core-glow)" />
+                            <circle cx="0" cy="0" r="100" stroke="rgba(0, 240, 255, 0.5)" stroke-width="1" fill="none" stroke-dasharray="2 6" />
                         </g>
 
-                        <!-- Center Spherical AI Core Reactor -->
+                        <!-- Center Foundation Core Sphere & Label -->
                         <g class="core-reactor-center">
-                            <!-- Outer Holographic Glass Rim -->
-                            <circle cx="0" cy="0" r="70" fill="none" stroke="rgba(192, 132, 252, 0.6)" stroke-width="1.5" filter="url(#ring-glow)"/>
+                            <!-- Outer Glass Rim -->
+                            <circle cx="0" cy="0" r="72" fill="none" stroke="rgba(192, 132, 252, 0.7)" stroke-width="1.8" filter="url(#ring-glow)"/>
                             <!-- Inner Glowing Plasma Sphere -->
-                            <circle cx="0" cy="0" r="64" fill="url(#reactor-core-grad)" filter="url(#core-glow)" class="core-sphere-pulse"/>
-                            <!-- Glass Specular Highlight -->
-                            <ellipse cx="-18" cy="-22" rx="26" ry="14" fill="rgba(255, 255, 255, 0.35)" transform="rotate(-25 -18 -22)"/>
+                            <circle id="core-plasma-sphere" cx="0" cy="0" r="66" fill="url(#reactor-core-grad)" filter="url(#core-glow)" class="core-sphere-pulse"/>
+                            <!-- Specular Glass Highlight -->
+                            <ellipse cx="-18" cy="-22" rx="26" ry="14" fill="rgba(255, 255, 255, 0.38)" transform="rotate(-25 -18 -22)"/>
                             <!-- Rotating Scan Lines Grid -->
                             <g class="core-scan-lines">
-                                <ellipse cx="0" cy="0" rx="62" ry="22" stroke="rgba(255, 255, 255, 0.45)" stroke-width="1" fill="none" stroke-dasharray="14 6" />
-                                <ellipse cx="0" cy="0" rx="22" ry="62" stroke="rgba(0, 240, 255, 0.45)" stroke-width="1" fill="none" stroke-dasharray="14 6" />
+                                <ellipse cx="0" cy="0" rx="64" ry="24" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1" fill="none" stroke-dasharray="14 6" />
+                                <ellipse cx="0" cy="0" rx="24" ry="64" stroke="rgba(0, 240, 255, 0.5)" stroke-width="1" fill="none" stroke-dasharray="14 6" />
                             </g>
-                            <!-- Core Energy Nucleus -->
-                            <circle cx="0" cy="0" r="16" fill="#ffffff" filter="url(#core-glow)"/>
-                            <circle cx="0" cy="0" r="8" fill="#e0f2fe"/>
+                            <!-- Core Nucleus & Label -->
+                            <circle cx="0" cy="0" r="28" fill="rgba(10, 15, 30, 0.85)" stroke="rgba(192, 132, 252, 0.8)" stroke-width="1.5"/>
+                            <text x="0" y="5" text-anchor="middle" fill="#ffffff" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14" letter-spacing="1" filter="url(#core-glow)">FM</text>
                         </g>
                     </g>
                 </svg>
 
-                <!-- Canvas for Floating Particles & Traveling Energy Packets -->
-                <canvas id="core-canvas"></canvas>
-
-                <!-- Floating AI Concept Nodes (Rounded Glass Capsules with Neon Borders & Pulse Dots) -->
-                <div class="node-capsule" id="n-tokenizer" style="--top: 26%; --left: 10%; --accent: #a855f7">
-                    <span class="node-dot"></span>
+                <!-- Clustered Glass Node Capsules (Organized in 6 Lifecycle Stages) -->
+                
+                <!-- STAGE 1: DATA -->
+                <div class="node-capsule" id="n-dataset" data-cluster="DATA" style="--top: 12%; --left: 32%; --accent: #a855f7">
+                    <span class="node-icon">📂</span>
+                    <span class="node-label">Dataset</span>
+                </div>
+                <div class="node-capsule" id="n-tokenizer" data-cluster="DATA" style="--top: 16%; --left: 60%; --accent: #38bdf8">
+                    <span class="node-icon">🔤</span>
                     <span class="node-label">Tokenizer</span>
                 </div>
-                <div class="node-capsule" id="n-pytorch" style="--top: 14%; --left: 36%; --accent: #38bdf8">
-                    <span class="node-dot"></span>
-                    <span class="node-label">PyTorch</span>
+
+                <!-- STAGE 2: MODEL -->
+                <div class="node-capsule" id="n-transformer" data-cluster="MODEL" style="--top: 28%; --left: 82%; --accent: #c084fc">
+                    <span class="node-icon">🧠</span>
+                    <span class="node-label">Transformer</span>
                 </div>
-                <div class="node-capsule" id="n-transformers" style="--top: 18%; --left: 72%; --accent: #c084fc">
-                    <span class="node-dot"></span>
-                    <span class="node-label">Transformers</span>
-                </div>
-                <div class="node-capsule" id="n-pretraining" style="--top: 36%; --left: 82%; --accent: #a855f7">
-                    <span class="node-dot"></span>
+                <div class="node-capsule" id="n-pretraining" data-cluster="MODEL" style="--top: 42%; --left: 88%; --accent: #a855f7">
+                    <span class="node-icon">⚡</span>
                     <span class="node-label">Pretraining</span>
                 </div>
-                <div class="node-capsule" id="n-posttraining" style="--top: 56%; --left: 12%; --accent: #38bdf8">
-                    <span class="node-dot"></span>
-                    <span class="node-label">Post-training</span>
+
+                <!-- STAGE 3: ALIGNMENT -->
+                <div class="node-capsule" id="n-sft" data-cluster="ALIGNMENT" style="--top: 58%; --left: 86%; --accent: #38bdf8">
+                    <span class="node-icon">🧪</span>
+                    <span class="node-label">SFT</span>
                 </div>
-                <div class="node-capsule" id="n-evaluation" style="--top: 58%; --left: 78%; --accent: #c084fc">
-                    <span class="node-dot"></span>
-                    <span class="node-label">Evaluation</span>
+                <div class="node-capsule" id="n-dpo" data-cluster="ALIGNMENT" style="--top: 72%; --left: 78%; --accent: #c084fc">
+                    <span class="node-icon">🎯</span>
+                    <span class="node-label">DPO</span>
                 </div>
-                <div class="node-capsule" id="n-inference" style="--top: 78%; --left: 24%; --accent: #38bdf8">
-                    <span class="node-dot"></span>
-                    <span class="node-label">Inference</span>
-                </div>
-                <div class="node-capsule" id="n-deployment" style="--top: 76%; --left: 70%; --accent: #a855f7">
-                    <span class="node-dot"></span>
-                    <span class="node-label">Deployment</span>
+                <div class="node-capsule" id="n-rlhf" data-cluster="ALIGNMENT" style="--top: 84%; --left: 64%; --accent: #a855f7">
+                    <span class="node-icon">🧬</span>
+                    <span class="node-label">RLHF</span>
                 </div>
 
-                <!-- Extra AI Concepts for Organic Constellation -->
-                <div class="node-capsule" id="n-vllm" style="--top: 85%; --left: 48%; --accent: #00f0ff">
-                    <span class="node-dot"></span>
+                <!-- STAGE 4: EVALUATION -->
+                <div class="node-capsule" id="n-mmlu" data-cluster="EVALUATION" style="--top: 90%; --left: 44%; --accent: #00f0ff">
+                    <span class="node-icon">📊</span>
+                    <span class="node-label">MMLU</span>
+                </div>
+                <div class="node-capsule" id="n-humaneval" data-cluster="EVALUATION" style="--top: 86%; --left: 26%; --accent: #38bdf8">
+                    <span class="node-icon">💻</span>
+                    <span class="node-label">HumanEval</span>
+                </div>
+                <div class="node-capsule" id="n-arena" data-cluster="EVALUATION" style="--top: 74%; --left: 14%; --accent: #c084fc">
+                    <span class="node-icon">🏆</span>
+                    <span class="node-label">Arena</span>
+                </div>
+
+                <!-- STAGE 5: INFERENCE -->
+                <div class="node-capsule" id="n-inference" data-cluster="INFERENCE" style="--top: 58%; --left: 10%; --accent: #00f0ff">
+                    <span class="node-icon">🚀</span>
+                    <span class="node-label">Inference</span>
+                </div>
+                <div class="node-capsule" id="n-vllm" data-cluster="INFERENCE" style="--top: 44%; --left: 8%; --accent: #38bdf8">
+                    <span class="node-icon">⚙️</span>
                     <span class="node-label">vLLM</span>
                 </div>
-                <div class="node-capsule" id="n-agents" style="--top: 40%; --left: 8%; --accent: #c084fc">
-                    <span class="node-dot"></span>
-                    <span class="node-label">Agents</span>
+                <div class="node-capsule" id="n-tensorrt" data-cluster="INFERENCE" style="--top: 30%; --left: 12%; --accent: #c084fc">
+                    <span class="node-icon">⚡</span>
+                    <span class="node-label">TensorRT</span>
                 </div>
-                <div class="node-capsule" id="n-mlops" style="--top: 44%; --left: 85%; --accent: #38bdf8">
-                    <span class="node-dot"></span>
-                    <span class="node-label">MLOps</span>
+
+                <!-- STAGE 6: DEPLOYMENT -->
+                <div class="node-capsule" id="n-serving" data-cluster="DEPLOYMENT" style="--top: 18%; --left: 18%; --accent: #a855f7">
+                    <span class="node-icon">☁️</span>
+                    <span class="node-label">Serving</span>
                 </div>
+                <div class="node-capsule" id="n-monitoring" data-cluster="DEPLOYMENT" style="--top: 14%; --left: 46%; --accent: #38bdf8">
+                    <span class="node-icon">📡</span>
+                    <span class="node-label">Monitoring</span>
+                </div>
+
+                <!-- Floating HUD Technical Information Panel -->
+                <div id="info-panel" class="hud-info-panel hidden">
+                    <div class="hud-header">
+                        <span id="info-icon" class="hud-icon">🧠</span>
+                        <div class="hud-title-wrap">
+                            <h4 id="info-title">PRETRAINING</h4>
+                            <span id="info-cluster" class="hud-tag">MODEL</span>
+                        </div>
+                    </div>
+                    <ul id="info-list" class="hud-tech-list">
+                        <li>Transformer Architecture</li>
+                        <li>RoPE Embeddings</li>
+                        <li>Flash Attention</li>
+                    </ul>
+                </div>
+
             </div>
         </section>
 
