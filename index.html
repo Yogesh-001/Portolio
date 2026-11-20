@@ -86,6 +86,22 @@ html{scroll-padding-top:78px}body{background:#111013;color:var(--text);backgroun
 .work-divider{background:linear-gradient(90deg,rgba(171,41,54,.17),transparent 85%);padding-left:12px}
 @media(max-width:650px){.professional-card{min-height:0}.mission-visual{height:105px}}
 
+
+/* Visible editorial spiderweb: a hero-scale artwork beside the work heading, not hidden as a pseudo-element */
+#work::before,#work::after{content:none!important}
+#work>.wrap{position:relative;z-index:1}
+.web-showcase{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:20px;align-items:center;min-height:435px;margin:-10px 0 36px;position:relative;isolation:isolate}
+.web-showcase-text{position:relative;z-index:2;padding:25px 0}
+.web-showcase-text h2{font-size:clamp(2.8rem,5.3vw,5.1rem);max-width:570px}
+.web-showcase-text .muted{font-size:1rem;max-width:440px}
+.web-showcase-note{display:inline-block;margin-top:26px;padding:10px 13px;border-left:3px solid #e16d69;background:#42252a;color:#efc8b7;font:700 .7rem 'Space Grotesk',sans-serif;letter-spacing:.1em}
+.web-showcase-art{height:420px;position:relative;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at center,rgba(126,32,48,.17),transparent 63%);overflow:visible}
+.web-showcase-art img{width:min(100%,510px);height:auto;display:block;opacity:.89;filter:drop-shadow(0 0 13px rgba(192,57,73,.35));transform:rotate(-8deg);animation:webBreathe 10s ease-in-out infinite}
+.web-art-marker{position:absolute;bottom:5px;right:5px;color:#d08a82;font:700 .62rem 'Space Grotesk',sans-serif;letter-spacing:.18em}
+@keyframes webBreathe{50%{transform:rotate(-5deg) scale(1.035)}}
+@media(max-width:770px){.web-showcase{grid-template-columns:1fr;gap:5px}.web-showcase-text{padding:18px 0}.web-showcase-art{height:min(90vw,420px);order:-1}.web-showcase-art img{width:min(90%,420px)}.web-showcase-note{margin-top:14px}}
+@media(prefers-reduced-motion:reduce){.web-showcase-art img{animation:none!important}}
+
 </style>
 </head>
 <body>
@@ -122,7 +138,7 @@ html{scroll-padding-top:78px}body{background:#111013;color:var(--text);backgroun
 </div>
 </div><div class="noir-bottom-stripe" aria-hidden="true"><span>BUILDING IN PUBLIC</span><span>◉</span><span>FROM RESEARCH TO REAL WORKFLOWS</span><span>◉</span><span>PYTHON · PYTORCH · LLMS</span></div></section>
 <section class="section" id="work"><div class="wrap">
-<div class="section-head"><div><div class="eyebrow">01 / Selected work</div><h2>Systems over demos.</h2></div><p class="muted">Five selected Bosch engineering systems plus independent projects. Professional work is described at a high level to respect confidential code and customer information.</p></div>
+<div class="web-showcase"><div class="web-showcase-text"><div class="eyebrow">01 / Selected work</div><h2>Systems over demos.</h2><p class="muted">Five selected Bosch engineering systems plus independent projects. Professional work is described at a high level to respect confidential code and customer information.</p><span class="web-showcase-note">CONNECTED THINKING. ENGINEERED SYSTEMS.</span></div><div class="web-showcase-art"><img src="assets/noir-spiderweb.svg" alt="" loading="eager"><span class="web-art-marker">YM / ENGINEERING WEB</span></div></div>
 <div class="projects">
 <article class="project featured"><div><div class="number">PROFESSIONAL WORK · BOSCH / 01 · FLAGSHIP CASE STUDY</div><h3>Documentation Analyzer</h3><p>Owned the development of a customer-facing AI assistant for navigating complex engineering information across documentation, source code, tests, configurations, and diagrams. Six specialist workers, source-aware retrieval, and structured evidence.</p><div class="tags"><span class="tag">Multi-agent orchestration</span><span class="tag">Hybrid retrieval</span><span class="tag">Python</span><span class="tag">Chroma / Tree-sitter</span></div><div class="project-link">Internal project · Architecture overview only</div></div><div class="visual" aria-label="Illustrative workflow"><div><span>Engineering question</span><small>INPUT</small></div><div class="dividerline"></div><div><span>Supervisor / routing</span><small>ORCHESTRATE</small></div><div class="dividerline"></div><div><span>Six specialist workers</span><small>INVESTIGATE</small></div><div class="dividerline"></div><div><span>Evidence-backed response</span><small>OUTPUT</small></div></div></article>
 <div class="work-divider"><span>MORE FROM BOSCH</span><span>02 — 05 / ENGINEERING SYSTEMS</span></div>
