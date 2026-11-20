@@ -147,14 +147,38 @@ html{scroll-padding-top:78px}body{background:#111013;color:var(--text);backgroun
 @media(max-width:580px){.noir-hero .noir-layout{min-height:665px;padding:88px 17px 73px}.hero-full-web img{width:875px}.hero-focus-shade{background:radial-gradient(ellipse 76% 57% at 50% 45%,rgba(13,10,13,.87) 0%,rgba(20,13,17,.65) 66%,rgba(20,13,17,.25) 100%),linear-gradient(0deg,#171216 0%,transparent 23%,#120c12a1 100%)}.noir-hero .noir-headline{font-size:clamp(3.45rem,13.3vw,5rem)}.noir-hero .noir-index{font-size:.61rem;gap:6px}.noir-hero .noir-index-r{font-size:.58rem}.noir-hero .noir-statement{font-size:1.17rem}.noir-hero .noir-description{font-size:.88rem}.noir-hero .noir-buttons{margin-bottom:26px}.noir-hero .noir-btn{padding:12px 13px;font-size:.65rem;gap:9px}.noir-hero .noir-location{font-size:.56rem;line-height:1.7}}
 @media(prefers-reduced-motion:reduce){.hero-full-web img,.noir-hero .noir-copy{animation:none!important;opacity:1!important;transform:none!important}}
 
+
+/* Single visual world from the opening scene through the start of selected work */
+.opening-world{position:relative;isolation:isolate;overflow:hidden;background:#171216}
+.opening-world::before{content:"";position:absolute;z-index:0;pointer-events:none;top:-115px;left:50%;width:max(1540px,118vw);height:max(1540px,118vw);background:url("assets/noir-spiderweb.svg") center/contain no-repeat;opacity:0;transform:translateX(-50%) scale(.78) rotate(-9deg);filter:drop-shadow(0 0 22px rgba(209,53,75,.24));animation:sharedWebEnter 1.4s cubic-bezier(.15,.8,.24,1) forwards}
+.opening-world::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(12,9,13,.18) 0%,rgba(19,11,17,.13) 18%,rgba(23,18,22,.35) 38%,#171216 67%,#171216 100%)}
+.opening-world>.noir-hero,.opening-world>#work{position:relative;z-index:1}
+.opening-world>.noir-hero{background:transparent!important;min-height:0!important;overflow:visible!important}
+.opening-world .hero-focus-shade{background:radial-gradient(ellipse 57% 50% at 50% 50%,rgba(14,10,14,.84) 0%,rgba(16,10,15,.67) 60%,rgba(16,10,15,.2) 100%);z-index:0}
+.opening-world .noir-hero .noir-layout{min-height:720px;padding-bottom:78px}
+.opening-world #work{background:transparent!important;border-top:0!important;padding-top:48px}
+.opening-world #work::before,.opening-world #work::after{display:none!important}
+.opening-world #work>.wrap{position:relative;z-index:2}
+.opening-world .web-showcase{position:relative;margin:0 0 42px;border-left:2px solid #b44e5b;padding:14px 0 12px 25px}
+.opening-world .web-showcase-text{max-width:740px}
+.opening-world .web-showcase-note{background:rgba(67,30,40,.62)}
+.opening-world .hero-bridge{display:flex;align-items:center;justify-content:center;gap:17px;padding:17px 5% 22px;color:#ebb3a8;font:700 .66rem 'Space Grotesk',sans-serif;letter-spacing:.2em;position:relative;z-index:2;background:linear-gradient(180deg,transparent,rgba(23,18,22,.4))}
+.opening-world .bridge-line{height:1px;width:clamp(45px,12vw,160px);background:linear-gradient(90deg,#ce6470,#6b363e)}
+.opening-world .project.featured{background:linear-gradient(135deg,rgba(51,30,40,.96),rgba(28,23,28,.98))}
+.opening-world .professional-card{background:linear-gradient(145deg,rgba(43,28,34,.98),rgba(27,23,28,.98))}
+@keyframes sharedWebEnter{to{opacity:.72;transform:translateX(-50%) scale(1) rotate(0)}}
+@media(max-width:850px){.opening-world::before{width:1220px;height:1220px;top:-40px}.opening-world .noir-hero .noir-layout{min-height:660px}.opening-world #work{padding-top:24px}}
+@media(max-width:580px){.opening-world::before{width:1030px;height:1030px;top:-70px}.opening-world .hero-bridge{font-size:.51rem;letter-spacing:.1em;gap:10px}.opening-world .web-showcase{padding-left:17px}.opening-world .noir-hero .noir-layout{min-height:630px}}
+@media(prefers-reduced-motion:reduce){.opening-world::before{animation:none!important;opacity:.72!important;transform:translateX(-50%)!important}}
+
 </style>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
 <header><div class="wrap nav"><a class="brand" href="#top">YM<span>.</span></a><nav aria-label="Main navigation"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#stack">Toolbox</a><a href="#about">About</a></nav><a class="nav-link" href="#contact">Let's connect ↗</a></div></header>
-<main id="top">
+<main id="top"><div class="opening-world">
 <section class="hero noir-hero" aria-labelledby="hero-heading">
-<div class="hero-full-web" aria-hidden="true"><img src="assets/noir-spiderweb.svg" alt="" fetchpriority="high"></div><div class="hero-focus-shade" aria-hidden="true"></div>
+<div class="hero-focus-shade" aria-hidden="true"></div>
 <div class="wrap noir-layout">
 <div class="noir-copy">
 <div class="noir-index"><span class="red-square"></span> YOGESH MURALA <span class="noir-index-r">/ APPLIED AI ENGINEERING</span></div>
@@ -166,7 +190,7 @@ html{scroll-padding-top:78px}body{background:#111013;color:var(--text);backgroun
 <div class="noir-location">BASED IN BENGALURU <span class="noir-cross">✳</span> OPEN TO INTERNATIONAL AI ROLES</div>
 </div>
 
-</div><div class="noir-bottom-stripe" aria-hidden="true"><span>BUILDING IN PUBLIC</span><span>◉</span><span>FROM RESEARCH TO REAL WORKFLOWS</span><span>◉</span><span>PYTHON · PYTORCH · LLMS</span></div></section>
+</div><div class="hero-bridge" aria-hidden="true"><span>SCROLL TO EXPLORE</span><span class="bridge-line"></span><span>01 / ENGINEERING WORK</span></div></section>
 <section class="section" id="work"><div class="wrap">
 <div class="web-showcase"><div class="web-showcase-text"><div class="eyebrow">01 / Selected work</div><h2>Systems over demos.</h2><p class="muted">Five selected Bosch engineering systems plus independent projects. Professional work is described at a high level to respect confidential code and customer information.</p><span class="web-showcase-note">CONNECTED THINKING. ENGINEERED SYSTEMS.</span></div></div>
 <div class="projects">
@@ -183,6 +207,7 @@ html{scroll-padding-top:78px}body{background:#111013;color:var(--text);backgroun
 <article class="project"><div class="number">EXPERIMENTAL / IN DEVELOPMENT</div><h3>Research to Implementation</h3><p>Early-stage architecture exploring whether a multi-agent pipeline can turn research papers into verifiable PyTorch implementations. A design exploration, not a finished product.</p><div class="tags"><span class="tag">Architecture</span><span class="tag">PyTorch</span><span class="tag">Agent design</span></div><a class="project-link" href="https://github.com/Yogesh-001/Research-to-Implementation" target="_blank" rel="noopener noreferrer">View work in progress ↗</a></article>
 </div>
 </div></section>
+</div>
 <section class="section" id="impact"><div class="wrap"><div class="eyebrow">02 / Engineering impact</div><h2>What the work changed.</h2><p class="muted">Approximate team outcomes from internal engineering workflows, not independently audited benchmarks.</p><div class="metric-grid"><div class="metric"><strong>~50%</strong><p>Less manual CI failure triage effort</p></div><div class="metric"><strong>70–80%</strong><p>Lower token usage per ticket in a Jira deduplication workflow</p></div><div class="metric"><strong>6</strong><p>Source-specialized workers in the Documentation Analyzer</p></div></div><div class="callout">I care about the part after the prototype: good retrieval, bounded tool use, evaluation, deployment, and knowing when a system fails.</div></div></section>
 <section class="section" id="experience"><div class="wrap"><div class="eyebrow">03 / Experience</div><h2>Where I've worked.</h2><div class="experience"><div><div class="period">Aug 2023 — Present</div><div class="org">Bosch Global Software Technologies</div></div><div><h3>Senior Engineer</h3><p>AI engineering across multi-agent systems, engineering-document intelligence, CI/CD investigation workflows, Jira integrations, LLM inference, and evaluation. Ownership of Documentation Analyzer and reusable orchestration components.</p></div></div><div class="experience"><div><div class="period">Sep 2022 — May 2023</div><div class="org">Bosch Global Software Technologies</div></div><div><h3>Project Trainee</h3><p>Computer vision and embedded AI experimentation, including YOLOv5 object detection, deployment benchmarking with TVM and TensorRT, and preprocessing pipelines for large image datasets.</p></div></div></div></section>
 <section class="section" id="stack"><div class="wrap"><div class="eyebrow">04 / Toolbox</div><h2>Tools I reach for.</h2><div class="skills"><div class="skillbox"><h3>Agents & retrieval</h3><p>LangChain, LangGraph, MCP, RAG, Chroma, Qdrant, vector + BM25 search, NetworkX, Tree-sitter</p></div><div class="skillbox"><h3>Models & ML</h3><p>Python, PyTorch, Transformers, fine-tuning, evaluation, embeddings, scikit-learn, computer vision</p></div><div class="skillbox"><h3>Infrastructure</h3><p>Azure OpenAI, vLLM, llama.cpp, Docker, Kubernetes, GitHub Actions, GPU inference, Linux</p></div></div></div></section>
