@@ -1,600 +1,113 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Yogesh Murala — AI Engineer building intelligent systems with LLMs, Autonomous Agents, and Generative AI.">
-    <meta property="og:title" content="Yogesh Murala | AI Engineer">
-    <meta property="og:description" content="Portfolio of Yogesh Murala — AI Engineer specializing in Generative AI, LLM Systems, and Autonomous Agents.">
-    <meta property="og:type" content="website">
-    <title>Yogesh Murala | AI Engineer</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111013"><meta name="description" content="Yogesh Murala — Applied AI engineer building agentic systems, retrieval pipelines and practical ML infrastructure.">
+<title>Yogesh Murala — Applied AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a1016;--panel:#111c23;--panel2:#16242b;--line:#294047;--text:#edf6f3;--muted:#9eafb0;--accent:#b9f37e;--accent2:#85c8c0;--w:1160px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 "DM Sans",sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}::selection{background:var(--accent);color:#08130c}h1,h2,h3,p{margin-top:0}h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.12;letter-spacing:-.045em}h1{font-size:clamp(3.2rem,7.4vw,7rem);margin-bottom:25px;max-width:850px}h2{font-size:clamp(2rem,4vw,3.65rem);margin-bottom:14px}h3{font-size:1.45rem;margin-bottom:12px}.wrap{width:min(var(--w),calc(100% - 48px));margin-inline:auto}.muted{color:var(--muted)}.eyebrow{font-family:"Space Grotesk",sans-serif;font-size:.79rem;letter-spacing:.19em;font-weight:700;color:var(--accent);text-transform:uppercase}.grain{position:fixed;inset:0;pointer-events:none;z-index:30;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E")}
+header{position:sticky;top:0;z-index:20;background:rgba(10,16,22,.87);backdrop-filter:blur(18px);border-bottom:1px solid #23323b}.nav{display:flex;align-items:center;justify-content:space-between;min-height:77px;gap:24px}.brand{font-family:"Space Grotesk";font-size:1.15rem;font-weight:700;letter-spacing:-.06em}.brand span{color:var(--accent)}nav{display:flex;gap:27px}nav a{font-size:.89rem;color:var(--muted);transition:.2s}nav a:hover,nav a:focus-visible{color:var(--accent)}.nav-link{font-size:.86rem;border:1px solid var(--line);padding:10px 15px;border-radius:50px;white-space:nowrap}.nav-link:hover{border-color:var(--accent);color:var(--accent)}
+.hero{position:relative;min-height:calc(100vh - 77px);display:flex;align-items:center;padding:100px 0 112px;isolation:isolate}.hero:before{content:"";position:absolute;z-index:-1;width:760px;height:760px;right:-280px;top:-190px;background:radial-gradient(circle,#24453c 0%,rgba(25,56,50,.65) 24%,transparent 68%);opacity:.9}.hero-grid{position:absolute;inset:0;z-index:-2;background-image:linear-gradient(#223a3c55 1px,transparent 1px),linear-gradient(90deg,#223a3c55 1px,transparent 1px);background-size:68px 68px;mask-image:linear-gradient(90deg,transparent 17%,black 100%);opacity:.33}.hero-inner{position:relative}.hero .intro{display:flex;align-items:center;gap:11px;margin-bottom:30px}.live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px #b9f37e20}.hero h1 em{font-style:normal;color:var(--accent)}.lead{font-size:clamp(1.08rem,1.75vw,1.35rem);max-width:700px;color:#b7c6c6;line-height:1.65}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:34px}.btn{display:inline-flex;align-items:center;gap:19px;justify-content:center;padding:14px 22px;border-radius:6px;font-weight:700;font-size:.93rem;transition:.2s;border:1px solid var(--line)}.btn.primary{color:#102216;background:var(--accent);border-color:var(--accent)}.btn.primary:hover{background:#d2ff9f;transform:translateY(-2px)}.btn.secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}.hero-bottom{display:flex;gap:35px;flex-wrap:wrap;margin-top:75px;color:var(--muted);font-size:.89rem}.hero-bottom strong{color:var(--text);font-weight:700}.abstract{position:absolute;right:6%;top:12%;width:300px;height:300px;opacity:.35;pointer-events:none;border:1px solid var(--accent2);border-radius:50%;box-shadow:0 0 0 48px #85c8c011,0 0 0 96px #85c8c009;animation:float 8s ease-in-out infinite}.abstract:before,.abstract:after{content:"";position:absolute;border:1px dashed var(--accent);inset:45px;border-radius:50%;transform:rotate(25deg)}.abstract:after{inset:95px;background:var(--accent);opacity:.18}@keyframes float{50%{transform:translateY(22px) rotate(8deg)}}section{scroll-margin-top:90px}.section{padding:112px 0;border-top:1px solid #1b2b32}.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:44px}.section-head p{max-width:510px;margin-bottom:0}.projects{display:grid;grid-template-columns:1fr 1fr;gap:20px}.project{position:relative;border:1px solid var(--line);background:linear-gradient(155deg,#17272c,#10191f);padding:31px;border-radius:9px;min-height:330px;display:flex;flex-direction:column;transition:.25s;overflow:hidden}.project:hover{transform:translateY(-5px);border-color:#87b99a}.project.featured{grid-column:span 2;display:grid;grid-template-columns:1.25fr 1fr;gap:36px;min-height:350px;background:linear-gradient(120deg,#152b28,#111c22)}.project .number{font-size:.75rem;letter-spacing:.16em;color:var(--accent);font-weight:700}.project h3{font-size:clamp(1.5rem,2.45vw,2rem);margin:18px 0 14px}.project p{color:#a9bbba;max-width:590px;margin-bottom:22px}.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto}.tag{border:1px solid #37514b;border-radius:3px;color:#bfcecb;font-size:.72rem;padding:5px 9px}.project-link{display:inline-flex;gap:11px;align-items:center;color:var(--accent);font-weight:700;font-size:.86rem;margin-top:27px}.project-link:hover{text-decoration:underline}.visual{align-self:center;display:grid;gap:12px;width:100%;max-width:380px}.visual>div{background:#1a3430;border:1px solid #416b57;border-radius:6px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;font-size:.84rem;color:#d2e6d8}.visual .arrow{font-size:1.1rem;color:var(--accent)}.visual small{font-size:.7rem;color:var(--accent)}.visual .dividerline{height:17px;border-left:1px dashed var(--accent);margin-left:22px;opacity:.55}.callout{margin-top:22px;padding:16px 22px;border-left:2px solid var(--accent);background:#162821;color:#c9dfd3;font-size:.9rem}.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:42px 0}.metric{background:#142127;border:1px solid var(--line);padding:28px;border-radius:7px}.metric strong{display:block;color:var(--accent);font:700 clamp(2rem,4vw,3.2rem)/1 "Space Grotesk";letter-spacing:-.05em}.metric p{margin:15px 0 0;font-size:.85rem;color:var(--muted)}.experience{display:grid;grid-template-columns:240px 1fr;gap:55px;border-top:1px solid var(--line);padding:37px 0}.experience:first-of-type{border-top:0}.experience .period{color:var(--muted);font-size:.87rem}.experience .org{color:var(--accent);font-weight:700;font-size:.87rem}.experience h3{margin:7px 0 12px}.experience p{color:#adbdba;max-width:710px}.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.skillbox{background:#111d22;border:1px solid var(--line);padding:28px;border-radius:7px}.skillbox h3{font-size:1.16rem;margin-bottom:15px}.skillbox p{color:var(--muted);font-size:.9rem;margin-bottom:0}.about-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:70px;align-items:start}.about-grid p{font-size:1.09rem;color:#b7c5c1;max-width:680px}.aside{background:#142229;border:1px solid var(--line);padding:26px;border-radius:8px}.aside p{font-size:.91rem;margin:0 0 16px}.aside p:last-child{margin:0}.contact{padding:110px 0 115px;background:radial-gradient(ellipse at 80% 90%,#24473565,transparent 50%)}.contact h2{max-width:760px}.contact p{max-width:620px;color:var(--muted)}footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-size:.84rem}.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px}.foot a{color:var(--text)}:focus-visible{outline:2px solid var(--accent);outline-offset:4px}@media(max-width:900px){nav{gap:15px}.abstract{width:190px;height:190px;right:-60px;top:30px;opacity:.15}.about-grid{gap:30px}.skills{grid-template-columns:1fr 1fr}}@media(max-width:700px){.wrap{width:min(var(--w),calc(100% - 34px))}.nav{min-height:68px}nav{display:none}.hero{min-height:auto;padding:95px 0 82px}.hero-bottom{margin-top:55px;gap:15px 25px}.section{padding:72px 0}.section-head{display:block}.projects,.project.featured,.about-grid,.skills,.metric-grid{display:grid;grid-template-columns:1fr}.project.featured{grid-column:span 1}.project{min-height:0;padding:24px}.visual{margin-top:10px}.experience{grid-template-columns:1fr;gap:10px}.contact{padding:75px 0}.btn{flex:1}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+
+
+/* NOIR EDITION — ink, crimson, warm ivory; no cyan, blue glows or HUD chrome */
+:root{--bg:#111013;--panel:#1b181b;--panel2:#231d20;--line:#534348;--text:#f6e9dc;--muted:#c2b3a9;--accent:#e43c47;--accent2:#f3d9b7;--w:1160px}
+html{scroll-padding-top:78px}body{background:#111013;color:var(--text);background-image:none}h1,h2,h3{font-family:"Space Grotesk",sans-serif}header{background:rgba(16,14,17,.96);border-bottom:1px solid #574149}.brand span,.eyebrow{color:var(--accent)}nav a{color:#d0beb7}nav a:hover,nav a:focus-visible{color:#fa5b60}.nav-link{border-color:#a37e79}.nav-link:hover{color:#ff666e;border-color:#ff666e}
+.noir-hero{isolation:isolate;display:block;min-height:0!important;padding:65px 0 0!important;background:#171317!important;overflow:hidden}.noir-hero:before{display:none!important}.noir-grain{position:absolute;inset:0;pointer-events:none;z-index:-1;opacity:.3;background:repeating-linear-gradient(0deg,transparent 0 5px,#2a1b1e 5px 6px),radial-gradient(circle at 70% 30%,#5d2527,transparent 52%)}.web-corner{position:absolute;top:-370px;right:-370px;width:900px;height:900px;opacity:.16;pointer-events:none;background:repeating-radial-gradient(circle,transparent 0 56px,#df5250 57px 59px,transparent 60px 76px),repeating-conic-gradient(transparent 0 29deg,#df5250 29.3deg 29.6deg,transparent 30deg 45deg);border-radius:50%;transform:rotate(15deg);mask-image:radial-gradient(circle,#000 20%,#000 70%,transparent 82%)}
+.noir-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(315px,.82fr);gap:clamp(35px,6vw,85px);align-items:center;padding-bottom:85px}.noir-copy{position:relative;z-index:2}.noir-index{font:700 .78rem "Space Grotesk";letter-spacing:.11em;color:#f9e7d7;display:flex;align-items:center;gap:9px;margin-bottom:58px}.red-square{width:10px;height:10px;background:var(--accent);transform:rotate(45deg)}.noir-index-r{margin-left:auto;color:#a38c88;font-size:.68rem}.noir-tag{font-size:.74rem;letter-spacing:.16em;margin-bottom:19px;color:#ff7977}.noir-headline{font-size:clamp(3.5rem,6.8vw,7rem);font-weight:700;line-height:.91;letter-spacing:-.095em;margin:0 0 31px}.noir-headline span{display:block;white-space:nowrap}.hero-outline{-webkit-text-stroke:1.5px #f4e7d5;color:transparent}.hero-accent{color:var(--accent)}.noir-headline .dot{display:inline;color:#f4e7d5}.noir-statement{font:600 clamp(1.25rem,2vw,1.95rem)/1.35 "Space Grotesk";letter-spacing:-.032em;color:#f6e8d7;max-width:570px;margin-bottom:13px}.noir-description{font-size:1rem;line-height:1.75;color:#cbbcb3;max-width:555px;margin-bottom:33px}.noir-buttons{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:55px}.noir-btn{font:700 .77rem/1.3 "Space Grotesk";letter-spacing:.05em;padding:17px 20px;border:1px solid #a57474;display:inline-flex;align-items:center;justify-content:space-between;gap:27px;transition:transform .2s,background .2s;transform:skew(-6deg)}.noir-btn:hover{transform:skew(-6deg) translateY(-3px)}.noir-primary{background:var(--accent);border-color:var(--accent);color:#fff7ed;box-shadow:5px 5px 0 #5c222c}.noir-ghost{color:#f8e8dc}.noir-ghost:hover{background:#342329}.noir-location{font:700 .7rem "Space Grotesk";letter-spacing:.09em;color:#a99591}.noir-cross{color:#e43c47;margin:0 8px}
+.noir-art{background:#1b1619;border:1px solid #70524b;box-shadow:13px 13px 0 #080709;transform:rotate(1.5deg);transition:transform .3s}.noir-art:hover{transform:rotate(0deg) translateY(-4px)}.noir-art-header,.noir-art-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 17px;font:700 .67rem "Space Grotesk";letter-spacing:.1em;color:#dcc8ba}.noir-art-header{border-bottom:1px solid #664947}.noir-art-footer{border-top:1px solid #664947}.noir-art-footer span:last-child{color:#ff8e83}.noir-illustration{padding:13px}.noir-illustration svg{display:block;width:100%;height:auto;aspect-ratio:480/560}.noir-bottom-stripe{position:relative;display:flex;gap:38px;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden;padding:16px;background:var(--accent);color:#fff8e9;transform:rotate(-1.15deg) scale(1.03);font:700 .73rem "Space Grotesk";letter-spacing:.11em}.noir-bottom-stripe span:nth-child(even){font-size:1.1rem}
+.section{background:#111013;border-color:#48373b}.section-head h2:after{content:"_";color:var(--accent)}.section h2{color:#f8e9d8}.section-head .muted,.muted{color:#bdaaa0}.project,.project.featured{background:#221b1e;border:1px solid #655052;clip-path:none;box-shadow:8px 8px 0 #0b0a0b;border-radius:0}.project.featured{background:linear-gradient(125deg,#2a1c21,#20191d)}.project:hover{border-color:var(--accent)}.project:before{background:var(--accent)}.project .number,.project-link{color:#ff827b}.project p{color:#c9b9ad}.project h3{color:#fff1e3}.tag{border-color:#6a4e4f;color:#e7d2c5}.visual>div{background:#342128;border-color:#7d5253}.visual small{color:#ffc2a1}.visual .dividerline{border-color:var(--accent)}.metric{background:#21191d;border-color:#6a5152;box-shadow:6px 6px 0 #080708;border-radius:0}.metric strong,.metric:nth-child(2) strong{color:#ff635d}.metric:nth-child(2) strong{color:#f4d5b2}.metric p{color:#c9b7ad}.callout{background:#281b20;border-left-color:#ed5055;color:#e9cfc2}.experience .org{color:#ff7772}.experience p{color:#c7b8ad}.skillbox,.aside{background:#21191d;border-color:#5b4948;box-shadow:4px 4px 0 #090809}.skillbox p,.about-grid p,.aside p{color:#c4b4ac}.contact{background:radial-gradient(ellipse at 80% 70%,#53232875,transparent 57%),#191316}.btn.primary{background:var(--accent);color:#fff8eb;border-color:var(--accent)}.btn.primary:hover{background:#f5686b}.btn.secondary:hover{border-color:#f5686b;color:#f5686b}footer{border-top-color:#49373b}:focus-visible{outline-color:#ff7974}
+@media(max-width:960px){.noir-layout{grid-template-columns:minmax(0,1fr) minmax(275px,.84fr);gap:27px}.noir-headline{font-size:clamp(3rem,7vw,5.2rem)}.noir-index{margin-bottom:35px}.noir-btn{padding:14px 16px;gap:15px}.noir-art-header,.noir-art-footer{font-size:.52rem}}
+@media(max-width:730px){.noir-layout{grid-template-columns:1fr;gap:40px;padding-bottom:72px}.noir-hero{padding-top:45px!important}.noir-headline{font-size:clamp(3.7rem,12vw,6.2rem)}.noir-art{width:min(100% - 18px,470px);margin-inline:auto}.noir-index{margin-bottom:34px}.noir-buttons{margin-bottom:34px}.noir-bottom-stripe{gap:23px;font-size:.61rem;justify-content:flex-start}}
+@media(max-width:420px){.noir-headline{font-size:clamp(3rem,12.5vw,4rem)}.noir-index-r{display:none}.noir-tag{font-size:.65rem}.noir-location{font-size:.58rem}.noir-btn{font-size:.69rem;padding:13px 15px}}
+@media(prefers-reduced-motion:reduce){.noir-art,.noir-btn{transition:none!important}}
+
+
+/* Subtle motion system — noir, not neon */
+@keyframes noirEnter{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes noirWebDrift{0%,100%{transform:rotate(15deg) scale(1)}50%{transform:rotate(20deg) scale(1.04)}}
+@keyframes noirPulse{0%,100%{opacity:.75}50%{opacity:1}}
+.noir-copy{animation:noirEnter .85s cubic-bezier(.22,1,.36,1) both}
+.noir-art{animation:noirEnter 1s .16s cubic-bezier(.22,1,.36,1) both}
+.web-corner{animation:noirWebDrift 20s ease-in-out infinite}
+.red-square{animation:noirPulse 3s ease-in-out infinite}
+.motion-ready .reveal-on-scroll{opacity:0;transform:translateY(27px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.motion-ready .reveal-on-scroll.in-view{opacity:1;transform:translateY(0)}
+.motion-ready .reveal-on-scroll:nth-child(2){transition-delay:.06s}
+.motion-ready .reveal-on-scroll:nth-child(3){transition-delay:.12s}
+.project{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.project:hover{box-shadow:11px 12px 0 #090809;transform:translateY(-5px)}
+.noir-btn:focus-visible,.project-link:focus-visible{outline:2px solid #f3d9b7;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.noir-copy,.noir-art,.web-corner,.red-square{animation:none!important}.motion-ready .reveal-on-scroll{opacity:1!important;transform:none!important;transition:none!important}.project:hover{transform:none!important}}
+
+</style>
 </head>
 <body>
-
-    <!-- Starfield Canvas -->
-    <canvas id="bg-canvas"></canvas>
-
-    <!-- ===== NAVIGATION ===== -->
-    <header id="header">
-        <div class="nav-container">
-            <a href="#hero" class="logo" aria-label="Home">
-                <svg class="logo-svg" width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <radialGradient id="pg" cx="35%" cy="30%" r="75%">
-                            <stop offset="0%" stop-color="#C084FC"/>
-                            <stop offset="35%" stop-color="#A855F7"/>
-                            <stop offset="70%" stop-color="#7C3AED"/>
-                            <stop offset="100%" stop-color="#2e1065"/>
-                        </radialGradient>
-                        <radialGradient id="pg2" cx="38%" cy="28%" r="60%">
-                            <stop offset="0%" stop-color="rgba(255,255,255,0.25)"/>
-                            <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-                        </radialGradient>
-                        <linearGradient id="ring-g" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="rgba(192,132,252,0.15)"/>
-                            <stop offset="30%" stop-color="rgba(216,180,254,0.85)"/>
-                            <stop offset="60%" stop-color="rgba(192,132,252,0.90)"/>
-                            <stop offset="100%" stop-color="rgba(167,139,250,0.15)"/>
-                        </linearGradient>
-                        <filter id="logo-glow">
-                            <feGaussianBlur stdDeviation="1.5" result="blur"/>
-                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                        </filter>
-                    </defs>
-                    <!-- Back half of ring (behind planet) -->
-                    <ellipse cx="21" cy="21" rx="20" ry="7" stroke="url(#ring-g)" stroke-width="2.5" fill="none"
-                        stroke-dasharray="62 7" stroke-dashoffset="0" opacity="0.45"/>
-                    <!-- Planet sphere -->
-                    <circle cx="21" cy="21" r="11" fill="url(#pg)" filter="url(#logo-glow)"/>
-                    <!-- Specular highlight -->
-                    <circle cx="21" cy="21" r="11" fill="url(#pg2)"/>
-                    <!-- Front half of ring (in front of planet) -->
-                    <ellipse cx="21" cy="21" rx="20" ry="7" stroke="url(#ring-g)" stroke-width="2.5" fill="none"
-                        stroke-dasharray="31 38" stroke-dashoffset="-31" opacity="0.95"/>
-                    <!-- Atmospheric glow -->
-                    <circle cx="21" cy="21" r="11" fill="none" stroke="rgba(192,132,252,0.35)" stroke-width="2.5" filter="url(#logo-glow)"/>
-                </svg>
-            </a>
-
-            <nav id="navbar">
-                <ul class="nav-links">
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#education">Education</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-
-            <div class="nav-actions">
-                <a href="https://github.com/Yogesh-001" target="_blank" rel="noopener" class="nav-icon-btn" aria-label="GitHub">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/yogesh-murala-a356571aa/" target="_blank" rel="noopener" class="nav-icon-btn" aria-label="LinkedIn">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                </a>
-                <button id="theme-toggle" aria-label="Toggle theme">
-                    <i class="fa-solid fa-sun" id="theme-icon"></i>
-                </button>
-                <button class="hamburger" id="hamburger" aria-label="Menu">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <!-- ===== HERO ===== -->
-        <section id="hero">
-
-            <!-- LEFT: Text Content -->
-            <div class="hero-left">
-                <div class="badge-label">
-                    <span class="badge-dot"></span>
-                    <span>APPLIED AI &amp; LLM SYSTEMS</span>
-                </div>
-
-                <p class="hi-text">Hi, I'm</p>
-                <h1 class="hero-name">Yogesh Murala</h1>
-                <h2 class="hero-title">Senior AI Engineer</h2>
-
-                <p class="hero-blurb">Building production AI platforms, Graph RAG documentation intelligence systems, and autonomous agentic workflows at scale.</p>
-
-                <!-- CTA Buttons -->
-                <div class="hero-cta">
-                    <a href="#projects" class="btn-primary">View Projects <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="Yogesh%20Murala%20-%20AI_ML.pdf" class="btn-outline" download="Yogesh_Murala_Resume.pdf">View Resume <i class="fa-solid fa-download"></i></a>
-                    <a href="https://github.com/Yogesh-001" target="_blank" rel="noopener" class="btn-outline">GitHub <i class="fa-brands fa-github"></i></a>
-                </div>
-
-                <!-- Stats Row -->
-                <div class="stats-row">
-                    <div class="stat-cell">
-                        <i class="fa-solid fa-diagram-project stat-icon"></i>
-                        <div>
-                            <div class="stat-val"><span class="count" data-target="10">0</span>+</div>
-                            <div class="stat-lbl">Projects</div>
-                        </div>
-                    </div>
-                    <div class="stat-sep"></div>
-                    <div class="stat-cell">
-                        <i class="fa-solid fa-briefcase stat-icon"></i>
-                        <div>
-                            <div class="stat-val"><span class="count" data-target="3">0</span>+</div>
-                            <div class="stat-lbl">Years Experience</div>
-                        </div>
-                    </div>
-                    <div class="stat-sep"></div>
-                    <div class="stat-cell">
-                        <i class="fa-solid fa-layer-group stat-icon"></i>
-                        <div>
-                            <div class="stat-val"><span class="count" data-target="5">0</span>+</div>
-                            <div class="stat-lbl">AI Systems Built</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RIGHT: Interactive Foundation Model Core & Knowledge Graph -->
-            <div class="hero-right">
-
-                <!-- SVG Container for Concentric Segmented Rings, Neural Links & Foundation Core -->
-                <svg id="core-svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet">
-                    <defs>
-                        <!-- Glow Filters -->
-                        <filter id="core-glow" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur stdDeviation="8" result="blur1" />
-                            <feGaussianBlur stdDeviation="20" result="blur2" />
-                            <feMerge>
-                                <feMergeNode in="blur2" />
-                                <feMergeNode in="blur1" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
-                        </filter>
-                        <filter id="ring-glow" x="-30%" y="-30%" width="160%" height="160%">
-                            <feGaussianBlur stdDeviation="4" result="blur" />
-                            <feMerge>
-                                <feMergeNode in="blur" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
-                        </filter>
-
-                        <!-- Core Gradients -->
-                        <radialGradient id="reactor-core-grad" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
-                            <stop offset="25%" stop-color="#e9d5ff" stop-opacity="0.95" />
-                            <stop offset="50%" stop-color="#c084fc" stop-opacity="0.85" />
-                            <stop offset="75%" stop-color="#8b5cf6" stop-opacity="0.5" />
-                            <stop offset="92%" stop-color="#38bdf8" stop-opacity="0.25" />
-                            <stop offset="100%" stop-color="#0369a1" stop-opacity="0" />
-                        </radialGradient>
-
-                        <radialGradient id="reactor-volumetric-glow" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stop-color="rgba(168, 85, 247, 0.45)" />
-                            <stop offset="35%" stop-color="rgba(56, 189, 248, 0.22)" />
-                            <stop offset="70%" stop-color="rgba(139, 92, 246, 0.08)" />
-                            <stop offset="100%" stop-color="rgba(5, 8, 22, 0)" />
-                        </radialGradient>
-
-                        <linearGradient id="ring-grad-outer" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#c084fc" stop-opacity="0.9" />
-                            <stop offset="40%" stop-color="#38bdf8" stop-opacity="0.4" />
-                            <stop offset="70%" stop-color="#8b5cf6" stop-opacity="0.8" />
-                            <stop offset="100%" stop-color="#c084fc" stop-opacity="0.3" />
-                        </linearGradient>
-
-                        <linearGradient id="ring-grad-mid" x1="100%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95" />
-                            <stop offset="50%" stop-color="#a855f7" stop-opacity="0.5" />
-                            <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.9" />
-                        </linearGradient>
-
-                        <linearGradient id="ring-grad-inner" x1="0%" y1="100%" x2="100%" y2="0%">
-                            <stop offset="0%" stop-color="#e9d5ff" stop-opacity="0.95" />
-                            <stop offset="50%" stop-color="#c084fc" stop-opacity="0.7" />
-                            <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.95" />
-                        </linearGradient>
-                    </defs>
-
-                    <!-- Neural Network Paths Group -->
-                    <g id="svg-neural-links"></g>
-
-                    <!-- Sequential Lifecycle Pulse Group -->
-                    <g id="svg-story-pulses"></g>
-
-                    <!-- Foundation Core Assembly -->
-                    <g class="reactor-assembly" transform="translate(400, 400)">
-                        <!-- Volumetric Halo Glow -->
-                        <circle id="core-volumetric-halo" cx="0" cy="0" r="270" fill="url(#reactor-volumetric-glow)" />
-
-                        <!-- Segmented Outer Ring (Slow Clockwise) -->
-                        <g class="ring-group ring-outer">
-                            <circle cx="0" cy="0" r="225" stroke="url(#ring-grad-outer)" stroke-width="1.8" fill="none" stroke-dasharray="140 40 80 30 110 50" opacity="0.75" />
-                            <circle cx="0" cy="0" r="215" stroke="rgba(56, 189, 248, 0.25)" stroke-width="1" fill="none" stroke-dasharray="4 12" />
-                            <!-- Cardinal Markers -->
-                            <line x1="0" y1="-232" x2="0" y2="-218" stroke="#38bdf8" stroke-width="2.5" opacity="0.85"/>
-                            <line x1="232" y1="0" x2="218" y2="0" stroke="#38bdf8" stroke-width="2.5" opacity="0.85"/>
-                            <line x1="0" y1="232" x2="0" y2="218" stroke="#38bdf8" stroke-width="2.5" opacity="0.85"/>
-                            <line x1="-232" y1="0" x2="-218" y2="0" stroke="#38bdf8" stroke-width="2.5" opacity="0.85"/>
-                        </g>
-
-                        <!-- Segmented Middle Ring (Counter-Clockwise) -->
-                        <g class="ring-group ring-middle">
-                            <circle cx="0" cy="0" r="165" stroke="url(#ring-grad-mid)" stroke-width="2" fill="none" stroke-dasharray="160 45 60 35" filter="url(#ring-glow)"/>
-                            <circle cx="0" cy="0" r="154" stroke="rgba(192, 132, 252, 0.3)" stroke-width="1" fill="none" stroke-dasharray="5 10" />
-                            <polygon points="0,-170 6,-160 -6,-160" fill="#c084fc" opacity="0.9"/>
-                            <polygon points="0,170 6,160 -6,-160" fill="#c084fc" opacity="0.9"/>
-                        </g>
-
-                        <!-- Segmented Inner Ring (Faster Clockwise) -->
-                        <g class="ring-group ring-inner">
-                            <circle cx="0" cy="0" r="110" stroke="url(#ring-grad-inner)" stroke-width="2.5" fill="none" stroke-dasharray="90 30 40 25" filter="url(#core-glow)" />
-                            <circle cx="0" cy="0" r="100" stroke="rgba(0, 240, 255, 0.5)" stroke-width="1" fill="none" stroke-dasharray="2 6" />
-                        </g>
-
-                        <!-- Center Foundation Core Sphere & Label -->
-                        <g class="core-reactor-center">
-                            <!-- Outer Glass Rim -->
-                            <circle cx="0" cy="0" r="72" fill="none" stroke="rgba(192, 132, 252, 0.7)" stroke-width="1.8" filter="url(#ring-glow)"/>
-                            <!-- Inner Glowing Plasma Sphere -->
-                            <circle id="core-plasma-sphere" cx="0" cy="0" r="66" fill="url(#reactor-core-grad)" filter="url(#core-glow)" class="core-sphere-pulse"/>
-                            <!-- Specular Glass Highlight -->
-                            <ellipse cx="-18" cy="-22" rx="26" ry="14" fill="rgba(255, 255, 255, 0.38)" transform="rotate(-25 -18 -22)"/>
-                            <!-- Rotating Scan Lines Grid -->
-                            <g class="core-scan-lines">
-                                <ellipse cx="0" cy="0" rx="64" ry="24" stroke="rgba(255, 255, 255, 0.5)" stroke-width="1" fill="none" stroke-dasharray="14 6" />
-                                <ellipse cx="0" cy="0" rx="24" ry="64" stroke="rgba(0, 240, 255, 0.5)" stroke-width="1" fill="none" stroke-dasharray="14 6" />
-                            </g>
-                            <!-- Core Nucleus & Label -->
-                            <circle cx="0" cy="0" r="28" fill="rgba(10, 15, 30, 0.85)" stroke="rgba(192, 132, 252, 0.8)" stroke-width="1.5"/>
-                            <text x="0" y="5" text-anchor="middle" fill="#ffffff" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="14" letter-spacing="1" filter="url(#core-glow)">FM</text>
-                        </g>
-                    </g>
-                </svg>
-
-                <!-- Clustered Glass Node Capsules (Organized in 6 Lifecycle Stages) -->
-                
-                <!-- STAGE 1: DATA -->
-                <div class="node-capsule" id="n-dataset" data-cluster="DATA" style="--top: 12%; --left: 32%; --accent: #a855f7">
-                    <span class="node-icon">📂</span>
-                    <span class="node-label">Dataset</span>
-                </div>
-                <div class="node-capsule" id="n-tokenizer" data-cluster="DATA" style="--top: 16%; --left: 60%; --accent: #38bdf8">
-                    <span class="node-icon">🔤</span>
-                    <span class="node-label">Tokenizer</span>
-                </div>
-
-                <!-- STAGE 2: MODEL -->
-                <div class="node-capsule" id="n-transformer" data-cluster="MODEL" style="--top: 28%; --left: 82%; --accent: #c084fc">
-                    <span class="node-icon">🧠</span>
-                    <span class="node-label">Transformer</span>
-                </div>
-                <div class="node-capsule" id="n-pretraining" data-cluster="MODEL" style="--top: 42%; --left: 88%; --accent: #a855f7">
-                    <span class="node-icon">⚡</span>
-                    <span class="node-label">Pretraining</span>
-                </div>
-
-                <!-- STAGE 3: ALIGNMENT -->
-                <div class="node-capsule" id="n-sft" data-cluster="ALIGNMENT" style="--top: 58%; --left: 86%; --accent: #38bdf8">
-                    <span class="node-icon">🧪</span>
-                    <span class="node-label">SFT</span>
-                </div>
-                <div class="node-capsule" id="n-dpo" data-cluster="ALIGNMENT" style="--top: 72%; --left: 78%; --accent: #c084fc">
-                    <span class="node-icon">🎯</span>
-                    <span class="node-label">DPO</span>
-                </div>
-                <div class="node-capsule" id="n-rlhf" data-cluster="ALIGNMENT" style="--top: 84%; --left: 64%; --accent: #a855f7">
-                    <span class="node-icon">🧬</span>
-                    <span class="node-label">RLHF</span>
-                </div>
-
-                <!-- STAGE 4: EVALUATION -->
-                <div class="node-capsule" id="n-mmlu" data-cluster="EVALUATION" style="--top: 90%; --left: 44%; --accent: #00f0ff">
-                    <span class="node-icon">📊</span>
-                    <span class="node-label">MMLU</span>
-                </div>
-                <div class="node-capsule" id="n-humaneval" data-cluster="EVALUATION" style="--top: 86%; --left: 26%; --accent: #38bdf8">
-                    <span class="node-icon">💻</span>
-                    <span class="node-label">HumanEval</span>
-                </div>
-                <div class="node-capsule" id="n-arena" data-cluster="EVALUATION" style="--top: 74%; --left: 14%; --accent: #c084fc">
-                    <span class="node-icon">🏆</span>
-                    <span class="node-label">Arena</span>
-                </div>
-
-                <!-- STAGE 5: INFERENCE -->
-                <div class="node-capsule" id="n-inference" data-cluster="INFERENCE" style="--top: 58%; --left: 10%; --accent: #00f0ff">
-                    <span class="node-icon">🚀</span>
-                    <span class="node-label">Inference</span>
-                </div>
-                <div class="node-capsule" id="n-vllm" data-cluster="INFERENCE" style="--top: 44%; --left: 8%; --accent: #38bdf8">
-                    <span class="node-icon">⚙️</span>
-                    <span class="node-label">vLLM</span>
-                </div>
-                <div class="node-capsule" id="n-tensorrt" data-cluster="INFERENCE" style="--top: 30%; --left: 12%; --accent: #c084fc">
-                    <span class="node-icon">⚡</span>
-                    <span class="node-label">TensorRT</span>
-                </div>
-
-                <!-- STAGE 6: DEPLOYMENT -->
-                <div class="node-capsule" id="n-serving" data-cluster="DEPLOYMENT" style="--top: 18%; --left: 18%; --accent: #a855f7">
-                    <span class="node-icon">☁️</span>
-                    <span class="node-label">Serving</span>
-                </div>
-                <div class="node-capsule" id="n-monitoring" data-cluster="DEPLOYMENT" style="--top: 14%; --left: 46%; --accent: #38bdf8">
-                    <span class="node-icon">📡</span>
-                    <span class="node-label">Monitoring</span>
-                </div>
-
-                <!-- Floating HUD Technical Information Panel -->
-                <div id="info-panel" class="hud-info-panel hidden">
-                    <div class="hud-header">
-                        <span id="info-icon" class="hud-icon">🧠</span>
-                        <div class="hud-title-wrap">
-                            <h4 id="info-title">PRETRAINING</h4>
-                            <span id="info-cluster" class="hud-tag">MODEL</span>
-                        </div>
-                    </div>
-                    <ul id="info-list" class="hud-tech-list">
-                        <li>Transformer Architecture</li>
-                        <li>RoPE Embeddings</li>
-                        <li>Flash Attention</li>
-                    </ul>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ===== ABOUT ===== -->
-        <section id="about" class="fade-up">
-            <div class="section-head center">
-                <h2><i class="fa-solid fa-user-astronaut sec-icon"></i> About Me</h2>
-                <div class="sec-line center-line"></div>
-            </div>
-            <div class="about-card glass">
-                <p>Senior Engineer specializing in Applied Machine Learning, Large Language Models (LLMs), and AI Platform Engineering at Bosch Global Software Technologies with 3+ years of experience.</p>
-                <p>Proven track record of designing and building production AI solutions, including enterprise CI/CD automation platforms, Graph RAG documentation intelligence systems, and autonomous root-cause investigation workflows using Azure OpenAI, Anthropic, Databricks, LangChain, and Model Context Protocol (MCP).</p>
-                <p>Passionate about bridging cutting-edge AI research and production engineering to deliver high-performance, scalable systems.</p>
-            </div>
-        </section>
-
-        <!-- ===== SKILLS ===== -->
-        <section id="skills" class="fade-up">
-            <div class="section-head center">
-                <h2><i class="fa-solid fa-star sec-icon"></i> Skills &amp; Expertise</h2>
-                <div class="sec-line center-line"></div>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-card glass fade-up" style="--d:0s">
-                    <div class="card-orb orb-purple"></div>
-                    <h3><i class="fa-brands fa-python"></i> Programming &amp; Core</h3>
-                    <div class="tags">
-                        <span>Python</span><span>C/C++</span><span>SQL</span><span>Problem Solving</span><span>System Design</span>
-                    </div>
-                </div>
-                <div class="skill-card glass fade-up" style="--d:.1s">
-                    <div class="card-orb orb-violet"></div>
-                    <h3><i class="fa-solid fa-brain"></i> AI &amp; Machine Learning</h3>
-                    <div class="tags">
-                        <span>Deep Learning</span><span>NLP</span><span>Generative AI</span><span>Computer Vision</span><span>PyTorch</span><span>TensorFlow</span><span>Hugging Face</span>
-                    </div>
-                </div>
-                <div class="skill-card glass fade-up" style="--d:.2s">
-                    <div class="card-orb orb-indigo"></div>
-                    <h3><i class="fa-solid fa-cube"></i> LLM &amp; Agentic Systems</h3>
-                    <div class="tags">
-                        <span>RAG</span><span>Graph RAG</span><span>FastMCP / MCP</span><span>LangChain</span><span>LangGraph</span><span>ReAct Agents</span><span>LoRA / QLoRA</span><span>SFT</span>
-                    </div>
-                </div>
-                <div class="skill-card glass fade-up" style="--d:.3s">
-                    <div class="card-orb orb-blue"></div>
-                    <h3><i class="fa-solid fa-server"></i> Cloud &amp; MLOps</h3>
-                    <div class="tags">
-                        <span>Azure OpenAI</span><span>Databricks</span><span>Docker</span><span>TensorRT</span><span>MLflow</span><span>GitHub Actions</span><span>CI/CD</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== PROJECTS ===== -->
-        <section id="projects" class="fade-up">
-            <div class="section-head center">
-                <h2><i class="fa-solid fa-rocket sec-icon"></i> Projects</h2>
-                <div class="sec-line center-line"></div>
-            </div>
-            <div class="proj-grid">
-
-                <div class="proj-card glass tilt fade-up" style="--d:0s">
-                    <div class="proj-top">
-                        <h3>MayaGuard</h3>
-                        <span class="badge badge-active">Active</span>
-                    </div>
-                    <p>Modular AI safety framework implementing prompt injection detection, tool-call validation, policy enforcement, and response verification for agentic LLM applications.</p>
-                    <div class="tech-stack">
-                        <span>Python</span><span>LLM Safety</span><span>Guardrails</span><span>Evaluation</span>
-                    </div>
-                    <div class="proj-links">
-                        <a href="https://github.com/Yogesh-001" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Source</a>
-                    </div>
-                </div>
-
-                <div class="proj-card glass tilt fade-up" style="--d:.1s">
-                    <div class="proj-top">
-                        <h3>LLMForge</h3>
-                        <span class="badge badge-active">Active</span>
-                    </div>
-                    <p>End-to-end LLM pretraining and post-training pipeline from building a tokenizer and transformer architecture from scratch to instruction tuning (SFT) and preference alignment (RLHF/DPO).</p>
-                    <div class="tech-stack">
-                        <span>Python</span><span>PyTorch</span><span>Transformers</span><span>RLHF</span><span>DPO</span>
-                    </div>
-                    <div class="proj-links">
-                        <a href="https://github.com/Yogesh-001/LLMForge" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Source</a>
-                    </div>
-                </div>
-
-                <div class="proj-card glass tilt fade-up" style="--d:.2s">
-                    <div class="proj-top">
-                        <h3>Industrial Knowledge Intelligence</h3>
-                        <span class="badge badge-active">Active</span>
-                    </div>
-                    <p>AI-powered platform ingesting heterogeneous industrial manuals and reports, making enterprise documentation queryable via advanced Graph RAG and agentic retrieval.</p>
-                    <div class="tech-stack">
-                        <span>Python</span><span>Graph RAG</span><span>Vector DB</span><span>LangChain</span>
-                    </div>
-                    <div class="proj-links">
-                        <a href="https://github.com/Yogesh-001/Industrial_Knowledge_Intelligence" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Source</a>
-                    </div>
-                </div>
-
-                <div class="proj-card glass tilt fade-up" style="--d:.3s">
-                    <div class="proj-top">
-                        <h3>Research-to-Implementation</h3>
-                        <span class="badge badge-active">Active</span>
-                    </div>
-                    <p>Multi-agent pipeline that ingests research paper PDFs and produces validated PyTorch code, automating the transition from paper to code.</p>
-                    <div class="tech-stack">
-                        <span>Python</span><span>LangGraph</span><span>Multi-Agent</span><span>PyTorch</span>
-                    </div>
-                    <div class="proj-links">
-                        <a href="https://github.com/Yogesh-001/Research-to-Implementation" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Source</a>
-                    </div>
-                </div>
-
-                <div class="proj-card glass tilt fade-up" style="--d:.4s">
-                    <div class="proj-top">
-                        <h3>AdaptiveThink MoE</h3>
-                        <span class="badge badge-research">Research</span>
-                    </div>
-                    <p>Sparse Mixture-of-Experts language model exploring expert routing, specialization, and parameter-efficient LoRA/QLoRA adaptation.</p>
-                    <div class="tech-stack">
-                        <span>Python</span><span>PyTorch</span><span>MoE</span><span>Transformers</span>
-                    </div>
-                    <div class="proj-links">
-                        <a href="https://github.com/Yogesh-001/AdaptiveThink_MoE" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Source</a>
-                    </div>
-                </div>
-
-                <div class="proj-card glass tilt fade-up" style="--d:.5s">
-                    <div class="proj-top">
-                        <h3>AstraShastra AI</h3>
-                        <span class="badge badge-active">Active</span>
-                    </div>
-                    <p>Modular framework for AI reliability, observability, and evaluation with automated faithfulness scoring and token-level reasoning tracing.</p>
-                    <div class="tech-stack">
-                        <span>Python</span><span>LLM Evaluation</span><span>AI Observability</span><span>LangChain</span>
-                    </div>
-                    <div class="proj-links">
-                        <a href="https://github.com/Yogesh-001/AstraShastra-AI" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Source</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ===== EXPERIENCE ===== -->
-        <section id="experience" class="fade-up">
-            <div class="section-head center">
-                <h2><i class="fa-solid fa-briefcase sec-icon"></i> Work Experience</h2>
-                <div class="sec-line center-line"></div>
-            </div>
-            <div class="timeline">
-                <div class="tl-item glass fade-up">
-                    <div class="tl-dot"></div>
-                    <div class="tl-body">
-                        <h3>Senior Engineer | Applied AI &amp; LLM Systems</h3>
-                        <h4>Bosch Global Software Technologies, Bengaluru, India</h4>
-                        <span class="tl-date">Aug 2023 - Present</span>
-                        <ul>
-                            <li>Built an enterprise AI platform using FastMCP, LangChain, and Copilot to automate GitHub Actions failure triage, Jira defects, and root-cause analysis.</li>
-                            <li>Engineered multi-stage LLM log reasoning pipelines over build and test logs, reducing manual triage effort by ~50%.</li>
-                            <li>Developed autonomous investigation workflows correlating commits, PRs, and execution logs, reducing root-cause investigation effort by 30-40%.</li>
-                            <li>Architected a provider-agnostic LLM platform integrating Azure OpenAI, Anthropic, and Databricks with token-cost observability.</li>
-                            <li>Designing Graph RAG documentation intelligence platforms using LangGraph, FastMCP, NetworkX, and tree-sitter over C++ APIs and software requirements.</li>
-                            <li>Built scalable Python backend services with Pydantic, asyncio, ThreadPoolExecutor, and GitHub Actions backed by 190+ unit tests.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="tl-item glass fade-up">
-                    <div class="tl-dot"></div>
-                    <div class="tl-body">
-                        <h3>Project Trainee | AI &amp; Computer Vision</h3>
-                        <h4>Bosch Global Software Technologies, Bengaluru, India</h4>
-                        <span class="tl-date">Sep 2022 - Jul 2023</span>
-                        <ul>
-                            <li>Designed custom multi-headed object detection architecture for autonomous driving, boosting accuracy by ~12% over YOLOv5 baseline.</li>
-                            <li>Optimized edge inference using NVIDIA TensorRT and Apache TVM to evaluate latency, throughput, and deployment efficiency.</li>
-                            <li>Built scalable preprocessing and validation pipelines for 100K+ annotated traffic-scene images, reducing data preparation effort by ~40%.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== EDUCATION ===== -->
-        <section id="education" class="fade-up">
-            <div class="section-head center">
-                <h2><i class="fa-solid fa-graduation-cap sec-icon"></i> Education &amp; Certifications</h2>
-                <div class="sec-line center-line"></div>
-            </div>
-            <div class="edu-grid">
-                <div class="edu-card glass fade-up" style="--d:0s">
-                    <h3><i class="fa-solid fa-university"></i> Academic Education</h3>
-                    <h4>B.Tech in Computer Science Engineering (Artificial Intelligence)</h4>
-                    <p>KL University</p>
-                    <span>CGPA: 9.2 / 10 | Graduated 2023</span>
-                </div>
-                <div class="edu-card glass fade-up" style="--d:.1s">
-                    <h3><i class="fa-solid fa-certificate"></i> Certifications &amp; Training</h3>
-                    <ul class="cert-list">
-                        <li><i class="fa-solid fa-check"></i> Google TensorFlow Developer Certification</li>
-                        <li><i class="fa-solid fa-check"></i> Deep Learning Specialization (Coursera)</li>
-                        <li><i class="fa-solid fa-check"></i> Generative AI &amp; LLM Systems Engineering</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== CONTACT ===== -->
-        <section id="contact" class="fade-up contact-sec">
-            <div class="section-head center">
-                <h2><i class="fa-solid fa-satellite-dish sec-icon"></i> Contact</h2>
-                <div class="sec-line center-line"></div>
-                <p class="contact-sub">Currently open to new opportunities and technical collaborations in Applied AI and LLM Systems.</p>
-            </div>
-            <div class="contact-grid">
-                <a href="mailto:muralayogesh@gmail.com" class="contact-card glass">
-                    <i class="fa-solid fa-envelope"></i>
-                    <h3>Email</h3>
-                    <p>muralayogesh@gmail.com</p>
-                </a>
-                <a href="https://www.linkedin.com/in/yogesh-murala-a356571aa/" target="_blank" rel="noopener" class="contact-card glass">
-                    <i class="fa-brands fa-linkedin"></i>
-                    <h3>LinkedIn</h3>
-                    <p>Yogesh Murala</p>
-                </a>
-                <a href="https://github.com/Yogesh-001" target="_blank" rel="noopener" class="contact-card glass">
-                    <i class="fa-brands fa-github"></i>
-                    <h3>GitHub</h3>
-                    <p>Yogesh-001</p>
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Yogesh Murala. All rights reserved.</p>
-        <p>Built with <i class="fa-solid fa-heart"></i> for AI &amp; LLM Systems</p>
-    </footer>
-
-    <script src="js/script.js"></script>
-</body>
-</html>
+<div class="grain" aria-hidden="true"></div>
+<header><div class="wrap nav"><a class="brand" href="#top">YM<span>.</span></a><nav aria-label="Main navigation"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#stack">Toolbox</a><a href="#about">About</a></nav><a class="nav-link" href="#contact">Let's connect ↗</a></div></header>
+<main id="top">
+<section class="hero noir-hero" aria-labelledby="hero-heading">
+<div class="noir-grain" aria-hidden="true"></div><div class="web-corner" aria-hidden="true"></div>
+<div class="wrap noir-layout">
+<div class="noir-copy">
+<div class="noir-index"><span class="red-square"></span> YOGESH MURALA <span class="noir-index-r">/ PORTFOLIO 2026</span></div>
+<div class="eyebrow noir-tag">ENGINEER BY DAY / BUILDER ALWAYS</div>
+<h1 id="hero-heading" class="noir-headline"><span>IDEAS.</span><span class="hero-outline">SYSTEMS.</span><span class="hero-accent">IMPACT<span class="dot">.</span></span></h1>
+<p class="noir-statement">I turn complex engineering problems into useful AI systems.</p>
+<p class="noir-description">I'm Yogesh, a Senior Engineer at Bosch. I build agentic workflows, retrieval systems, and LLM infrastructure grounded in actual engineering challenges.</p>
+<div class="noir-buttons"><a class="noir-btn noir-primary" href="#work">EXPLORE MY WORK <span>↗</span></a><a class="noir-btn noir-ghost" href="https://github.com/Yogesh-001" target="_blank" rel="noopener noreferrer">VIEW GITHUB ↗</a></div>
+<div class="noir-location">BASED IN BENGALURU <span class="noir-cross">✳</span> OPEN TO INTERNATIONAL AI ROLES</div>
+</div>
+<div class="noir-art" aria-label="Stylized web network representing AI orchestration">
+<div class="noir-art-header"><span>FIELD NOTES / 001</span><span>AGENTIC SYSTEMS</span></div>
+<div class="noir-illustration"><svg viewBox="0 0 480 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<defs><pattern id="halftone" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.35" fill="#f8ead9" opacity=".25"/></pattern><clipPath id="mask"><path d="M25 25 H445 V535 H25 Z"/></clipPath></defs>
+<rect x="0" y="0" width="480" height="560" fill="#b32331"/><rect x="0" y="0" width="480" height="560" fill="url(#halftone)"/>
+<g stroke="#f7e9d7" fill="none" stroke-width="2.2" opacity=".9" clip-path="url(#mask)">
+<path d="M240 280 L240 -50 M240 280 L470 -10 M240 280 L550 130 M240 280 L550 420 M240 280 L420 600 M240 280 L240 650 M240 280 L50 610 M240 280 L-70 450 M240 280 L-70 140 M240 280 L50 -70"/>
+<path d="M240 110 Q315 118 367 164 Q403 206 412 280 Q403 365 365 395 Q312 438 240 450 Q165 442 115 395 Q77 343 68 280 Q76 199 116 164 Q172 117 240 110Z"/>
+<path d="M240 165 Q290 167 329 197 Q358 225 359 280 Q358 334 331 364 Q291 393 240 397 Q188 391 150 365 Q121 325 120 280 Q123 227 151 196 Q187 165 240 165Z"/>
+<path d="M240 218 Q268 218 287 235 Q307 253 308 280 Q306 310 286 327 Q266 341 240 342 Q215 341 194 327 Q173 309 172 280 Q172 252 194 235 Q217 218 240 218Z"/>
+</g>
+<g transform="translate(240 280) rotate(-8)"><path d="M0 -102 L32 -35 L100 -38 L64 15 L80 95 L0 61 L-80 95 L-64 15 L-100 -38 L-32 -35Z" fill="#111015" stroke="#f8ead9" stroke-width="5"/><path d="M-39 -15 L-10 3 L-39 20 M39 -15 L10 3 L39 20" stroke="#f8ead9" stroke-width="8" fill="none" stroke-linecap="square"/></g>
+<g font-family="'Space Grotesk',sans-serif" font-weight="700"><text x="34" y="55" fill="#f8ead9" font-size="14" letter-spacing="4">BUILD / VERIFY / SHIP</text><text x="33" y="516" fill="#f8ead9" font-size="64" letter-spacing="-5">YM / 01</text></g>
+</svg></div>
+<div class="noir-art-footer"><span>ENGINEERING / AGENTS / RAG</span><span>● ACTIVE</span></div>
+</div>
+</div><div class="noir-bottom-stripe" aria-hidden="true"><span>BUILDING IN PUBLIC</span><span>◉</span><span>FROM RESEARCH TO REAL WORKFLOWS</span><span>◉</span><span>PYTHON · PYTORCH · LLMS</span></div></section>
+<section class="section" id="work"><div class="wrap">
+<div class="section-head"><div><div class="eyebrow">01 / Selected work</div><h2>Systems over demos.</h2></div><p class="muted">A mix of professional engineering work and public projects. Internal Bosch implementations are described at a high level; public code is linked where available.</p></div>
+<div class="projects">
+<article class="project featured"><div><div class="number">PROFESSIONAL WORK · BOSCH</div><h3>Documentation Analyzer</h3><p>Owned the development of a customer-facing AI assistant for navigating complex engineering information across documentation, source code, tests, configurations, and diagrams. Six specialist workers, source-aware retrieval, and structured evidence.</p><div class="tags"><span class="tag">Multi-agent orchestration</span><span class="tag">Hybrid retrieval</span><span class="tag">Python</span><span class="tag">Chroma / Tree-sitter</span></div><div class="project-link">Internal project · Architecture overview only</div></div><div class="visual" aria-label="Illustrative workflow"><div><span>Engineering question</span><small>INPUT</small></div><div class="dividerline"></div><div><span>Supervisor / routing</span><small>ORCHESTRATE</small></div><div class="dividerline"></div><div><span>Six specialist workers</span><small>INVESTIGATE</small></div><div class="dividerline"></div><div><span>Evidence-backed response</span><small>OUTPUT</small></div></div></article>
+<article class="project"><div class="number">OPEN SOURCE / PERSONAL PROJECT</div><h3>Industrial Knowledge Intelligence</h3><p>Connects industrial documents, maintenance knowledge, and equipment relationships through retrieval, a knowledge graph, and an engineering-focused assistant.</p><div class="tags"><span class="tag">RAG</span><span class="tag">NetworkX</span><span class="tag">Gradio</span><span class="tag">Evaluation</span></div><a class="project-link" href="https://github.com/Yogesh-001/Industrial_Knowledge_Intelligence" target="_blank" rel="noopener noreferrer">Explore repository ↗</a></article>
+<article class="project"><div class="number">OPEN SOURCE / PERSONAL PROJECT</div><h3>AI Debugging Agent</h3><p>An exploration of domain-specific bug analysis using a small fine-tuned language model, local inference, and an application interface.</p><div class="tags"><span class="tag">PyTorch</span><span class="tag">QLoRA</span><span class="tag">Ollama</span><span class="tag">FastAPI</span></div><a class="project-link" href="https://github.com/Yogesh-001/ai-deugging-agent" target="_blank" rel="noopener noreferrer">Explore repository ↗</a></article>
+<article class="project"><div class="number">OPEN SOURCE / PERSONAL PROJECT</div><h3>MCP Research Assistant</h3><p>Research assistant connecting a tool-using agent to independent MCP tools for paper retrieval, summarization, and comparison.</p><div class="tags"><span class="tag">LangGraph</span><span class="tag">MCP</span><span class="tag">ChromaDB</span><span class="tag">Ollama</span></div><a class="project-link" href="https://github.com/Yogesh-001/MCP_Research_Assistant" target="_blank" rel="noopener noreferrer">Explore repository ↗</a></article>
+<article class="project"><div class="number">EXPERIMENTAL / IN DEVELOPMENT</div><h3>Research to Implementation</h3><p>Early-stage architecture exploring whether a multi-agent pipeline can turn research papers into verifiable PyTorch implementations. A design exploration, not a finished product.</p><div class="tags"><span class="tag">Architecture</span><span class="tag">PyTorch</span><span class="tag">Agent design</span></div><a class="project-link" href="https://github.com/Yogesh-001/Research-to-Implementation" target="_blank" rel="noopener noreferrer">View work in progress ↗</a></article>
+</div>
+</div></section>
+<section class="section" id="impact"><div class="wrap"><div class="eyebrow">02 / Engineering impact</div><h2>What the work changed.</h2><p class="muted">Approximate team outcomes from internal engineering workflows, not independently audited benchmarks.</p><div class="metric-grid"><div class="metric"><strong>~50%</strong><p>Less manual CI failure triage effort</p></div><div class="metric"><strong>70–80%</strong><p>Lower token usage per ticket in a Jira deduplication workflow</p></div><div class="metric"><strong>6</strong><p>Source-specialized workers in the Documentation Analyzer</p></div></div><div class="callout">I care about the part after the prototype: good retrieval, bounded tool use, evaluation, deployment, and knowing when a system fails.</div></div></section>
+<section class="section" id="experience"><div class="wrap"><div class="eyebrow">03 / Experience</div><h2>Where I've worked.</h2><div class="experience"><div><div class="period">Aug 2023 — Present</div><div class="org">Bosch Global Software Technologies</div></div><div><h3>Senior Engineer</h3><p>AI engineering across multi-agent systems, engineering-document intelligence, CI/CD investigation workflows, Jira integrations, LLM inference, and evaluation. Ownership of Documentation Analyzer and reusable orchestration components.</p></div></div><div class="experience"><div><div class="period">Sep 2022 — May 2023</div><div class="org">Bosch Global Software Technologies</div></div><div><h3>Project Trainee</h3><p>Computer vision and embedded AI experimentation, including YOLOv5 object detection, deployment benchmarking with TVM and TensorRT, and preprocessing pipelines for large image datasets.</p></div></div></div></section>
+<section class="section" id="stack"><div class="wrap"><div class="eyebrow">04 / Toolbox</div><h2>Tools I reach for.</h2><div class="skills"><div class="skillbox"><h3>Agents & retrieval</h3><p>LangChain, LangGraph, MCP, RAG, Chroma, Qdrant, vector + BM25 search, NetworkX, Tree-sitter</p></div><div class="skillbox"><h3>Models & ML</h3><p>Python, PyTorch, Transformers, fine-tuning, evaluation, embeddings, scikit-learn, computer vision</p></div><div class="skillbox"><h3>Infrastructure</h3><p>Azure OpenAI, vLLM, llama.cpp, Docker, Kubernetes, GitHub Actions, GPU inference, Linux</p></div></div></div></section>
+<section class="section" id="about"><div class="wrap"><div class="about-grid"><div><div class="eyebrow">05 / A little about me</div><h2>Curious by default.<br>Practical by design.</h2><p>My path into AI started with computer vision and model optimization. These days I'm especially interested in the systems surrounding models: how they access tools, retrieve the right context, and turn uncertain outputs into something engineers can use.</p><p>Outside of my day job, I build and explore ideas around applied AI, model training, and developer tooling. I enjoy moving between the model layer and the product layer.</p></div><aside class="aside"><h3>At a glance</h3><p><strong>Based in</strong><br>Bengaluru, India</p><p><strong>Education</strong><br>B.Tech · 2019–2023</p><p><strong>Interested in</strong><br>Applied AI, GenAI, ML engineering and forward-deployed AI roles</p></aside></div></div></section>
+<section class="contact" id="contact"><div class="wrap"><div class="eyebrow">06 / Let's talk</div><h2>Working on something challenging in AI?</h2><p>I'm open to connecting with engineers, researchers, and teams building practical AI systems, including opportunities with international relocation.</p><div class="actions"><a class="btn primary" href="https://www.linkedin.com/in/yogesh-murala-a356571aa/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a><a class="btn secondary" href="https://github.com/Yogesh-001" target="_blank" rel="noopener noreferrer">See GitHub ↗</a></div></div></section>
+</main><footer><div class="wrap foot"><span>© <span id="year">2026</span> Yogesh Murala</span><span>Built for clarity, not buzzwords.</span><a href="#top">Back to top ↑</a></div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>
+(function(){
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced||!('IntersectionObserver' in window))return;
+  var blocks=document.querySelectorAll('.section-head, .project, .metric, .experience, .skillbox, .about-grid, .contact .wrap');
+  blocks.forEach(function(el){el.classList.add('reveal-on-scroll')});
+  document.body.classList.add('motion-ready');
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('in-view');observer.unobserve(entry.target)}});
+  },{threshold:.09,rootMargin:'0px 0px 20px 0px'});
+  blocks.forEach(function(el){observer.observe(el)});
+})();
+</script>
+</body></html>
