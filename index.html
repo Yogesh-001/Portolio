@@ -123,6 +123,30 @@ html{scroll-padding-top:78px}body{background:#111013;color:var(--text);backgroun
 @media(max-width:550px){.hero-web-visual{min-height:300px}.hero-web-caption{font-size:.48rem}.noir-copy{padding-top:15px}.noir-headline{font-size:clamp(3rem,12.5vw,5rem)}}
 @media(prefers-reduced-motion:reduce){.hero-web-orbit,.hero-web-caption,.noir-copy{animation:none!important;opacity:1!important;transform:none!important}}
 
+
+/* Full-bleed Spider-Verse opening: a single complete web spans the whole viewport */
+.noir-hero{position:relative!important;min-height:min(90svh,870px)!important;padding:0!important;background:radial-gradient(ellipse at 50% 36%,#2c151d 0%,#171015 58%,#0e0b0e 100%)!important;display:flex!important;flex-direction:column;justify-content:center}
+.noir-hero .web-corner,.noir-hero .noir-grain,.noir-hero .hero-web-visual{display:none!important}
+.hero-full-web{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;display:grid;place-items:center}
+.hero-full-web img{display:block;width:max(1050px,115vw);max-width:none;height:auto;aspect-ratio:1;object-fit:contain;opacity:0;transform:scale(.74) rotate(-11deg);transform-origin:center;filter:drop-shadow(0 0 17px rgba(177,51,66,.29));animation:fullWebEnter 1.35s cubic-bezier(.16,.76,.2,1) .06s forwards}
+.hero-focus-shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 55% 53% at 50% 47%,rgba(15,11,15,.83) 0%,rgba(20,12,18,.68) 49%,rgba(20,12,18,.22) 76%,transparent 100%),linear-gradient(0deg,#171216 0%,transparent 15%,transparent 86%,#110d11b8 100%)}
+.noir-hero .noir-layout{position:relative;z-index:2;display:flex!important;justify-content:center;align-items:center;min-height:750px;width:100%;padding:110px 20px 92px;max-width:1160px}
+.noir-hero .noir-copy{max-width:835px;width:100%;text-align:center;opacity:0;transform:translateY(24px);animation:fullCopyEnter .85s cubic-bezier(.22,1,.36,1) .65s forwards!important}
+.noir-hero .noir-index{justify-content:center;margin-bottom:28px;flex-wrap:wrap}
+.noir-hero .noir-index-r{margin-left:0}
+.noir-hero .noir-headline{font-size:clamp(4.5rem,10.5vw,9.25rem);margin-bottom:26px;line-height:.89;letter-spacing:-.095em;text-shadow:0 7px 35px rgba(9,7,11,.65)}
+.noir-hero .noir-statement,.noir-hero .noir-description{margin-left:auto;margin-right:auto}
+.noir-hero .noir-statement{max-width:700px}
+.noir-hero .noir-description{max-width:620px}
+.noir-hero .noir-buttons{justify-content:center;margin-bottom:32px}
+.noir-hero .noir-location{color:#d7bbb0}
+.noir-hero .noir-bottom-stripe{position:relative;z-index:3}
+@keyframes fullWebEnter{to{opacity:.9;transform:scale(1) rotate(0deg)}}
+@keyframes fullCopyEnter{to{opacity:1;transform:translateY(0)}}
+@media(max-width:850px){.noir-hero .noir-layout{min-height:700px;padding:95px 20px 75px}.hero-full-web img{width:1100px}.noir-hero .noir-headline{font-size:clamp(3.8rem,11.5vw,7rem)}}
+@media(max-width:580px){.noir-hero .noir-layout{min-height:665px;padding:88px 17px 73px}.hero-full-web img{width:875px}.hero-focus-shade{background:radial-gradient(ellipse 76% 57% at 50% 45%,rgba(13,10,13,.87) 0%,rgba(20,13,17,.65) 66%,rgba(20,13,17,.25) 100%),linear-gradient(0deg,#171216 0%,transparent 23%,#120c12a1 100%)}.noir-hero .noir-headline{font-size:clamp(3.45rem,13.3vw,5rem)}.noir-hero .noir-index{font-size:.61rem;gap:6px}.noir-hero .noir-index-r{font-size:.58rem}.noir-hero .noir-statement{font-size:1.17rem}.noir-hero .noir-description{font-size:.88rem}.noir-hero .noir-buttons{margin-bottom:26px}.noir-hero .noir-btn{padding:12px 13px;font-size:.65rem;gap:9px}.noir-hero .noir-location{font-size:.56rem;line-height:1.7}}
+@media(prefers-reduced-motion:reduce){.hero-full-web img,.noir-hero .noir-copy{animation:none!important;opacity:1!important;transform:none!important}}
+
 </style>
 </head>
 <body>
@@ -130,7 +154,7 @@ html{scroll-padding-top:78px}body{background:#111013;color:var(--text);backgroun
 <header><div class="wrap nav"><a class="brand" href="#top">YM<span>.</span></a><nav aria-label="Main navigation"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#stack">Toolbox</a><a href="#about">About</a></nav><a class="nav-link" href="#contact">Let's connect ↗</a></div></header>
 <main id="top">
 <section class="hero noir-hero" aria-labelledby="hero-heading">
-<div class="noir-grain" aria-hidden="true"></div><div class="web-corner" aria-hidden="true"></div>
+<div class="hero-full-web" aria-hidden="true"><img src="assets/noir-spiderweb.svg" alt="" fetchpriority="high"></div><div class="hero-focus-shade" aria-hidden="true"></div>
 <div class="wrap noir-layout">
 <div class="noir-copy">
 <div class="noir-index"><span class="red-square"></span> YOGESH MURALA <span class="noir-index-r">/ APPLIED AI ENGINEERING</span></div>
@@ -141,7 +165,7 @@ html{scroll-padding-top:78px}body{background:#111013;color:var(--text);backgroun
 <div class="noir-buttons"><a class="noir-btn noir-primary" href="#work">EXPLORE MY WORK <span>↗</span></a><a class="noir-btn noir-ghost" href="https://github.com/Yogesh-001" target="_blank" rel="noopener noreferrer">VIEW GITHUB ↗</a></div>
 <div class="noir-location">BASED IN BENGALURU <span class="noir-cross">✳</span> OPEN TO INTERNATIONAL AI ROLES</div>
 </div>
-<div class="hero-web-visual" aria-label="Large stylized spiderweb representing connected AI systems"><div class="hero-web-orbit"><img src="assets/noir-spiderweb.svg" alt="Crimson radial spiderweb with curved connected threads" fetchpriority="high"></div><div class="hero-web-caption"><span>ONE IDEA · MANY CONNECTIONS</span><span class="hero-web-pulse">● SYSTEMS IN MOTION</span></div></div>
+
 </div><div class="noir-bottom-stripe" aria-hidden="true"><span>BUILDING IN PUBLIC</span><span>◉</span><span>FROM RESEARCH TO REAL WORKFLOWS</span><span>◉</span><span>PYTHON · PYTORCH · LLMS</span></div></section>
 <section class="section" id="work"><div class="wrap">
 <div class="web-showcase"><div class="web-showcase-text"><div class="eyebrow">01 / Selected work</div><h2>Systems over demos.</h2><p class="muted">Five selected Bosch engineering systems plus independent projects. Professional work is described at a high level to respect confidential code and customer information.</p><span class="web-showcase-note">CONNECTED THINKING. ENGINEERED SYSTEMS.</span></div></div>
