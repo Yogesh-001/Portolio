@@ -102,6 +102,27 @@ html{scroll-padding-top:78px}body{background:#111013;color:var(--text);backgroun
 @media(max-width:770px){.web-showcase{grid-template-columns:1fr;gap:5px}.web-showcase-text{padding:18px 0}.web-showcase-art{height:min(90vw,420px);order:-1}.web-showcase-art img{width:min(90%,420px)}.web-showcase-note{margin-top:14px}}
 @media(prefers-reduced-motion:reduce){.web-showcase-art img{animation:none!important}}
 
+
+/* Opening choreography: one hero web arrives first, then content; no forced splash screen */
+.noir-layout{grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:42px;min-height:650px}
+.hero-web-visual{position:relative;display:grid;place-items:center;min-height:520px;isolation:isolate}
+.hero-web-visual::before{content:"";position:absolute;inset:8% 5%;z-index:-1;border-radius:50%;background:radial-gradient(circle,rgba(163,36,54,.24),rgba(163,36,54,.08) 40%,transparent 70%)}
+.hero-web-orbit{width:min(100%,550px);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.7) rotate(-18deg);animation:webArrive 1.25s cubic-bezier(.15,.8,.24,1) .08s forwards}
+.hero-web-orbit img{display:block;width:100%;height:auto;filter:drop-shadow(0 0 17px rgba(207,69,82,.39))}
+.hero-web-caption{position:absolute;bottom:10px;left:0;right:0;display:flex;justify-content:space-between;gap:13px;padding:13px 5px;border-top:1px solid #90535b;font:700 .62rem 'Space Grotesk',sans-serif;letter-spacing:.12em;color:#edbdb2;opacity:0;animation:copyArrive .65s ease .9s forwards}
+.hero-web-pulse{color:#ed7b79}
+.noir-copy{opacity:0;transform:translateY(16px);animation:copyArrive .85s cubic-bezier(.22,1,.36,1) .7s forwards!important}
+.noir-hero{padding-top:55px!important}
+.web-showcase{display:block;min-height:0;margin:0 0 38px;padding:0}
+.web-showcase-text{max-width:750px;padding:4px 0}
+.web-showcase-text .muted{max-width:630px}
+.web-showcase-note{margin-top:12px}
+@keyframes webArrive{to{opacity:1;transform:scale(1) rotate(-7deg)}}
+@keyframes copyArrive{to{opacity:1;transform:translateY(0)}}
+@media(max-width:850px){.noir-layout{grid-template-columns:1fr;min-height:0}.hero-web-visual{order:-1;min-height:340px;max-width:530px;width:100%;margin:0 auto -18px}.hero-web-orbit{width:min(85%,400px)}.hero-web-caption{bottom:0}.noir-hero{padding-top:30px!important}}
+@media(max-width:550px){.hero-web-visual{min-height:300px}.hero-web-caption{font-size:.48rem}.noir-copy{padding-top:15px}.noir-headline{font-size:clamp(3rem,12.5vw,5rem)}}
+@media(prefers-reduced-motion:reduce){.hero-web-orbit,.hero-web-caption,.noir-copy{animation:none!important;opacity:1!important;transform:none!important}}
+
 </style>
 </head>
 <body>
@@ -120,25 +141,10 @@ html{scroll-padding-top:78px}body{background:#111013;color:var(--text);backgroun
 <div class="noir-buttons"><a class="noir-btn noir-primary" href="#work">EXPLORE MY WORK <span>↗</span></a><a class="noir-btn noir-ghost" href="https://github.com/Yogesh-001" target="_blank" rel="noopener noreferrer">VIEW GITHUB ↗</a></div>
 <div class="noir-location">BASED IN BENGALURU <span class="noir-cross">✳</span> OPEN TO INTERNATIONAL AI ROLES</div>
 </div>
-<div class="noir-art" aria-label="Stylized web network representing AI orchestration">
-<div class="noir-art-header"><span>FIELD NOTES / 001</span><span>AGENTIC SYSTEMS</span></div>
-<div class="noir-illustration"><svg viewBox="0 0 480 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<defs><pattern id="halftone" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.35" fill="#f8ead9" opacity=".25"/></pattern><clipPath id="mask"><path d="M25 25 H445 V535 H25 Z"/></clipPath></defs>
-<rect x="0" y="0" width="480" height="560" fill="#b32331"/><rect x="0" y="0" width="480" height="560" fill="url(#halftone)"/>
-<g stroke="#f7e9d7" fill="none" stroke-width="2.2" opacity=".9" clip-path="url(#mask)">
-<path d="M240 280 L240 -50 M240 280 L470 -10 M240 280 L550 130 M240 280 L550 420 M240 280 L420 600 M240 280 L240 650 M240 280 L50 610 M240 280 L-70 450 M240 280 L-70 140 M240 280 L50 -70"/>
-<path d="M240 110 Q315 118 367 164 Q403 206 412 280 Q403 365 365 395 Q312 438 240 450 Q165 442 115 395 Q77 343 68 280 Q76 199 116 164 Q172 117 240 110Z"/>
-<path d="M240 165 Q290 167 329 197 Q358 225 359 280 Q358 334 331 364 Q291 393 240 397 Q188 391 150 365 Q121 325 120 280 Q123 227 151 196 Q187 165 240 165Z"/>
-<path d="M240 218 Q268 218 287 235 Q307 253 308 280 Q306 310 286 327 Q266 341 240 342 Q215 341 194 327 Q173 309 172 280 Q172 252 194 235 Q217 218 240 218Z"/>
-</g>
-<g transform="translate(240 280) rotate(-8)"><path d="M0 -102 L32 -35 L100 -38 L64 15 L80 95 L0 61 L-80 95 L-64 15 L-100 -38 L-32 -35Z" fill="#111015" stroke="#f8ead9" stroke-width="5"/><path d="M-39 -15 L-10 3 L-39 20 M39 -15 L10 3 L39 20" stroke="#f8ead9" stroke-width="8" fill="none" stroke-linecap="square"/></g>
-<g font-family="'Space Grotesk',sans-serif" font-weight="700"><text x="34" y="55" fill="#f8ead9" font-size="14" letter-spacing="4">BUILD / VERIFY / SHIP</text><text x="33" y="516" fill="#f8ead9" font-size="64" letter-spacing="-5">YM / 01</text></g>
-</svg></div>
-<div class="noir-art-footer"><span>ENGINEERING / AGENTS / RAG</span><span>● ACTIVE</span></div>
-</div>
+<div class="hero-web-visual" aria-label="Large stylized spiderweb representing connected AI systems"><div class="hero-web-orbit"><img src="assets/noir-spiderweb.svg" alt="Crimson radial spiderweb with curved connected threads" fetchpriority="high"></div><div class="hero-web-caption"><span>ONE IDEA · MANY CONNECTIONS</span><span class="hero-web-pulse">● SYSTEMS IN MOTION</span></div></div>
 </div><div class="noir-bottom-stripe" aria-hidden="true"><span>BUILDING IN PUBLIC</span><span>◉</span><span>FROM RESEARCH TO REAL WORKFLOWS</span><span>◉</span><span>PYTHON · PYTORCH · LLMS</span></div></section>
 <section class="section" id="work"><div class="wrap">
-<div class="web-showcase"><div class="web-showcase-text"><div class="eyebrow">01 / Selected work</div><h2>Systems over demos.</h2><p class="muted">Five selected Bosch engineering systems plus independent projects. Professional work is described at a high level to respect confidential code and customer information.</p><span class="web-showcase-note">CONNECTED THINKING. ENGINEERED SYSTEMS.</span></div><div class="web-showcase-art"><img src="assets/noir-spiderweb.svg" alt="" loading="eager"><span class="web-art-marker">YM / ENGINEERING WEB</span></div></div>
+<div class="web-showcase"><div class="web-showcase-text"><div class="eyebrow">01 / Selected work</div><h2>Systems over demos.</h2><p class="muted">Five selected Bosch engineering systems plus independent projects. Professional work is described at a high level to respect confidential code and customer information.</p><span class="web-showcase-note">CONNECTED THINKING. ENGINEERED SYSTEMS.</span></div></div>
 <div class="projects">
 <article class="project featured"><div><div class="number">PROFESSIONAL WORK · BOSCH / 01 · FLAGSHIP CASE STUDY</div><h3>Documentation Analyzer</h3><p>Owned the development of a customer-facing AI assistant for navigating complex engineering information across documentation, source code, tests, configurations, and diagrams. Six specialist workers, source-aware retrieval, and structured evidence.</p><div class="tags"><span class="tag">Multi-agent orchestration</span><span class="tag">Hybrid retrieval</span><span class="tag">Python</span><span class="tag">Chroma / Tree-sitter</span></div><div class="project-link">Internal project · Architecture overview only</div></div><div class="visual" aria-label="Illustrative workflow"><div><span>Engineering question</span><small>INPUT</small></div><div class="dividerline"></div><div><span>Supervisor / routing</span><small>ORCHESTRATE</small></div><div class="dividerline"></div><div><span>Six specialist workers</span><small>INVESTIGATE</small></div><div class="dividerline"></div><div><span>Evidence-backed response</span><small>OUTPUT</small></div></div></article>
 <div class="work-divider"><span>MORE FROM BOSCH</span><span>02 — 05 / ENGINEERING SYSTEMS</span></div>
