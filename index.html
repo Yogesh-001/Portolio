@@ -27,6 +27,24 @@ html{scroll-padding-top:78px}body{background:#111013;color:var(--text);backgroun
 @media(max-width:420px){.noir-headline{font-size:clamp(3rem,12.5vw,4rem)}.noir-index-r{display:none}.noir-tag{font-size:.65rem}.noir-location{font-size:.58rem}.noir-btn{font-size:.69rem;padding:13px 15px}}
 @media(prefers-reduced-motion:reduce){.noir-art,.noir-btn{transition:none!important}}
 
+
+/* Subtle motion system — noir, not neon */
+@keyframes noirEnter{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes noirWebDrift{0%,100%{transform:rotate(15deg) scale(1)}50%{transform:rotate(20deg) scale(1.04)}}
+@keyframes noirPulse{0%,100%{opacity:.75}50%{opacity:1}}
+.noir-copy{animation:noirEnter .85s cubic-bezier(.22,1,.36,1) both}
+.noir-art{animation:noirEnter 1s .16s cubic-bezier(.22,1,.36,1) both}
+.web-corner{animation:noirWebDrift 20s ease-in-out infinite}
+.red-square{animation:noirPulse 3s ease-in-out infinite}
+.motion-ready .reveal-on-scroll{opacity:0;transform:translateY(27px);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .65s cubic-bezier(.22,1,.36,1)}
+.motion-ready .reveal-on-scroll.in-view{opacity:1;transform:translateY(0)}
+.motion-ready .reveal-on-scroll:nth-child(2){transition-delay:.06s}
+.motion-ready .reveal-on-scroll:nth-child(3){transition-delay:.12s}
+.project{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.project:hover{box-shadow:11px 12px 0 #090809;transform:translateY(-5px)}
+.noir-btn:focus-visible,.project-link:focus-visible{outline:2px solid #f3d9b7;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.noir-copy,.noir-art,.web-corner,.red-square{animation:none!important}.motion-ready .reveal-on-scroll{opacity:1!important;transform:none!important;transition:none!important}.project:hover{transform:none!important}}
+
 </style>
 </head>
 <body>
@@ -79,4 +97,17 @@ html{scroll-padding-top:78px}body{background:#111013;color:var(--text);backgroun
 <section class="contact" id="contact"><div class="wrap"><div class="eyebrow">06 / Let's talk</div><h2>Working on something challenging in AI?</h2><p>I'm open to connecting with engineers, researchers, and teams building practical AI systems, including opportunities with international relocation.</p><div class="actions"><a class="btn primary" href="https://www.linkedin.com/in/yogesh-murala-a356571aa/" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a><a class="btn secondary" href="https://github.com/Yogesh-001" target="_blank" rel="noopener noreferrer">See GitHub ↗</a></div></div></section>
 </main><footer><div class="wrap foot"><span>© <span id="year">2026</span> Yogesh Murala</span><span>Built for clarity, not buzzwords.</span><a href="#top">Back to top ↑</a></div></footer>
 <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+<script>
+(function(){
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced||!('IntersectionObserver' in window))return;
+  var blocks=document.querySelectorAll('.section-head, .project, .metric, .experience, .skillbox, .about-grid, .contact .wrap');
+  blocks.forEach(function(el){el.classList.add('reveal-on-scroll')});
+  document.body.classList.add('motion-ready');
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('in-view');observer.unobserve(entry.target)}});
+  },{threshold:.09,rootMargin:'0px 0px 20px 0px'});
+  blocks.forEach(function(el){observer.observe(el)});
+})();
+</script>
 </body></html>
